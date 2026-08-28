@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>ACCOUNT PFA</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       font-family: Arial, "Noto Sans Thai", sans-serif;
@@ -70,6 +77,11 @@
       padding: 12px;
     }
 
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
     .item-button {
       flex: 1;
       background: white;
@@ -97,7 +109,15 @@
       gap: 10px;
     }
 
+    .member-card {
+      background: #f8f9fa;
+      border-radius: 14px;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+    }
+
     .member {
+      width: 100%;
       background: white;
       border: 1px solid #ddd;
       padding: 14px;
@@ -142,377 +162,962 @@
       margin-top: 18px;
     }
 
-    .submit:active {
-      transform: scale(.98);
-    }
-
     .note {
       color: #777;
       font-size: 13px;
       margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .loading {
+      text-align: center;
+      color: #777;
+      padding: 15px;
+    }
+
+    .status {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    .status.success {
+      display: block;
+      background: #e8f8ee;
+      color: #087f3d;
+    }
+
+    .status.error {
+      display: block;
+      background: #fff0f0;
+      color: #c62828;
     }
 
     .hidden {
       display: none;
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
+
+  <!-- HEADER -->
+
   <div class="header">
+
     ACCOUNT PFA
+
   </div>
+
 
   <div class="content">
 
-    <!-- รายการ -->
+
+    <!-- ==========================================
+         รายการค่าใช้จ่าย
+         ========================================== -->
+
     <div class="section">
 
       <div class="section-title">
+
         1. รายการค่าใช้จ่าย
+
       </div>
+
 
       <div id="expenseList">
 
+
         <div class="card expense-row">
+
 
           <div class="row">
 
+
             <button
+              type="button"
               class="item-button"
-              onclick="selectExpense(this, 'ค่าน้ำมัน')">
+              onclick="selectExpense(this)"
+            >
+
               ⛽ ค่าน้ำมัน
+
             </button>
+
 
             <input
               class="amount expense-amount"
               type="number"
               placeholder="บาท"
               min="0"
-              oninput="calculateTotal()">
+              step="1"
+              oninput="calculateTotal()"
+            >
+
 
           </div>
 
+
         </div>
 
+
       </div>
+
 
       <button
+        type="button"
         onclick="addExpense()"
-        style="width:100%;background:#f1f3f5;margin-top:5px;">
+        style="
+          width:100%;
+          background:#f1f3f5;
+          margin-top:5px;
+        "
+      >
+
         ➕ เพิ่มรายการ
+
       </button>
 
+
     </div>
 
 
-    <!-- สมาชิกทีม -->
+
+    <!-- ==========================================
+         สมาชิกทีม
+         ========================================== -->
+
     <div class="section">
 
+
       <div class="section-title">
+
         2. ค่าทีม
+
       </div>
+
 
       <div class="note">
-        เลือกสมาชิกที่ต้องการบันทึกค่าใช้จ่าย
+
+        เลือกสมาชิกได้สูงสุด 4 คน
+
       </div>
 
-      <div class="member-grid">
 
-        <div class="card">
+      <div
+        id="memberGrid"
+        class="member-grid"
+      >
 
-          <button
-            class="member"
-            onclick="selectMember(this, 'Phet')">
-            👤 Phet
-          </button>
+        <div class="loading">
 
-          <input
-            class="member-amount hidden"
-            type="number"
-            placeholder="จำนวนเงิน"
-            min="0"
-            oninput="calculateTotal()">
-
-        </div>
-
-
-        <div class="card">
-
-          <button
-            class="member"
-            onclick="selectMember(this, 'Member 2')">
-            👤 Member 2
-          </button>
-
-          <input
-            class="member-amount hidden"
-            type="number"
-            placeholder="จำนวนเงิน"
-            min="0"
-            oninput="calculateTotal()">
-
-        </div>
-
-
-        <div class="card">
-
-          <button
-            class="member"
-            onclick="selectMember(this, 'Member 3')">
-            👤 Member 3
-          </button>
-
-          <input
-            class="member-amount hidden"
-            type="number"
-            placeholder="จำนวนเงิน"
-            min="0"
-            oninput="calculateTotal()">
-
-        </div>
-
-
-        <div class="card">
-
-          <button
-            class="member"
-            onclick="selectMember(this, 'Member 4')">
-            👤 Member 4
-          </button>
-
-          <input
-            class="member-amount hidden"
-            type="number"
-            placeholder="จำนวนเงิน"
-            min="0"
-            oninput="calculateTotal()">
+          กำลังโหลดสมาชิก...
 
         </div>
 
       </div>
+
 
     </div>
 
 
-    <!-- สรุป -->
+
+    <!-- ==========================================
+         สรุป
+         ========================================== -->
+
     <div class="section">
 
+
       <div class="section-title">
+
         3. สรุปรายการ
+
       </div>
 
+
       <div class="total">
-        <span>ยอดรวม</span>
+
         <span>
-          <span id="total">0</span> บาท
+
+          ยอดรวม
+
         </span>
+
+
+        <span>
+
+          <span id="total">
+
+            0
+
+          </span>
+
+          บาท
+
+        </span>
+
       </div>
+
 
     </div>
 
 
-    <!-- บันทึก -->
+
+    <!-- ==========================================
+         STATUS
+         ========================================== -->
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+
+
+    <!-- ==========================================
+         SAVE
+         ========================================== -->
+
     <button
+      id="submitButton"
+      type="button"
       class="submit"
-      onclick="submitData()">
+      onclick="submitData()"
+    >
+
       ✅ บันทึกข้อมูล
+
     </button>
+
 
   </div>
 
 </div>
 
 
+
 <script>
 
-  let expenseCount = 1;
+
+/*************************************************
+ * CONFIG
+ *************************************************/
 
 
-  // เลือกรายการ
-  function selectExpense(button, name) {
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxDt9NHvQ5Mpbag-DugELbdxy90yhTGE6IXLU_YK8_hkrH3eh9rqhVXDIL80yf9CMfw/exec";
 
-    button.classList.toggle("selected");
+
+let expenseCount = 1;
+
+let memberData = [];
+
+
+
+/*************************************************
+ * INIT
+ *************************************************/
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    loadMembers();
 
   }
+);
 
 
-  // เพิ่มรายการ
-  function addExpense() {
 
-    expenseCount++;
+/*************************************************
+ * LOAD MEMBERS
+ *************************************************/
 
-    const container =
-      document.getElementById("expenseList");
 
-    const div =
-      document.createElement("div");
+async function loadMembers() {
 
-    div.className = "card expense-row";
+  const grid =
+    document.getElementById(
+      "memberGrid"
+    );
 
-    div.innerHTML = `
 
-      <div class="row">
+  try {
 
-        <button
-          class="item-button"
-          onclick="selectExpense(this, 'รายการ ${expenseCount}')">
 
-          📋 รายการ ${expenseCount}
+    const response =
+      await fetch(
+        APPS_SCRIPT_URL,
+        {
 
-        </button>
+          method: "POST",
 
-        <input
-          class="amount expense-amount"
-          type="number"
-          placeholder="บาท"
-          min="0"
-          oninput="calculateTotal()">
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body:
+            JSON.stringify({
+              action:
+                "getMembers"
+            })
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    console.log(
+      "Members:",
+      result
+    );
+
+
+    if (
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        "โหลดสมาชิกไม่สำเร็จ"
+      );
+
+    }
+
+
+    memberData =
+      Array.isArray(result.members)
+        ? result.members
+        : [];
+
+
+    renderMembers();
+
+
+  } catch (error) {
+
+
+    console.error(
+      "loadMembers ERROR:",
+      error
+    );
+
+
+    grid.innerHTML = `
+
+      <div
+        class="loading"
+        style="grid-column:1/-1;color:#c62828;"
+      >
+
+        ❌ โหลดสมาชิกไม่สำเร็จ
+
+        <br>
+
+        ${escapeHtml(error.message)}
 
       </div>
 
     `;
 
-    container.appendChild(div);
+  }
+
+}
+
+
+
+/*************************************************
+ * RENDER MEMBERS
+ *************************************************/
+
+
+function renderMembers() {
+
+
+  const grid =
+    document.getElementById(
+      "memberGrid"
+    );
+
+
+  grid.innerHTML = "";
+
+
+  memberData
+    .slice(0, 4)
+    .forEach(
+      function(member) {
+
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "member-card";
+
+
+        card.innerHTML = `
+
+          <button
+            type="button"
+            class="member"
+            data-id="${escapeHtml(member.id)}"
+            data-name="${escapeHtml(member.name)}"
+            onclick="selectMember(this)"
+          >
+
+            👤 ${escapeHtml(member.name)}
+
+          </button>
+
+
+          <input
+            class="member-amount hidden"
+            type="number"
+            placeholder="จำนวนเงิน"
+            min="0"
+            step="1"
+            oninput="calculateTotal()"
+          >
+
+        `;
+
+
+        grid.appendChild(card);
+
+      }
+    );
+
+
+}
+
+
+
+/*************************************************
+ * SELECT EXPENSE
+ *************************************************/
+
+
+function selectExpense(button) {
+
+  button.classList.toggle(
+    "selected"
+  );
+
+}
+
+
+
+/*************************************************
+ * ADD EXPENSE
+ *************************************************/
+
+
+function addExpense() {
+
+
+  expenseCount++;
+
+
+  const container =
+    document.getElementById(
+      "expenseList"
+    );
+
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.className =
+    "card expense-row";
+
+
+  div.innerHTML = `
+
+    <div class="row">
+
+
+      <button
+        type="button"
+        class="item-button"
+        onclick="selectExpense(this)"
+      >
+
+        📋 รายการ ${expenseCount}
+
+      </button>
+
+
+      <input
+        class="amount expense-amount"
+        type="number"
+        placeholder="บาท"
+        min="0"
+        step="1"
+        oninput="calculateTotal()"
+      >
+
+
+    </div>
+
+  `;
+
+
+  container.appendChild(
+    div
+  );
+
+}
+
+
+
+/*************************************************
+ * SELECT MEMBER
+ *************************************************/
+
+
+function selectMember(button) {
+
+
+  const grid =
+    document.getElementById(
+      "memberGrid"
+    );
+
+
+  const selected =
+    grid.querySelectorAll(
+      ".member.selected"
+    );
+
+
+  const isSelected =
+    button.classList.contains(
+      "selected"
+    );
+
+
+  if (
+    !isSelected &&
+    selected.length >= 4
+  ) {
+
+    showStatus(
+      "เลือกสมาชิกได้สูงสุด 4 คน",
+      "error"
+    );
+
+    return;
 
   }
 
 
-  // เลือกสมาชิก
-  function selectMember(button, name) {
+  button.classList.toggle(
+    "selected"
+  );
 
-    button.classList.toggle("selected");
 
-    const input =
-      button.parentElement.querySelector(".member-amount");
+  const input =
+    button.parentElement
+      .querySelector(
+        ".member-amount"
+      );
 
-    if (button.classList.contains("selected")) {
 
-      input.classList.remove("hidden");
+  if (
+    button.classList.contains(
+      "selected"
+    )
+  ) {
 
-    } else {
+    input.classList.remove(
+      "hidden"
+    );
 
-      input.classList.add("hidden");
-      input.value = "";
+    input.focus();
 
-    }
+  } else {
 
-    calculateTotal();
+    input.classList.add(
+      "hidden"
+    );
+
+    input.value = "";
 
   }
 
 
-  // คำนวณยอดรวม
-  function calculateTotal() {
+  calculateTotal();
 
-    let total = 0;
-
-
-    // ค่าใช้จ่าย
-    document
-      .querySelectorAll(".expense-amount")
-      .forEach(input => {
-
-        total += Number(input.value) || 0;
-
-      });
+}
 
 
-    // ค่าทีม
-    document
-      .querySelectorAll(".member-amount")
-      .forEach(input => {
 
-        if (!input.classList.contains("hidden")) {
+/*************************************************
+ * CALCULATE TOTAL
+ *************************************************/
 
-          total += Number(input.value) || 0;
+
+function calculateTotal() {
+
+
+  let total = 0;
+
+
+  document
+    .querySelectorAll(
+      ".expense-amount"
+    )
+    .forEach(
+      function(input) {
+
+        total +=
+          Number(input.value) || 0;
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".member-amount"
+    )
+    .forEach(
+      function(input) {
+
+        if (
+          !input.classList.contains(
+            "hidden"
+          )
+        ) {
+
+          total +=
+            Number(input.value) || 0;
 
         }
 
-      });
+      }
+    );
 
 
-    document.getElementById("total").innerText =
-      total.toLocaleString("th-TH");
+  document
+    .getElementById(
+      "total"
+    )
+    .innerText =
+      total.toLocaleString(
+        "th-TH"
+      );
 
-  }
+}
 
 
-  // ส่งข้อมูล
-  function submitData() {
 
-    const expenses = [];
+/*************************************************
+ * GET EXPENSES
+ *************************************************/
 
-    document
-      .querySelectorAll(".expense-row")
-      .forEach(row => {
+
+function collectExpenses() {
+
+
+  const expenses = [];
+
+
+  document
+    .querySelectorAll(
+      ".expense-row"
+    )
+    .forEach(
+      function(row) {
+
 
         const button =
-          row.querySelector(".item-button");
+          row.querySelector(
+            ".item-button"
+          );
+
 
         const amount =
-          row.querySelector(".expense-amount");
+          row.querySelector(
+            ".expense-amount"
+          );
+
 
         if (
           button &&
-          button.classList.contains("selected") &&
-          amount.value
+          button.classList.contains(
+            "selected"
+          )
         ) {
+
+
+          const item =
+            button.innerText
+              .trim();
+
+
+          const value =
+            Number(
+              amount.value
+            );
+
+
+          if (
+            !amount.value ||
+            isNaN(value) ||
+            value < 0
+          ) {
+
+            throw new Error(
+              `กรุณาระบุจำนวนเงินสำหรับ ${item}`
+            );
+
+          }
+
 
           expenses.push({
 
-            item: button.innerText.trim(),
+            item:
+              item,
 
-            amount: Number(amount.value)
+            amount:
+              value,
 
-          });
-
-        }
-
-      });
-
-
-    const members = [];
-
-    document
-      .querySelectorAll(".member")
-      .forEach(button => {
-
-        if (button.classList.contains("selected")) {
-
-          const input =
-            button.parentElement
-              .querySelector(".member-amount");
-
-          members.push({
-
-            name: button.innerText.trim(),
-
-            amount: Number(input.value) || 0
+            round:
+              1
 
           });
 
         }
 
-      });
+      }
+    );
+
+
+  return expenses;
+
+}
+
+
+
+/*************************************************
+ * GET MEMBERS
+ *************************************************/
+
+
+function collectMembers() {
+
+
+  const members = [];
+
+
+  document
+    .querySelectorAll(
+      ".member.selected"
+    )
+    .forEach(
+      function(button) {
+
+
+        const input =
+          button.parentElement
+            .querySelector(
+              ".member-amount"
+            );
+
+
+        const value =
+          Number(
+            input.value
+          );
+
+
+        if (
+          !input.value ||
+          isNaN(value) ||
+          value < 0
+        ) {
+
+          throw new Error(
+            `กรุณาระบุจำนวนเงินของ ${button.dataset.name}`
+          );
+
+        }
+
+
+        members.push({
+
+          id:
+            button.dataset.id,
+
+          name:
+            button.dataset.name,
+
+          amount:
+            value
+
+        });
+
+      }
+    );
+
+
+  return members;
+
+}
+
+
+
+/*************************************************
+ * SUBMIT
+ *************************************************/
+
+
+async function submitData() {
+
+
+  const submitButton =
+    document.getElementById(
+      "submitButton"
+    );
+
+
+  try {
+
+
+    hideStatus();
+
+
+    const expenses =
+      collectExpenses();
+
+
+    const members =
+      collectMembers();
+
+
+    if (
+      expenses.length === 0 &&
+      members.length === 0
+    ) {
+
+      throw new Error(
+        "กรุณาเลือกรายการค่าใช้จ่ายหรือสมาชิกทีม"
+      );
+
+    }
+
+
+    const expenseTotal =
+      expenses.reduce(
+        function(sum, item) {
+
+          return sum +
+            Number(item.amount || 0);
+
+        },
+        0
+      );
+
+
+    const teamTotal =
+      members.reduce(
+        function(sum, member) {
+
+          return sum +
+            Number(member.amount || 0);
+
+        },
+        0
+      );
+
+
+    const total =
+      expenseTotal +
+      teamTotal;
+
+
+    /*
+     * พยายามอ่าน LINE LIFF
+     */
+
+    let userId = "";
+
+    let displayName = "";
+
+
+    try {
+
+      if (
+        typeof liff !== "undefined" &&
+        liff.isLoggedIn()
+      ) {
+
+        const profile =
+          await liff.getProfile();
+
+
+        userId =
+          profile.userId || "";
+
+
+        displayName =
+          profile.displayName || "";
+
+      }
+
+    } catch (liffError) {
+
+      console.log(
+        "LIFF profile unavailable:",
+        liffError
+      );
+
+    }
 
 
     const data = {
 
-      expenses: expenses,
+      type:
+        "LIFF_EXPENSE",
 
-      members: members,
+      userId:
+        userId,
+
+      displayName:
+        displayName,
+
+      expenses:
+        expenses,
+
+      members:
+        members,
 
       total:
-        Number(
-          document
-            .getElementById("total")
-            .innerText
-            .replace(/,/g, "")
-        ),
+        total,
 
       timestamp:
         new Date().toISOString()
@@ -520,19 +1125,270 @@
     };
 
 
-    console.log(data);
-
-
-    alert(
-      "บันทึกข้อมูลเรียบร้อยแล้ว\n\n" +
-      "ยอดรวม " +
-      data.total.toLocaleString("th-TH") +
-      " บาท"
+    console.log(
+      "ส่งข้อมูล:",
+      data
     );
 
+
+    submitButton.disabled =
+      true;
+
+
+    submitButton.innerText =
+      "⏳ กำลังบันทึก...";
+
+
+    const response =
+      await fetch(
+        APPS_SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "text/plain;charset=utf-8"
+
+          },
+
+          body:
+            JSON.stringify(data)
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    console.log(
+      "Apps Script Response:",
+      result
+    );
+
+
+    if (
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        "บันทึกข้อมูลไม่สำเร็จ"
+      );
+
+    }
+
+
+    showStatus(
+      "✅ บันทึกข้อมูลเรียบร้อย\nยอดรวม " +
+      total.toLocaleString("th-TH") +
+      " บาท",
+      "success"
+    );
+
+
+    /*
+     * ล้างฟอร์มหลังบันทึก
+     */
+
+    resetForm();
+
+
+  } catch (error) {
+
+
+    console.error(
+      "submitData ERROR:",
+      error
+    );
+
+
+    showStatus(
+      "❌ " +
+      error.message,
+      "error"
+    );
+
+
+  } finally {
+
+
+    submitButton.disabled =
+      false;
+
+
+    submitButton.innerText =
+      "✅ บันทึกข้อมูล";
+
   }
+
+}
+
+
+
+/*************************************************
+ * RESET FORM
+ *************************************************/
+
+
+function resetForm() {
+
+
+  document
+    .querySelectorAll(
+      ".item-button.selected"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".expense-amount"
+    )
+    .forEach(
+      function(input) {
+
+        input.value = "";
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".member.selected"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".member-amount"
+    )
+    .forEach(
+      function(input) {
+
+        input.value = "";
+
+        input.classList.add(
+          "hidden"
+        );
+
+      }
+    );
+
+
+  calculateTotal();
+
+}
+
+
+
+/*************************************************
+ * STATUS
+ *************************************************/
+
+
+function showStatus(
+  message,
+  type
+) {
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  status.className =
+    "status " +
+    type;
+
+
+  status.innerText =
+    message;
+
+}
+
+
+
+function hideStatus() {
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  status.className =
+    "status";
+
+
+  status.innerText =
+    "";
+
+}
+
+
+
+/*************************************************
+ * ESCAPE HTML
+ *************************************************/
+
+
+function escapeHtml(
+  value
+) {
+
+
+  return String(value)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
 
 </script>
 
 </body>
+
 </html>

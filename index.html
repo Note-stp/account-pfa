@@ -2,13 +2,8 @@
 <html lang="th">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ACCOUNT PFA</title>
 
@@ -16,1202 +11,1091 @@
 
 <style>
 
-/* =================================================
-   GLOBAL
-================================================= */
-
-* {
-  box-sizing: border-box;
-  font-family: Arial, "Noto Sans Thai", sans-serif;
+*{
+  box-sizing:border-box;
+  font-family:Arial,"Noto Sans Thai",sans-serif;
 }
 
-body {
-  margin: 0;
-  background: #f4f6f8;
-  color: #222;
+body{
+  margin:0;
+  background:#f4f6f8;
+  color:#222;
 }
 
-.container {
-  width: 100%;
-  max-width: 720px;
-  margin: auto;
-  padding: 18px 12px 40px;
+.container{
+  width:100%;
+  max-width:720px;
+  margin:auto;
+  padding:18px 12px 40px;
 }
 
-/* =================================================
-   HEADER
-================================================= */
-
-.header {
-  text-align: center;
-  margin-bottom: 15px;
+.header{
+  text-align:center;
+  margin-bottom:15px;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
+.header h1{
+  margin:0;
+  font-size:28px;
+  font-weight:800;
 }
 
-.header p {
-  margin: 5px 0 0;
-  color: #777;
-  font-size: 14px;
+.header p{
+  margin:5px 0 0;
+  color:#777;
+  font-size:14px;
 }
 
-/* =================================================
-   USER
-================================================= */
-
-.user-box {
-  background: white;
-  border-radius: 15px;
-  padding: 13px 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 12px rgba(0,0,0,.06);
+.user-box{
+  background:white;
+  border-radius:15px;
+  padding:13px 15px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.user-name {
-  font-weight: bold;
-  font-size: 17px;
+.user-name{
+  font-weight:bold;
+  font-size:17px;
 }
 
-.user-status {
-  color: #777;
-  font-size: 13px;
-  margin-top: 5px;
-  white-space: pre-line;
+.user-status{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+  white-space:pre-line;
 }
 
-/* =================================================
-   CARD
-================================================= */
-
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 12px rgba(0,0,0,.07);
-  overflow: hidden;
+.card{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+  overflow:hidden;
 }
 
-.section-title {
-  font-size: 19px;
-  font-weight: bold;
-  margin-bottom: 15px;
+.section-title{
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
-.label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 7px;
-  font-size: 14px;
+.label{
+  display:block;
+  font-weight:600;
+  margin-bottom:7px;
+  font-size:14px;
 }
-
-/* =================================================
-   INPUT
-================================================= */
 
 input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-  background: white;
+input[type="number"]{
+  width:100%;
+  padding:11px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+  background:white;
 }
 
-input:focus {
-  border-color: #111;
+input:focus{
+  border-color:#111;
 }
 
-input:disabled {
-  background: #eee;
-  color: #999;
+input:disabled{
+  background:#eeeeee;
+  color:#888;
 }
 
-/* =================================================
-   BUTTON
-================================================= */
-
-button {
-  cursor: pointer;
-}
-
-.round-buttons {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  gap: 7px;
+.round-buttons{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px;
 }
 
 .round-btn,
 .member-btn,
-.travel-type-btn {
-  border: 1px solid #ddd;
-  background: white;
-  color: #222;
-  border-radius: 10px;
-  padding: 11px 5px;
-  font-size: 14px;
-  font-weight: bold;
+.travel-type-btn{
+  border:1px solid #ddd;
+  background:white;
+  color:#222;
+  border-radius:11px;
+  padding:11px 5px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .round-btn.active,
 .member-btn.active,
-.travel-type-btn.active {
-  background: #111;
-  color: white;
-  border-color: #111;
+.travel-type-btn.active{
+  background:#111;
+  color:white;
+  border-color:#111;
 }
 
-/* =================================================
-   TEAM
-================================================= */
+/* TEAM */
 
-.team-row {
-  display: grid;
-  grid-template-columns: 100px 1fr 45px;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 9px;
+.team-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
-.team-amount {
-  text-align: right;
+.team-row{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:10px;
+  align-items:center;
 }
 
-.team-lock {
-  font-size: 16px;
-  text-align: center;
+.member-btn{
+  width:100%;
 }
 
-.team-total {
-  border-top: 1px solid #ddd;
-  margin-top: 14px;
-  padding-top: 13px;
-
-  display: flex;
-  justify-content: space-between;
-
-  font-weight: bold;
-  font-size: 16px;
+.team-amount{
+  width:100%;
 }
 
-/* =================================================
-   TRAVEL
-================================================= */
+.sub-total{
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid #ddd;
+  margin-top:14px;
+  padding-top:14px;
+  font-weight:bold;
+}
 
-.travel-table {
-  width: 100%;
-  overflow-x: auto;
+.hidden{
+  display:none !important;
+}
+
+/* TRAVEL */
+
+.travel-table{
+  width:100%;
+  overflow-x:auto;
 }
 
 .travel-header,
-.travel-row {
-  display: grid;
-
+.travel-row{
+  display:grid;
   grid-template-columns:
-    58px
+    65px
     150px
-    82px
-    70px
-    70px;
-
-  gap: 5px;
-
-  align-items: center;
-
-  min-width: 450px;
+    90px
+    80px
+    80px;
+  gap:6px;
+  align-items:center;
+  min-width:485px;
 }
 
-.travel-header {
-  font-size: 11px;
-  font-weight: bold;
-  color: #666;
-
-  text-align: center;
-
-  margin-bottom: 7px;
+.travel-header{
+  font-size:11px;
+  font-weight:bold;
+  color:#555;
+  margin-bottom:7px;
+  text-align:center;
 }
 
-.travel-row {
-  background: #f7f7f7;
-  border-radius: 10px;
-
-  padding: 7px;
-
-  margin-bottom: 8px;
+.travel-row{
+  background:#f7f7f7;
+  border-radius:10px;
+  padding:7px;
+  margin-bottom:8px;
 }
 
-.travel-name {
-  font-weight: bold;
-  font-size: 12px;
+.travel-name{
+  font-weight:bold;
+  font-size:13px;
 }
 
-.travel-types {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
+.travel-types{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
 }
 
-.travel-type-btn {
-  font-size: 9px;
-  padding: 8px 2px;
+.travel-type-btn{
+  padding:7px 2px;
+  font-size:10px;
 }
 
-.travel-row input {
-  padding: 8px 4px;
-  font-size: 11px;
+.travel-row input{
+  padding:8px 5px;
+  font-size:12px;
 }
 
-.travel-amount {
-  background: #eee !important;
+.travel-amount{
+  background:#eeeeee !important;
 }
 
-.travel-amount.editable {
-  background: white !important;
+.travel-amount.editable{
+  background:white !important;
 }
 
-.travel-total {
-  border-top: 1px solid #ddd;
-  margin-top: 12px;
-  padding-top: 12px;
+/* EQUIPMENT / OTHER */
 
-  display: flex;
-  justify-content: space-between;
-
-  font-weight: bold;
+.detail-row{
+  display:grid;
+  grid-template-columns:1fr 140px;
+  gap:10px;
+  align-items:end;
+  margin-bottom:10px;
 }
 
-/* =================================================
-   MULTIPLE ITEMS
-================================================= */
-
-.detail-row {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    130px
-    35px;
-
-  gap: 7px;
-
-  align-items: center;
-
-  margin-bottom: 9px;
+.detail-box label{
+  margin-bottom:5px;
 }
 
-.remove-btn {
-  width: 32px;
-  height: 32px;
-
-  border: none;
-
-  border-radius: 8px;
-
-  background: #eee;
-
-  font-size: 16px;
+.remove-btn{
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:9px;
+  background:#eee;
+  cursor:pointer;
+  font-size:16px;
 }
 
-.add-btn {
-  width: 100%;
-
-  border: 1px dashed #aaa;
-
-  background: white;
-
-  border-radius: 10px;
-
-  padding: 11px;
-
-  font-weight: bold;
-
-  margin-top: 5px;
+.detail-item{
+  display:grid;
+  grid-template-columns:1fr 140px 38px;
+  gap:8px;
+  align-items:end;
+  margin-bottom:10px;
 }
 
-/* =================================================
-   TOTAL
-================================================= */
-
-.total-box {
-  background: #111;
-  color: white;
-
-  border-radius: 15px;
-
-  padding: 18px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-size: 18px;
-  font-weight: bold;
-
-  margin-bottom: 15px;
+.add-btn{
+  width:100%;
+  border:1px dashed #aaa;
+  background:white;
+  border-radius:11px;
+  padding:11px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* =================================================
-   SAVE
-================================================= */
+/* TOTAL */
 
-.save-btn {
-  width: 100%;
-
-  border: none;
-
-  background: #111;
-  color: white;
-
-  border-radius: 15px;
-
-  padding: 17px;
-
-  font-size: 18px;
-  font-weight: bold;
+.total-box{
+  background:#111;
+  color:white;
+  border-radius:15px;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
-.save-btn:disabled {
-  background: #999;
+.save-btn{
+  width:100%;
+  border:none;
+  background:#111;
+  color:white;
+  border-radius:15px;
+  padding:17px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* =================================================
-   CLEAR
-================================================= */
-
-.clear-btn {
-  width: 100%;
-
-  border: 1px solid #ddd;
-
-  background: white;
-
-  border-radius: 15px;
-
-  padding: 14px;
-
-  font-size: 16px;
-
-  margin-top: 10px;
+.save-btn:disabled{
+  background:#999;
+  cursor:wait;
 }
 
-/* =================================================
-   MESSAGE
-================================================= */
-
-.message {
-  display: none;
-
-  padding: 14px;
-
-  border-radius: 12px;
-
-  margin-bottom: 15px;
-
-  text-align: center;
-
-  font-weight: bold;
-
-  white-space: pre-line;
+.clear-btn{
+  width:100%;
+  border:1px solid #ddd;
+  background:white;
+  border-radius:15px;
+  padding:14px;
+  font-size:16px;
+  margin-top:10px;
+  cursor:pointer;
 }
 
-.message.success {
-  display: block;
-  background: #e8f7e8;
-  color: #187a18;
+.message{
+  display:none;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:15px;
+  text-align:center;
+  font-weight:bold;
+  white-space:pre-line;
 }
 
-.message.error {
-  display: block;
-  background: #fdeaea;
-  color: #c62828;
+.message.success{
+  display:block;
+  background:#e8f7e8;
+  color:#187a18;
 }
 
-.message.info {
-  display: block;
-  background: #eef4ff;
-  color: #2455a4;
+.message.error{
+  display:block;
+  background:#fdeaea;
+  color:#c62828;
 }
 
-/* =================================================
-   MOBILE
-================================================= */
+.message.info{
+  display:block;
+  background:#eef4ff;
+  color:#2455a4;
+}
 
-@media(max-width:600px) {
+.description{
+  color:#777;
+  font-size:13px;
+  margin-bottom:10px;
+}
 
-  .container {
-    padding-left: 8px;
-    padding-right: 8px;
+@media(max-width:600px){
+
+  .container{
+    padding-left:8px;
+    padding-right:8px;
   }
 
-  .card {
-    padding: 14px;
+  .card{
+    padding:14px;
   }
 
-  .team-row {
-    grid-template-columns:
-      85px
-      1fr
-      35px;
+  .team-row{
+    grid-template-columns:90px 1fr;
   }
 
-  .detail-row {
-    grid-template-columns:
-      1fr
-      105px
-      32px;
+  .detail-item{
+    grid-template-columns:1fr 110px 34px;
   }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 <div class="container">
 
-
-<!-- =================================================
-     HEADER
-================================================= -->
+<!-- HEADER -->
 
 <div class="header">
 
-<h1>ACCOUNT PFA</h1>
+  <h1>ACCOUNT PFA</h1>
 
-<p>บันทึกรายการค่าใช้จ่าย</p>
+  <p>บันทึกรายการค่าใช้จ่าย</p>
 
 </div>
 
 
-<!-- =================================================
-     USER
-================================================= -->
+<!-- USER -->
 
 <div class="user-box">
 
-<div
-  id="userName"
-  class="user-name"
->
-กำลังเข้าสู่ระบบ LINE...
-</div>
+  <div id="userName" class="user-name">
+    กำลังเข้าสู่ระบบ LINE...
+  </div>
 
-<div
-  id="userStatus"
-  class="user-status"
->
-กรุณารอสักครู่
-</div>
+  <div id="userStatus" class="user-status">
+    กรุณารอสักครู่
+  </div>
 
 </div>
 
 
-<div
-  id="message"
-  class="message"
-></div>
+<div id="message" class="message"></div>
 
 
-<!-- =================================================
+<!-- =====================================================
      1. รายการ
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
-<div class="section-title">
-1. รายการ
-</div>
+  <div class="section-title">
+    1. รายการ
+  </div>
 
-<label class="label">
-รายการ
-</label>
+  <label class="label">
+    รายการ
+  </label>
 
-<input
-  type="text"
-  id="item"
-  placeholder="เช่น เติมน้ำมันรถ"
->
+  <input
+    type="text"
+    id="item"
+    placeholder="ระบุรายการ"
+    autocomplete="off"
+  >
 
-<div style="height:12px"></div>
+  <div style="height:12px"></div>
 
-<label class="label">
-ครั้งที่
-</label>
+  <label class="label">
+    ครั้งที่
+  </label>
 
-<div class="round-buttons">
+  <div class="round-buttons">
 
-<button
-  type="button"
-  class="round-btn"
-  data-round="1"
->1</button>
+    <button type="button"
+            class="round-btn"
+            data-round="1">1</button>
 
-<button
-  type="button"
-  class="round-btn"
-  data-round="2"
->2</button>
+    <button type="button"
+            class="round-btn"
+            data-round="2">2</button>
 
-<button
-  type="button"
-  class="round-btn"
-  data-round="3"
->3</button>
+    <button type="button"
+            class="round-btn"
+            data-round="3">3</button>
 
-<button
-  type="button"
-  class="round-btn"
-  data-round="4"
->4</button>
+    <button type="button"
+            class="round-btn"
+            data-round="4">4</button>
 
-<button
-  type="button"
-  class="round-btn"
-  data-round="5"
->5</button>
+    <button type="button"
+            class="round-btn"
+            data-round="5">5</button>
 
-</div>
+  </div>
 
-<div style="height:12px"></div>
+  <div style="height:12px"></div>
 
-<label class="label">
-จำนวนเงิน
-</label>
+  <label class="label">
+    จำนวนเงิน (บาท)
+  </label>
 
-<input
-  type="number"
-  id="amount"
-  placeholder="0.00"
-  min="0"
-  step="0.01"
-  inputmode="decimal"
->
+  <input
+    type="number"
+    id="amount"
+    placeholder="0.00"
+    min="0"
+    step="0.01"
+    inputmode="decimal"
+  >
 
 </div>
 
 
-<!-- =================================================
+<!-- =====================================================
      2. ค่าทีม
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
-<div class="section-title">
-2. ค่าทีม
-</div>
+  <div class="section-title">
+    2. ค่าทีม
+  </div>
 
-<div class="description">
-กดเลือกสมาชิกก่อน จึงสามารถกรอกจำนวนเงินได้
-</div>
+  <div class="description">
+    เลือกสมาชิกก่อน จึงจะสามารถกรอกจำนวนเงินได้
+  </div>
 
+  <div class="team-list">
 
-<!-- PHET -->
+    <!-- PHET -->
 
-<div class="team-row">
+    <div class="team-row">
 
-<button
-  type="button"
-  class="member-btn"
-  data-member="Phet"
->
-Phet
-</button>
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Phet"
+      >
+        Phet
+      </button>
 
-<input
-  type="number"
-  class="team-amount"
-  data-member="Phet"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
-  disabled
->
+      <input
+        type="number"
+        class="team-amount"
+        data-member="Phet"
+        placeholder="จำนวนเงิน"
+        min="0"
+        step="0.01"
+        disabled
+      >
 
-<div class="team-lock">
-🔒
-</div>
-
-</div>
+    </div>
 
 
-<!-- FANG -->
+    <!-- FANG -->
 
-<div class="team-row">
+    <div class="team-row">
 
-<button
-  type="button"
-  class="member-btn"
-  data-member="Fang"
->
-Fang
-</button>
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Fang"
+      >
+        Fang
+      </button>
 
-<input
-  type="number"
-  class="team-amount"
-  data-member="Fang"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
-  disabled
->
+      <input
+        type="number"
+        class="team-amount"
+        data-member="Fang"
+        placeholder="จำนวนเงิน"
+        min="0"
+        step="0.01"
+        disabled
+      >
 
-<div class="team-lock">
-🔒
-</div>
-
-</div>
+    </div>
 
 
-<!-- ARLEE -->
+    <!-- ARLEE -->
 
-<div class="team-row">
+    <div class="team-row">
 
-<button
-  type="button"
-  class="member-btn"
-  data-member="Arlee"
->
-Arlee
-</button>
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Arlee"
+      >
+        Arlee
+      </button>
 
-<input
-  type="number"
-  class="team-amount"
-  data-member="Arlee"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
-  disabled
->
+      <input
+        type="number"
+        class="team-amount"
+        data-member="Arlee"
+        placeholder="จำนวนเงิน"
+        min="0"
+        step="0.01"
+        disabled
+      >
 
-<div class="team-lock">
-🔒
-</div>
-
-</div>
+    </div>
 
 
-<!-- GEE -->
+    <!-- GEE -->
 
-<div class="team-row">
+    <div class="team-row">
 
-<button
-  type="button"
-  class="member-btn"
-  data-member="Gee"
->
-Gee
-</button>
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Gee"
+      >
+        Gee
+      </button>
 
-<input
-  type="number"
-  class="team-amount"
-  data-member="Gee"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
-  disabled
->
+      <input
+        type="number"
+        class="team-amount"
+        data-member="Gee"
+        placeholder="จำนวนเงิน"
+        min="0"
+        step="0.01"
+        disabled
+      >
 
-<div class="team-lock">
-🔒
-</div>
+    </div>
 
-</div>
+  </div>
 
 
-<div class="team-total">
+  <div class="sub-total">
 
-<span>
-รวมค่าทีม:
-</span>
+    <span>
+      รวมค่าทีม
+    </span>
 
-<span>
-<span id="teamTotal">
-0.00
-</span>
-บาท
-</span>
+    <span>
+      <span id="teamTotal">0.00</span>
+      บาท
+    </span>
 
-</div>
+  </div>
 
 </div>
 
 
-<!-- =================================================
+<!-- =====================================================
      3. ค่าเดินทาง
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
-<div class="section-title">
-3. ค่าเดินทาง
+  <div class="section-title">
+    3. ค่าเดินทาง
+  </div>
+
+  <div class="description">
+    รถยนต์ = (ระยะทาง × 35 ÷ 15) + ทางด่วน
+    <br>
+    รถสาธารณะ = ระบุจำนวนเงินเอง
+  </div>
+
+
+  <div class="travel-table">
+
+    <div class="travel-header">
+
+      <div>สมาชิก</div>
+
+      <div>ประเภท</div>
+
+      <div>จำนวนบาท</div>
+
+      <div>ระยะทาง</div>
+
+      <div>ทางด่วน</div>
+
+    </div>
+
+
+    <!-- PHET -->
+
+    <div class="travel-row"
+         data-travel-member="Phet">
+
+      <div class="travel-name">
+        Phet
+      </div>
+
+      <div class="travel-types">
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Phet"
+          data-type="car"
+        >
+          🚗 รถยนต์
+        </button>
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Phet"
+          data-type="public"
+        >
+          🚌 สาธารณะ
+        </button>
+
+      </div>
+
+      <input
+        type="number"
+        class="travel-amount"
+        data-member="Phet"
+        placeholder="บาท"
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-distance"
+        placeholder="กม."
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-toll"
+        placeholder="บาท"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- FANG -->
+
+    <div class="travel-row"
+         data-travel-member="Fang">
+
+      <div class="travel-name">
+        Fang
+      </div>
+
+      <div class="travel-types">
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Fang"
+          data-type="car"
+        >
+          🚗 รถยนต์
+        </button>
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Fang"
+          data-type="public"
+        >
+          🚌 สาธารณะ
+        </button>
+
+      </div>
+
+      <input
+        type="number"
+        class="travel-amount"
+        data-member="Fang"
+        placeholder="บาท"
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-distance"
+        placeholder="กม."
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-toll"
+        placeholder="บาท"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- ARLEE -->
+
+    <div class="travel-row"
+         data-travel-member="Arlee">
+
+      <div class="travel-name">
+        Arlee
+      </div>
+
+      <div class="travel-types">
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Arlee"
+          data-type="car"
+        >
+          🚗 รถยนต์
+        </button>
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Arlee"
+          data-type="public"
+        >
+          🚌 สาธารณะ
+        </button>
+
+      </div>
+
+      <input
+        type="number"
+        class="travel-amount"
+        data-member="Arlee"
+        placeholder="บาท"
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-distance"
+        placeholder="กม."
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-toll"
+        placeholder="บาท"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- GEE -->
+
+    <div class="travel-row"
+         data-travel-member="Gee">
+
+      <div class="travel-name">
+        Gee
+      </div>
+
+      <div class="travel-types">
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Gee"
+          data-type="car"
+        >
+          🚗 รถยนต์
+        </button>
+
+        <button
+          type="button"
+          class="travel-type-btn"
+          data-member="Gee"
+          data-type="public"
+        >
+          🚌 สาธารณะ
+        </button>
+
+      </div>
+
+      <input
+        type="number"
+        class="travel-amount"
+        data-member="Gee"
+        placeholder="บาท"
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-distance"
+        placeholder="กม."
+        disabled
+      >
+
+      <input
+        type="number"
+        class="travel-toll"
+        placeholder="บาท"
+        disabled
+      >
+
+    </div>
+
+  </div>
+
+
+  <div class="sub-total">
+
+    <span>
+      รวมค่าเดินทาง
+    </span>
+
+    <span>
+      <span id="travelTotal">0.00</span>
+      บาท
+    </span>
+
+  </div>
+
 </div>
 
-<div class="description">
-รถยนต์ = ระยะทาง × 35 ÷ 15 + ทางด่วน
-</div>
 
-
-<div class="travel-table">
-
-<div class="travel-header">
-
-<div>สมาชิก</div>
-
-<div>ประเภท</div>
-
-<div>จำนวนบาท</div>
-
-<div>ระยะทาง</div>
-
-<div>ทางด่วน</div>
-
-</div>
-
-
-<!-- TRAVEL ROW FUNCTION STYLE -->
-
-<div
-  class="travel-row"
-  data-member="Phet"
->
-
-<div class="travel-name">
-Phet
-</div>
-
-<div class="travel-types">
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="car"
->
-🚗
-</button>
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="public"
->
-🚌
-</button>
-
-</div>
-
-<input
-  type="number"
-  class="travel-amount"
-  placeholder="บาท"
-  disabled
->
-
-<input
-  type="number"
-  class="travel-distance"
-  placeholder="กม."
-  disabled
->
-
-<input
-  type="number"
-  class="travel-toll"
-  placeholder="บาท"
-  disabled
->
-
-</div>
-
-
-<div
-  class="travel-row"
-  data-member="Fang"
->
-
-<div class="travel-name">
-Fang
-</div>
-
-<div class="travel-types">
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="car"
->
-🚗
-</button>
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="public"
->
-🚌
-</button>
-
-</div>
-
-<input
-  type="number"
-  class="travel-amount"
-  placeholder="บาท"
-  disabled
->
-
-<input
-  type="number"
-  class="travel-distance"
-  placeholder="กม."
-  disabled
->
-
-<input
-  type="number"
-  class="travel-toll"
-  placeholder="บาท"
-  disabled
->
-
-</div>
-
-
-<div
-  class="travel-row"
-  data-member="Arlee"
->
-
-<div class="travel-name">
-Arlee
-</div>
-
-<div class="travel-types">
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="car"
->
-🚗
-</button>
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="public"
->
-🚌
-</button>
-
-</div>
-
-<input
-  type="number"
-  class="travel-amount"
-  placeholder="บาท"
-  disabled
->
-
-<input
-  type="number"
-  class="travel-distance"
-  placeholder="กม."
-  disabled
->
-
-<input
-  type="number"
-  class="travel-toll"
-  placeholder="บาท"
-  disabled
->
-
-</div>
-
-
-<div
-  class="travel-row"
-  data-member="Gee"
->
-
-<div class="travel-name">
-Gee
-</div>
-
-<div class="travel-types">
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="car"
->
-🚗
-</button>
-
-<button
-  type="button"
-  class="travel-type-btn"
-  data-type="public"
->
-🚌
-</button>
-
-</div>
-
-<input
-  type="number"
-  class="travel-amount"
-  placeholder="บาท"
-  disabled
->
-
-<input
-  type="number"
-  class="travel-distance"
-  placeholder="กม."
-  disabled
->
-
-<input
-  type="number"
-  class="travel-toll"
-  placeholder="บาท"
-  disabled
->
-
-</div>
-
-
-</div>
-
-
-<div class="travel-total">
-
-<span>
-รวมค่าเดินทาง:
-</span>
-
-<span>
-<span id="travelTotal">
-0.00
-</span>
-บาท
-</span>
-
-</div>
-
-</div>
-
-
-<!-- =================================================
+<!-- =====================================================
      4. ค่าอุปกรณ์
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
-<div class="section-title">
-4. ค่าอุปกรณ์
+  <div class="section-title">
+    4. ค่าอุปกรณ์
+  </div>
+
+  <div id="equipmentContainer">
+
+    <div class="detail-item">
+
+      <div>
+        <label class="label">
+          รายละเอียด
+        </label>
+
+        <input
+          type="text"
+          class="equipment-detail"
+          placeholder="เช่น สายไฟ, เครื่องมือ"
+        >
+      </div>
+
+      <div>
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="equipment-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+      </div>
+
+      <div></div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    type="button"
+    class="add-btn"
+    id="addEquipmentBtn"
+  >
+    ＋ เพิ่มรายการ
+  </button>
+
+
+  <div class="sub-total">
+
+    <span>
+      รวมค่าอุปกรณ์
+    </span>
+
+    <span>
+      <span id="equipmentTotal">0.00</span>
+      บาท
+    </span>
+
+  </div>
+
 </div>
 
-<div id="equipmentContainer">
 
-<div class="detail-row">
-
-<input
-  type="text"
-  class="equipment-detail"
-  placeholder="รายละเอียด"
->
-
-<input
-  type="number"
-  class="equipment-amount"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
->
-
-<button
-  type="button"
-  class="remove-btn"
-  onclick="removeRow(this)"
->
-×
-</button>
-
-</div>
-
-</div>
-
-
-<button
-  type="button"
-  class="add-btn"
-  onclick="addEquipment()"
->
-＋ เพิ่มรายการ
-</button>
-
-
-<div class="team-total">
-
-<span>
-รวมค่าอุปกรณ์:
-</span>
-
-<span>
-<span id="equipmentTotal">
-0.00
-</span>
-บาท
-</span>
-
-</div>
-
-</div>
-
-
-<!-- =================================================
+<!-- =====================================================
      5. อื่น
-================================================= -->
+===================================================== -->
 
 <div class="card">
 
-<div class="section-title">
-5. อื่น
+  <div class="section-title">
+    5. อื่น
+  </div>
+
+  <div id="otherContainer">
+
+    <div class="detail-item">
+
+      <div>
+        <label class="label">
+          รายละเอียด
+        </label>
+
+        <input
+          type="text"
+          class="other-detail"
+          placeholder="ระบุรายละเอียด"
+        >
+      </div>
+
+      <div>
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="other-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+      </div>
+
+      <div></div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    type="button"
+    class="add-btn"
+    id="addOtherBtn"
+  >
+    ＋ เพิ่มรายการ
+  </button>
+
+
+  <div class="sub-total">
+
+    <span>
+      รวมอื่น ๆ
+    </span>
+
+    <span>
+      <span id="otherTotal">0.00</span>
+      บาท
+    </span>
+
+  </div>
+
 </div>
 
-<div id="otherContainer">
 
-<div class="detail-row">
-
-<input
-  type="text"
-  class="other-detail"
-  placeholder="รายละเอียด"
->
-
-<input
-  type="number"
-  class="other-amount"
-  placeholder="จำนวนเงิน"
-  min="0"
-  step="0.01"
->
-
-<button
-  type="button"
-  class="remove-btn"
-  onclick="removeRow(this)"
->
-×
-</button>
-
-</div>
-
-</div>
-
-
-<button
-  type="button"
-  class="add-btn"
-  onclick="addOther()"
->
-＋ เพิ่มรายการ
-</button>
-
-
-<div class="team-total">
-
-<span>
-รวมอื่น:
-</span>
-
-<span>
-<span id="otherTotal">
-0.00
-</span>
-บาท
-</span>
-
-</div>
-
-</div>
-
-
-<!-- =================================================
-     GRAND TOTAL
-================================================= -->
+<!-- =====================================================
+     TOTAL
+===================================================== -->
 
 <div class="total-box">
 
-<span>
-💵 รวมทั้งหมด
-</span>
+  <span>
+    💵 รวมทั้งหมด
+  </span>
 
-<span>
-<span id="grandTotal">
-0.00
-</span>
-บาท
-</span>
+  <span>
+    <span id="grandTotal">
+      0.00
+    </span>
+    บาท
+  </span>
 
 </div>
 
 
-<!-- =================================================
-     SAVE
-================================================= -->
+<!-- SAVE -->
 
 <button
   id="saveBtn"
   class="save-btn"
   type="button"
 >
-💾 บันทึกข้อมูล
+  💾 บันทึกข้อมูล
 </button>
 
+
+<!-- CLEAR -->
 
 <button
   id="clearBtn"
   class="clear-btn"
   type="button"
 >
-🗑️ ล้างข้อมูล
+  🗑️ ล้างข้อมูล
 </button>
-
 
 </div>
 
 
 <script>
 
-/* =================================================
-   CONFIG
-================================================= */
+/*************************************************
+ * CONFIG
+ *************************************************/
 
 const LIFF_ID =
-"2011289699-I5WMsObs";
+  "2011289699-I5WMsObs";
 
 const WORKER_URL =
-"https://line-accounting-bot.notza1982.workers.dev/";
+  "https://line-accounting-bot.notza1982.workers.dev/";
 
 
-/* =================================================
-   USER
-================================================= */
+/*************************************************
+ * USER
+ *************************************************/
 
 let lineUser = {
   userId:"",
@@ -1221,19 +1105,19 @@ let lineUser = {
 let selectedRound = null;
 
 
-/* =================================================
-   MESSAGE
-================================================= */
+/*************************************************
+ * MESSAGE
+ *************************************************/
 
 function showMessage(text,type){
 
   const box =
-  document.getElementById("message");
+    document.getElementById("message");
 
   box.textContent = text;
 
   box.className =
-  "message " + type;
+    "message " + type;
 
   window.scrollTo({
     top:0,
@@ -1243,37 +1127,43 @@ function showMessage(text,type){
 }
 
 
-/* =================================================
-   FORMAT
-================================================= */
+/*************************************************
+ * MONEY
+ *************************************************/
 
 function formatMoney(value){
 
   return Number(value || 0)
-  .toLocaleString(
-    "th-TH",
-    {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    }
-  );
+    .toLocaleString(
+      "th-TH",
+      {
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      }
+    );
 
 }
 
 
-/* =================================================
-   LIFF
-================================================= */
+/*************************************************
+ * LIFF
+ *************************************************/
 
 async function initLIFF(){
 
   const name =
-  document.getElementById("userName");
+    document.getElementById("userName");
 
   const status =
-  document.getElementById("userStatus");
+    document.getElementById("userStatus");
 
   try{
+
+    if(typeof liff === "undefined"){
+      throw new Error(
+        "ไม่พบ LINE LIFF SDK"
+      );
+    }
 
     await liff.init({
       liffId:LIFF_ID
@@ -1281,66 +1171,71 @@ async function initLIFF(){
 
     if(!liff.isLoggedIn()){
 
+      status.textContent =
+        "กำลังเข้าสู่ระบบ LINE...";
+
       liff.login();
 
       return;
-
     }
 
     const profile =
-    await liff.getProfile();
+      await liff.getProfile();
 
     lineUser.userId =
-    profile.userId || "";
+      profile.userId || "";
 
     lineUser.name =
-    profile.displayName || "";
+      profile.displayName || "";
 
     name.textContent =
-    "👤 " + lineUser.name;
+      "👤 " + lineUser.name;
 
     status.textContent =
-    "เชื่อมต่อ LINE สำเร็จ";
+      "เชื่อมต่อ LINE สำเร็จ";
 
   }
-
   catch(error){
 
-    console.error(error);
+    console.error(
+      "LIFF ERROR:",
+      error
+    );
 
     name.textContent =
-    "❌ LINE Login ไม่สำเร็จ";
+      "❌ เชื่อมต่อ LINE ไม่สำเร็จ";
 
     status.textContent =
-    error.message;
+      error.message ||
+      String(error);
 
   }
 
 }
 
 
-/* =================================================
-   ROUND
-================================================= */
+/*************************************************
+ * ROUND
+ *************************************************/
 
 document
 .querySelectorAll(".round-btn")
-.forEach(button=>{
+.forEach(function(button){
 
   button.addEventListener(
     "click",
-    ()=>{
+    function(){
 
       document
       .querySelectorAll(".round-btn")
-      .forEach(btn=>
-        btn.classList.remove("active")
-      );
+      .forEach(function(btn){
+        btn.classList.remove("active");
+      });
 
       button.classList.add("active");
 
       selectedRound =
-      Number(button.dataset.round);
+        Number(button.dataset.round);
 
     }
   );
@@ -1348,35 +1243,44 @@ document
 });
 
 
-/* =================================================
-   TEAM
-================================================= */
+/*************************************************
+ * TEAM
+ *
+ * กดชื่อ = เปิดช่องเงิน
+ * กดอีกครั้ง = ปิดช่องเงิน
+ *************************************************/
 
 document
 .querySelectorAll(".member-btn")
-.forEach(button=>{
+.forEach(function(button){
 
   button.addEventListener(
     "click",
-    ()=>{
+    function(){
 
       const member =
-      button.dataset.member;
+        button.dataset.member;
 
       const input =
-      document.querySelector(
-        '.team-amount[data-member="' +
-        member +
-        '"]'
-      );
+        document.querySelector(
+          '.team-amount[data-member="' +
+          member +
+          '"]'
+        );
 
-      const lock =
-      button
-      .closest(".team-row")
-      .querySelector(".team-lock");
+      if(!input) return;
 
 
-      if(button.classList.contains("active")){
+      if(input.disabled){
+
+        button.classList.add("active");
+
+        input.disabled = false;
+
+        input.focus();
+
+      }
+      else{
 
         button.classList.remove("active");
 
@@ -1384,20 +1288,6 @@ document
 
         input.disabled = true;
 
-        lock.textContent = "🔒";
-
-      }
-
-      else{
-
-        button.classList.add("active");
-
-        input.disabled = false;
-
-        lock.textContent = "🔓";
-
-        input.focus();
-
       }
 
       updateTotals();
@@ -1408,13 +1298,13 @@ document
 });
 
 
-/* =================================================
-   TEAM TOTAL
-================================================= */
+/*************************************************
+ * TEAM INPUT
+ *************************************************/
 
 document
 .querySelectorAll(".team-amount")
-.forEach(input=>{
+.forEach(function(input){
 
   input.addEventListener(
     "input",
@@ -1424,53 +1314,61 @@ document
 });
 
 
-/* =================================================
-   TRAVEL BUTTONS
-================================================= */
+/*************************************************
+ * TRAVEL BUTTON
+ *************************************************/
 
 document
 .querySelectorAll(".travel-type-btn")
-.forEach(button=>{
+.forEach(function(button){
 
   button.addEventListener(
     "click",
-    ()=>{
+    function(){
 
-      const row =
-      button.closest(".travel-row");
+      const member =
+        button.dataset.member;
 
       const type =
-      button.dataset.type;
+        button.dataset.type;
+
+      const row =
+        document.querySelector(
+          '.travel-row[data-travel-member="' +
+          member +
+          '"]'
+        );
+
+      if(!row) return;
+
 
       row
       .querySelectorAll(".travel-type-btn")
-      .forEach(btn=>
-        btn.classList.remove("active")
-      );
+      .forEach(function(btn){
+        btn.classList.remove("active");
+      });
 
       button.classList.add("active");
 
 
       const amount =
-      row.querySelector(".travel-amount");
+        row.querySelector(".travel-amount");
 
       const distance =
-      row.querySelector(".travel-distance");
+        row.querySelector(".travel-distance");
 
       const toll =
-      row.querySelector(".travel-toll");
+        row.querySelector(".travel-toll");
 
 
       if(type === "car"){
 
         amount.disabled = true;
-
         amount.readOnly = true;
 
         amount.classList.remove("editable");
 
         distance.disabled = false;
-
         toll.disabled = false;
 
         calculateTravel(row);
@@ -1478,26 +1376,21 @@ document
       }
 
 
-      else{
+      if(type === "public"){
 
         amount.disabled = false;
-
         amount.readOnly = false;
 
         amount.classList.add("editable");
 
         distance.disabled = true;
-
         toll.disabled = true;
 
         distance.value = "";
-
         toll.value = "";
 
         amount.value = "";
 
-        amount.focus();
-
       }
 
       updateTotals();
@@ -1508,59 +1401,64 @@ document
 });
 
 
-/* =================================================
-   TRAVEL CALCULATION
-================================================= */
+/*************************************************
+ * TRAVEL CALCULATION
+ *
+ * (ระยะทาง × 35 ÷ 15) + ทางด่วน
+ *************************************************/
 
 function calculateTravel(row){
 
   const distance =
-  Number(
-    row.querySelector(".travel-distance").value
-  ) || 0;
+    Number(
+      row.querySelector(".travel-distance").value
+    ) || 0;
 
   const toll =
-  Number(
-    row.querySelector(".travel-toll").value
-  ) || 0;
+    Number(
+      row.querySelector(".travel-toll").value
+    ) || 0;
 
   const amount =
-  (distance * 35 / 15) + toll;
+    (distance * 35 / 15) + toll;
 
-  row.querySelector(".travel-amount").value =
-  amount.toFixed(2);
+  row.querySelector(
+    ".travel-amount"
+  ).value =
+    amount.toFixed(2);
 
 }
 
 
-/* =================================================
-   TRAVEL INPUT
-================================================= */
+/*************************************************
+ * TRAVEL INPUT
+ *************************************************/
 
 document
 .querySelectorAll(
-  ".travel-distance,.travel-toll"
+  ".travel-distance,.travel-toll,.travel-amount"
 )
-.forEach(input=>{
+.forEach(function(input){
 
   input.addEventListener(
     "input",
-    ()=>{
+    function(){
 
       const row =
-      input.closest(".travel-row");
+        input.closest(".travel-row");
+
+      if(!row) return;
 
       const car =
-      row.querySelector(
-        '[data-type="car"]'
-      );
+        row.querySelector(
+          '[data-type="car"]'
+        );
 
       if(
+        car &&
         car.classList.contains("active")
       ){
-
         calculateTravel(row);
-
       }
 
       updateTotals();
@@ -1571,9 +1469,167 @@ document
 });
 
 
+/*************************************************
+ * ADD EQUIPMENT
+ *************************************************/
+
 document
-.querySelectorAll(".travel-amount")
-.forEach(input=>{
+.getElementById("addEquipmentBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    const container =
+      document.getElementById(
+        "equipmentContainer"
+      );
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "detail-item";
+
+    div.innerHTML = `
+
+      <div>
+
+        <label class="label">
+          รายละเอียด
+        </label>
+
+        <input
+          type="text"
+          class="equipment-detail"
+          placeholder="รายละเอียด"
+        >
+
+      </div>
+
+      <div>
+
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="equipment-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        class="remove-btn"
+        onclick="this.parentElement.remove(); updateTotals();"
+      >
+        ✕
+      </button>
+
+    `;
+
+    container.appendChild(div);
+
+    div
+    .querySelector(".equipment-amount")
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+  }
+);
+
+
+/*************************************************
+ * ADD OTHER
+ *************************************************/
+
+document
+.getElementById("addOtherBtn")
+.addEventListener(
+  "click",
+  function(){
+
+    const container =
+      document.getElementById(
+        "otherContainer"
+      );
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "detail-item";
+
+    div.innerHTML = `
+
+      <div>
+
+        <label class="label">
+          รายละเอียด
+        </label>
+
+        <input
+          type="text"
+          class="other-detail"
+          placeholder="รายละเอียด"
+        >
+
+      </div>
+
+      <div>
+
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="other-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        class="remove-btn"
+        onclick="this.parentElement.remove(); updateTotals();"
+      >
+        ✕
+      </button>
+
+    `;
+
+    container.appendChild(div);
+
+    div
+    .querySelector(".other-amount")
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+  }
+);
+
+
+/*************************************************
+ * OTHER INITIAL INPUT
+ *************************************************/
+
+document
+.querySelectorAll(
+  ".equipment-amount,.other-amount"
+)
+.forEach(function(input){
 
   input.addEventListener(
     "input",
@@ -1583,449 +1639,113 @@ document
 });
 
 
-/* =================================================
-   EQUIPMENT
-================================================= */
-
-function addEquipment(){
-
-  const container =
-  document.getElementById(
-    "equipmentContainer"
-  );
-
-  const row =
-  document.createElement("div");
-
-  row.className =
-  "detail-row";
-
-  row.innerHTML = `
-
-    <input
-      type="text"
-      class="equipment-detail"
-      placeholder="รายละเอียด"
-    >
-
-    <input
-      type="number"
-      class="equipment-amount"
-      placeholder="จำนวนเงิน"
-      min="0"
-      step="0.01"
-    >
-
-    <button
-      type="button"
-      class="remove-btn"
-      onclick="removeRow(this)"
-    >
-      ×
-    </button>
-
-  `;
-
-  container.appendChild(row);
-
-  row
-  .querySelector(".equipment-amount")
-  .addEventListener(
-    "input",
-    updateTotals
-  );
-
-}
-
-
-/* =================================================
-   OTHER
-================================================= */
-
-function addOther(){
-
-  const container =
-  document.getElementById(
-    "otherContainer"
-  );
-
-  const row =
-  document.createElement("div");
-
-  row.className =
-  "detail-row";
-
-  row.innerHTML = `
-
-    <input
-      type="text"
-      class="other-detail"
-      placeholder="รายละเอียด"
-    >
-
-    <input
-      type="number"
-      class="other-amount"
-      placeholder="จำนวนเงิน"
-      min="0"
-      step="0.01"
-    >
-
-    <button
-      type="button"
-      class="remove-btn"
-      onclick="removeRow(this)"
-    >
-      ×
-    </button>
-
-  `;
-
-  container.appendChild(row);
-
-  row
-  .querySelector(".other-amount")
-  .addEventListener(
-    "input",
-    updateTotals
-  );
-
-}
-
-
-/* =================================================
-   REMOVE
-================================================= */
-
-function removeRow(button){
-
-  const row =
-  button.closest(".detail-row");
-
-  const container =
-  row.parentElement;
-
-  if(container.children.length <= 1){
-
-    row
-    .querySelectorAll("input")
-    .forEach(input=>{
-      input.value="";
-    });
-
-    updateTotals();
-
-    return;
-
-  }
-
-  row.remove();
-
-  updateTotals();
-
-}
-
-
-/* =================================================
-   UPDATE TOTALS
-================================================= */
+/*************************************************
+ * UPDATE TOTALS
+ *************************************************/
 
 function updateTotals(){
 
-  let main =
-  Number(
-    document.getElementById("amount").value
-  ) || 0;
+  const main =
+    Number(
+      document.getElementById("amount").value
+    ) || 0;
 
 
-  let team = 0;
+  let teamTotal = 0;
 
   document
   .querySelectorAll(".team-amount")
-  .forEach(input=>{
+  .forEach(function(input){
 
-    team +=
-    Number(input.value) || 0;
+    if(!input.disabled){
+
+      teamTotal +=
+        Number(input.value) || 0;
+
+    }
 
   });
 
 
-  let travel = 0;
+  let travelTotal = 0;
 
   document
   .querySelectorAll(".travel-amount")
-  .forEach(input=>{
+  .forEach(function(input){
 
-    travel +=
-    Number(input.value) || 0;
+    travelTotal +=
+      Number(input.value) || 0;
 
   });
 
 
-  let equipment = 0;
+  let equipmentTotal = 0;
 
   document
   .querySelectorAll(".equipment-amount")
-  .forEach(input=>{
+  .forEach(function(input){
 
-    equipment +=
-    Number(input.value) || 0;
+    equipmentTotal +=
+      Number(input.value) || 0;
 
   });
 
 
-  let other = 0;
+  let otherTotal = 0;
 
   document
   .querySelectorAll(".other-amount")
-  .forEach(input=>{
+  .forEach(function(input){
 
-    other +=
-    Number(input.value) || 0;
+    otherTotal +=
+      Number(input.value) || 0;
 
   });
 
 
-  const total =
+  const grandTotal =
     main +
-    team +
-    travel +
-    equipment +
-    other;
+    teamTotal +
+    travelTotal +
+    equipmentTotal +
+    otherTotal;
 
 
   document.getElementById(
     "teamTotal"
   ).textContent =
-  formatMoney(team);
+    formatMoney(teamTotal);
 
 
   document.getElementById(
     "travelTotal"
   ).textContent =
-  formatMoney(travel);
+    formatMoney(travelTotal);
 
 
   document.getElementById(
     "equipmentTotal"
   ).textContent =
-  formatMoney(equipment);
+    formatMoney(equipmentTotal);
 
 
   document.getElementById(
     "otherTotal"
   ).textContent =
-  formatMoney(other);
+    formatMoney(otherTotal);
 
 
   document.getElementById(
     "grandTotal"
   ).textContent =
-  formatMoney(total);
+    formatMoney(grandTotal);
 
 }
 
 
-/* =================================================
-   COLLECT EQUIPMENT
-================================================= */
-
-function collectEquipment(){
-
-  const result = [];
-
-  document
-  .querySelectorAll(
-    "#equipmentContainer .detail-row"
-  )
-  .forEach(row=>{
-
-    const detail =
-    row
-    .querySelector(".equipment-detail")
-    .value
-    .trim();
-
-    const amount =
-    Number(
-      row
-      .querySelector(".equipment-amount")
-      .value
-    ) || 0;
-
-    if(detail || amount){
-
-      result.push({
-
-        item:detail,
-
-        amount:amount
-
-      });
-
-    }
-
-  });
-
-  return result;
-
-}
-
-
-/* =================================================
-   COLLECT OTHER
-================================================= */
-
-function collectOther(){
-
-  const result = [];
-
-  document
-  .querySelectorAll(
-    "#otherContainer .detail-row"
-  )
-  .forEach(row=>{
-
-    const detail =
-    row
-    .querySelector(".other-detail")
-    .value
-    .trim();
-
-    const amount =
-    Number(
-      row
-      .querySelector(".other-amount")
-      .value
-    ) || 0;
-
-    if(detail || amount){
-
-      result.push({
-
-        item:detail,
-
-        amount:amount
-
-      });
-
-    }
-
-  });
-
-  return result;
-
-}
-
-
-/* =================================================
-   COLLECT TEAM
-================================================= */
-
-function collectTeam(){
-
-  const result = [];
-
-  document
-  .querySelectorAll(".team-amount")
-  .forEach(input=>{
-
-    if(
-      !input.disabled
-    ){
-
-      result.push({
-
-        name:
-        input.dataset.member,
-
-        amount:
-        Number(input.value) || 0
-
-      });
-
-    }
-
-  });
-
-  return result;
-
-}
-
-
-/* =================================================
-   COLLECT TRAVEL
-================================================= */
-
-function collectTravel(){
-
-  const result = [];
-
-  document
-  .querySelectorAll(".travel-row")
-  .forEach(row=>{
-
-    const active =
-    row.querySelector(
-      ".travel-type-btn.active"
-    );
-
-    if(!active) return;
-
-
-    const type =
-    active.dataset.type === "car"
-      ? "รถยนต์"
-      : "รถสาธารณะ";
-
-
-    const amount =
-    Number(
-      row.querySelector(".travel-amount").value
-    ) || 0;
-
-
-    const distance =
-    Number(
-      row.querySelector(".travel-distance").value
-    ) || 0;
-
-
-    const toll =
-    Number(
-      row.querySelector(".travel-toll").value
-    ) || 0;
-
-
-    result.push({
-
-      name:
-      row.dataset.member,
-
-      type:
-      type,
-
-      amount:
-      amount,
-
-      distance:
-      distance,
-
-      toll:
-      toll
-
-    });
-
-  });
-
-  return result;
-
-}
-
-
-/* =================================================
-   SAVE
-================================================= */
+/*************************************************
+ * SAVE
+ *************************************************/
 
 document
 .getElementById("saveBtn")
@@ -2035,11 +1755,32 @@ document
 );
 
 
+/*************************************************
+ * SAVE TRANSACTION
+ *************************************************/
+
 async function saveTransaction(){
 
   const button =
-  document.getElementById("saveBtn");
+    document.getElementById("saveBtn");
 
+
+  const item =
+    document
+    .getElementById("item")
+    .value
+    .trim();
+
+
+  const amount =
+    Number(
+      document.getElementById("amount").value
+    ) || 0;
+
+
+  /*************************************************
+   * VALIDATION
+   *************************************************/
 
   if(!lineUser.userId){
 
@@ -2051,13 +1792,6 @@ async function saveTransaction(){
     return;
 
   }
-
-
-  const item =
-  document
-  .getElementById("item")
-  .value
-  .trim();
 
 
   if(!item){
@@ -2084,133 +1818,268 @@ async function saveTransaction(){
   }
 
 
-  const amount =
-  Number(
-    document
-    .getElementById("amount")
-    .value
-  ) || 0;
+  /*************************************************
+   * TEAM
+   *************************************************/
+
+  const team = [];
+
+  document
+  .querySelectorAll(".team-amount")
+  .forEach(function(input){
+
+    if(!input.disabled){
+
+      team.push({
+
+        name:
+          input.dataset.member,
+
+        amount:
+          Number(input.value) || 0
+
+      });
+
+    }
+
+  });
 
 
-  const team =
-  collectTeam();
+  /*************************************************
+   * TRAVEL
+   *************************************************/
+
+  const travel = [];
+
+  document
+  .querySelectorAll(".travel-row")
+  .forEach(function(row){
+
+    const member =
+      row.dataset.travelMember;
+
+    const active =
+      row.querySelector(
+        ".travel-type-btn.active"
+      );
+
+    if(!active) return;
 
 
-  const travel =
-  collectTravel();
+    const type =
+      active.dataset.type === "car"
+        ? "รถยนต์"
+        : "รถสาธารณะ";
 
 
-  const equipment =
-  collectEquipment();
+    const travelAmount =
+      Number(
+        row.querySelector(".travel-amount").value
+      ) || 0;
 
 
-  const other =
-  collectOther();
+    const distance =
+      Number(
+        row.querySelector(".travel-distance").value
+      ) || 0;
 
+
+    const toll =
+      Number(
+        row.querySelector(".travel-toll").value
+      ) || 0;
+
+
+    travel.push({
+
+      name:
+        member,
+
+      type:
+        type,
+
+      amount:
+        travelAmount,
+
+      distance:
+        distance,
+
+      toll:
+        toll
+
+    });
+
+  });
+
+
+  /*************************************************
+   * EQUIPMENT
+   *************************************************/
+
+  const equipment = [];
+
+  document
+  .querySelectorAll("#equipmentContainer .detail-item")
+  .forEach(function(row){
+
+    const detail =
+      row.querySelector(
+        ".equipment-detail"
+      )?.value.trim() || "";
+
+    const money =
+      Number(
+        row.querySelector(
+          ".equipment-amount"
+        )?.value
+      ) || 0;
+
+
+    if(detail || money > 0){
+
+      equipment.push({
+
+        item:
+          detail,
+
+        amount:
+          money
+
+      });
+
+    }
+
+  });
+
+
+  /*************************************************
+   * OTHER
+   *************************************************/
+
+  const other = [];
+
+  document
+  .querySelectorAll("#otherContainer .detail-item")
+  .forEach(function(row){
+
+    const detail =
+      row.querySelector(
+        ".other-detail"
+      )?.value.trim() || "";
+
+    const money =
+      Number(
+        row.querySelector(
+          ".other-amount"
+        )?.value
+      ) || 0;
+
+
+    if(detail || money > 0){
+
+      other.push({
+
+        item:
+          detail,
+
+        amount:
+          money
+
+      });
+
+    }
+
+  });
+
+
+  /*************************************************
+   * TOTALS
+   *************************************************/
 
   const teamTotal =
-  team.reduce(
-    (sum,x)=>
-    sum + Number(x.amount || 0),
-    0
-  );
+    team.reduce(
+      (sum,x)=>
+        sum + Number(x.amount || 0),
+      0
+    );
 
 
   const travelTotal =
-  travel.reduce(
-    (sum,x)=>
-    sum + Number(x.amount || 0),
-    0
-  );
+    travel.reduce(
+      (sum,x)=>
+        sum + Number(x.amount || 0),
+      0
+    );
 
 
   const equipmentTotal =
-  equipment.reduce(
-    (sum,x)=>
-    sum + Number(x.amount || 0),
-    0
-  );
+    equipment.reduce(
+      (sum,x)=>
+        sum + Number(x.amount || 0),
+      0
+    );
 
 
   const otherTotal =
-  other.reduce(
-    (sum,x)=>
-    sum + Number(x.amount || 0),
-    0
-  );
+    other.reduce(
+      (sum,x)=>
+        sum + Number(x.amount || 0),
+      0
+    );
 
 
   const total =
-  amount +
-  teamTotal +
-  travelTotal +
-  equipmentTotal +
-  otherTotal;
+    amount +
+    teamTotal +
+    travelTotal +
+    equipmentTotal +
+    otherTotal;
 
+
+  /*************************************************
+   * DATA
+   *************************************************/
 
   const data = {
 
     type:
-    "LIFF_EXPENSE",
+      "LIFF_EXPENSE",
 
     userId:
-    lineUser.userId,
+      lineUser.userId,
 
     displayName:
-    lineUser.name,
+      lineUser.name,
 
     name:
-    lineUser.name,
-
+      lineUser.name,
 
     item:
-    item,
+      item,
 
     round:
-    selectedRound,
+      selectedRound,
 
     amount:
-    amount,
-
+      amount,
 
     team:
-    team,
-
+      team,
 
     travel:
-    travel,
-
+      travel,
 
     equipment:
-    equipment,
-
+      equipment,
 
     other:
-    other,
-
-
-    expenses:[
-      {
-        item:item,
-        round:selectedRound,
-        amount:amount
-      }
-    ],
-
-
-    members:
-    team,
-
+      other,
 
     total:
-    total,
-
-
-    note:"",
-
+      total,
 
     timestamp:
-    new Date().toISOString()
+      new Date().toISOString()
 
   };
 
@@ -2221,12 +2090,14 @@ async function saveTransaction(){
   );
 
 
-  button.disabled =
-  true;
+  /*************************************************
+   * SEND
+   *************************************************/
+
+  button.disabled = true;
 
   button.textContent =
-  "กำลังบันทึก...";
-
+    "กำลังบันทึก...";
 
   showMessage(
     "กำลังบันทึกข้อมูล...",
@@ -2237,25 +2108,24 @@ async function saveTransaction(){
   try{
 
     const response =
-    await fetch(
-      WORKER_URL,
-      {
-        method:"POST",
+      await fetch(
+        WORKER_URL,
+        {
+          method:"POST",
 
-        headers:{
-          "Content-Type":
-          "application/json"
-        },
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
 
-        body:
-        JSON.stringify(data)
-
-      }
-    );
+          body:
+            JSON.stringify(data)
+        }
+      );
 
 
     const result =
-    await response.json();
+      await response.json();
 
 
     console.log(
@@ -2279,34 +2149,7 @@ async function saveTransaction(){
         "\nครั้งที่: " +
         selectedRound +
 
-        "\n\n" +
-
-        "รายการหลัก: " +
-        formatMoney(amount) +
-
-        " บาท\n" +
-
-        "ค่าทีม: " +
-        formatMoney(teamTotal) +
-
-        " บาท\n" +
-
-        "ค่าเดินทาง: " +
-        formatMoney(travelTotal) +
-
-        " บาท\n" +
-
-        "ค่าอุปกรณ์: " +
-        formatMoney(equipmentTotal) +
-
-        " บาท\n" +
-
-        "อื่น: " +
-        formatMoney(otherTotal) +
-
-        " บาท\n\n" +
-
-        "รวมทั้งหมด: " +
+        "\n\nรวมทั้งหมด: " +
         formatMoney(total) +
         " บาท",
 
@@ -2318,7 +2161,6 @@ async function saveTransaction(){
       resetForm();
 
     }
-
     else{
 
       throw new Error(
@@ -2329,7 +2171,6 @@ async function saveTransaction(){
     }
 
   }
-
   catch(error){
 
     console.error(
@@ -2350,79 +2191,90 @@ async function saveTransaction(){
     );
 
   }
-
   finally{
 
-    button.disabled =
-    false;
+    button.disabled = false;
 
     button.textContent =
-    "💾 บันทึกข้อมูล";
+      "💾 บันทึกข้อมูล";
 
   }
 
 }
 
 
-/* =================================================
-   RESET
-================================================= */
+/*************************************************
+ * RESET
+ *************************************************/
 
 function resetForm(){
 
-  document.getElementById("item").value="";
+  document.getElementById(
+    "item"
+  ).value = "";
 
-  document.getElementById("amount").value="";
+  document.getElementById(
+    "amount"
+  ).value = "";
 
-  selectedRound=null;
+
+  selectedRound = null;
 
 
   document
   .querySelectorAll(".round-btn")
-  .forEach(btn=>
-    btn.classList.remove("active")
-  );
-
-
-  document
-  .querySelectorAll(".team-amount")
-  .forEach(input=>{
-
-    input.value="";
-    input.disabled=true;
-
+  .forEach(function(btn){
+    btn.classList.remove("active");
   });
 
 
   document
   .querySelectorAll(".member-btn")
-  .forEach(btn=>
-    btn.classList.remove("active")
-  );
+  .forEach(function(btn){
+    btn.classList.remove("active");
+  });
 
 
   document
-  .querySelectorAll(".team-lock")
-  .forEach(lock=>
-    lock.textContent="🔒"
-  );
+  .querySelectorAll(".team-amount")
+  .forEach(function(input){
+
+    input.value = "";
+
+    input.disabled = true;
+
+  });
 
 
   document
   .querySelectorAll(".travel-type-btn")
-  .forEach(btn=>
-    btn.classList.remove("active")
-  );
+  .forEach(function(btn){
+    btn.classList.remove("active");
+  });
 
 
   document
-  .querySelectorAll(
-    ".travel-amount,.travel-distance,.travel-toll"
-  )
-  .forEach(input=>{
+  .querySelectorAll(".travel-amount")
+  .forEach(function(input){
 
-    input.value="";
-    input.disabled=true;
+    input.value = "";
+
+    input.disabled = true;
+
+    input.readOnly = false;
+
+    input.classList.remove("editable");
+
+  });
+
+
+  document
+  .querySelectorAll(".travel-distance,.travel-toll")
+  .forEach(function(input){
+
+    input.value = "";
+
+    input.disabled = true;
 
   });
 
@@ -2431,29 +2283,39 @@ function resetForm(){
     "equipmentContainer"
   ).innerHTML = `
 
-    <div class="detail-row">
+    <div class="detail-item">
 
-      <input
-        type="text"
-        class="equipment-detail"
-        placeholder="รายละเอียด"
-      >
+      <div>
 
-      <input
-        type="number"
-        class="equipment-amount"
-        placeholder="จำนวนเงิน"
-        min="0"
-        step="0.01"
-      >
+        <label class="label">
+          รายละเอียด
+        </label>
 
-      <button
-        type="button"
-        class="remove-btn"
-        onclick="removeRow(this)"
-      >
-        ×
-      </button>
+        <input
+          type="text"
+          class="equipment-detail"
+          placeholder="เช่น สายไฟ, เครื่องมือ"
+        >
+
+      </div>
+
+      <div>
+
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="equipment-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+      <div></div>
 
     </div>
 
@@ -2464,29 +2326,39 @@ function resetForm(){
     "otherContainer"
   ).innerHTML = `
 
-    <div class="detail-row">
+    <div class="detail-item">
 
-      <input
-        type="text"
-        class="other-detail"
-        placeholder="รายละเอียด"
-      >
+      <div>
 
-      <input
-        type="number"
-        class="other-amount"
-        placeholder="จำนวนเงิน"
-        min="0"
-        step="0.01"
-      >
+        <label class="label">
+          รายละเอียด
+        </label>
 
-      <button
-        type="button"
-        class="remove-btn"
-        onclick="removeRow(this)"
-      >
-        ×
-      </button>
+        <input
+          type="text"
+          class="other-detail"
+          placeholder="ระบุรายละเอียด"
+        >
+
+      </div>
+
+      <div>
+
+        <label class="label">
+          จำนวนเงิน
+        </label>
+
+        <input
+          type="number"
+          class="other-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+        >
+
+      </div>
+
+      <div></div>
 
     </div>
 
@@ -2497,12 +2369,14 @@ function resetForm(){
   .querySelectorAll(
     ".equipment-amount,.other-amount"
   )
-  .forEach(input=>
+  .forEach(function(input){
+
     input.addEventListener(
       "input",
       updateTotals
-    )
-  );
+    );
+
+  });
 
 
   updateTotals();
@@ -2510,15 +2384,15 @@ function resetForm(){
 }
 
 
-/* =================================================
-   CLEAR
-================================================= */
+/*************************************************
+ * CLEAR
+ *************************************************/
 
 document
 .getElementById("clearBtn")
 .addEventListener(
   "click",
-  ()=>{
+  function(){
 
     if(
       confirm(
@@ -2539,9 +2413,9 @@ document
 );
 
 
-/* =================================================
-   START
-================================================= */
+/*************************************************
+ * START
+ *************************************************/
 
 updateTotals();
 
@@ -2550,5 +2424,4 @@ initLIFF();
 </script>
 
 </body>
-
 </html>

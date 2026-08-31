@@ -3,20 +3,14 @@
 <html lang="th">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ACCOUNT PFA</title>
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
   <style>
-
     * {
       box-sizing: border-box;
       font-family: Arial, "Noto Sans Thai", sans-serif;
@@ -109,13 +103,6 @@
       border-color: #111;
     }
 
-    .row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
     .round-buttons {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -161,13 +148,9 @@
       margin-bottom: 8px;
     }
 
-    .member-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    /* TRAVEL */
+    /* =========================
+       TRAVEL
+    ========================= */
 
     .travel-table {
       width: 100%;
@@ -182,7 +165,6 @@
         90px
         85px
         85px;
-
       gap: 6px;
       align-items: center;
     }
@@ -233,6 +215,68 @@
       background: white !important;
     }
 
+    /* =========================
+       MULTI ITEMS
+    ========================= */
+
+    .item-row {
+      display: grid;
+      grid-template-columns: 1fr 150px 42px;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+
+    .item-row input {
+      width: 100%;
+    }
+
+    .remove-item-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 10px;
+      background: #f1f1f1;
+      color: #d22;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .add-item-btn {
+      width: 100%;
+      margin-top: 5px;
+      border: 1px dashed #aaa;
+      background: white;
+      border-radius: 11px;
+      padding: 11px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .item-header {
+      display: grid;
+      grid-template-columns: 1fr 150px 42px;
+      gap: 8px;
+      margin-bottom: 7px;
+      color: #666;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .item-header div:nth-child(2) {
+      text-align: center;
+    }
+
+    .sub-total {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #ddd;
+      margin-top: 12px;
+      padding-top: 12px;
+      font-weight: bold;
+    }
+
     .hidden {
       display: none !important;
     }
@@ -242,12 +286,36 @@
       color: white;
       border-radius: 15px;
       padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .total-main {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 19px;
       font-weight: bold;
-      margin-bottom: 15px;
+    }
+
+    .total-detail {
+      border-top: 1px solid rgba(255,255,255,.25);
+      margin-top: 13px;
+      padding-top: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .total-detail div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .balance-row {
+      border-top: 1px solid rgba(255,255,255,.4);
+      margin-top: 8px;
+      padding-top: 8px;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .save-btn {
@@ -312,15 +380,6 @@
       margin-bottom: 10px;
     }
 
-    .sub-total {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid #ddd;
-      margin-top: 12px;
-      padding-top: 12px;
-      font-weight: bold;
-    }
-
     @media (max-width: 600px) {
 
       .container {
@@ -360,28 +419,20 @@
         padding: 8px 3px;
       }
 
-    }
-
-    @media (max-width: 400px) {
-
-      .travel-header,
-      .travel-row {
-        grid-template-columns:
-          48px
-          1fr
-          68px
-          58px
-          58px;
+      .item-row {
+        grid-template-columns: 1fr 105px 38px;
       }
 
-      .travel-type-btn {
-        font-size: 8px;
+      .item-header {
+        grid-template-columns: 1fr 105px 38px;
       }
 
+      .remove-item-btn {
+        width: 38px;
+        height: 38px;
+      }
     }
-
   </style>
-
 </head>
 
 
@@ -390,42 +441,30 @@
 <div class="container">
 
   <div class="header">
-
     <h1>ACCOUNT PFA</h1>
-
     <p>บันทึกรายการค่าใช้จ่าย</p>
-
   </div>
 
 
   <div class="user-box">
 
-    <div
-      id="userName"
-      class="user-name"
-    >
+    <div id="userName" class="user-name">
       กำลังเข้าสู่ระบบ LINE...
     </div>
 
-    <div
-      id="userStatus"
-      class="user-status"
-    >
+    <div id="userStatus" class="user-status">
       กรุณารอสักครู่
     </div>
 
   </div>
 
 
-  <div
-    id="message"
-    class="message"
-  ></div>
+  <div id="message" class="message"></div>
 
 
-  <!-- =========================================
+  <!-- =========================
        1. รายการ
-  ========================================== -->
+  ========================== -->
 
   <div class="card">
 
@@ -440,7 +479,7 @@
     <input
       type="text"
       id="item"
-      placeholder="เช่น เติมน้ำมันรถ"
+      placeholder="เช่น เงินโครงการ"
       autocomplete="off"
     >
 
@@ -452,35 +491,11 @@
 
     <div class="round-buttons">
 
-      <button
-        type="button"
-        class="round-btn"
-        data-round="1"
-      >1</button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="2"
-      >2</button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="3"
-      >3</button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="4"
-      >4</button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="5"
-      >5</button>
+      <button type="button" class="round-btn" data-round="1">1</button>
+      <button type="button" class="round-btn" data-round="2">2</button>
+      <button type="button" class="round-btn" data-round="3">3</button>
+      <button type="button" class="round-btn" data-round="4">4</button>
+      <button type="button" class="round-btn" data-round="5">5</button>
 
     </div>
 
@@ -502,9 +517,9 @@
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        2. ค่าทีม
-  ========================================== -->
+  ========================== -->
 
   <div class="card">
 
@@ -518,38 +533,27 @@
 
     <div class="member-buttons">
 
-      <button
-        type="button"
-        class="member-btn"
-        data-member="Phet"
-      >Phet</button>
+      <button type="button" class="member-btn" data-member="Phet">
+        Phet
+      </button>
 
-      <button
-        type="button"
-        class="member-btn"
-        data-member="Fang"
-      >Fang</button>
+      <button type="button" class="member-btn" data-member="Fang">
+        Fang
+      </button>
 
-      <button
-        type="button"
-        class="member-btn"
-        data-member="Arlee"
-      >Arlee</button>
+      <button type="button" class="member-btn" data-member="Arlee">
+        Arlee
+      </button>
 
-      <button
-        type="button"
-        class="member-btn"
-        data-member="Gee"
-      >Gee</button>
+      <button type="button" class="member-btn" data-member="Gee">
+        Gee
+      </button>
 
     </div>
 
     <div id="teamContainer"></div>
 
-    <div
-      id="teamTotalBox"
-      class="sub-total hidden"
-    >
+    <div id="teamTotalBox" class="sub-total hidden">
 
       <span>รวมค่าทีม</span>
 
@@ -563,9 +567,9 @@
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        3. ค่าเดินทาง
-  ========================================== -->
+  ========================== -->
 
   <div class="card">
 
@@ -580,30 +584,19 @@
     <div class="travel-table">
 
       <div class="travel-header">
-
         <div>สมาชิก</div>
-
         <div>ประเภทการเดินทาง</div>
-
         <div>จำนวนบาท</div>
-
         <div>ระยะทาง</div>
-
         <div>ทางด่วน</div>
-
       </div>
 
 
       <!-- PHET -->
 
-      <div
-        class="travel-row"
-        data-travel-member="Phet"
-      >
+      <div class="travel-row" data-travel-member="Phet">
 
-        <div class="travel-name">
-          Phet
-        </div>
+        <div class="travel-name">Phet</div>
 
         <div class="travel-types">
 
@@ -662,14 +655,9 @@
 
       <!-- FANG -->
 
-      <div
-        class="travel-row"
-        data-travel-member="Fang"
-      >
+      <div class="travel-row" data-travel-member="Fang">
 
-        <div class="travel-name">
-          Fang
-        </div>
+        <div class="travel-name">Fang</div>
 
         <div class="travel-types">
 
@@ -728,14 +716,9 @@
 
       <!-- ARLEE -->
 
-      <div
-        class="travel-row"
-        data-travel-member="Arlee"
-      >
+      <div class="travel-row" data-travel-member="Arlee">
 
-        <div class="travel-name">
-          Arlee
-        </div>
+        <div class="travel-name">Arlee</div>
 
         <div class="travel-types">
 
@@ -794,14 +777,9 @@
 
       <!-- GEE -->
 
-      <div
-        class="travel-row"
-        data-travel-member="Gee"
-      >
+      <div class="travel-row" data-travel-member="Gee">
 
-        <div class="travel-name">
-          Gee
-        </div>
+        <div class="travel-name">Gee</div>
 
         <div class="travel-types">
 
@@ -832,7 +810,6 @@
           placeholder="บาท"
           min="0"
           step="0.01"
-          inputmode="decimal"
           disabled
         >
 
@@ -853,7 +830,6 @@
           placeholder="บาท"
           min="0"
           step="0.01"
-          inputmode="decimal"
           disabled
         >
 
@@ -862,10 +838,7 @@
     </div>
 
 
-    <div
-      id="travelTotalBox"
-      class="sub-total"
-    >
+    <div class="sub-total">
 
       <span>รวมค่าเดินทาง</span>
 
@@ -879,9 +852,9 @@
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        4. ค่าอุปกรณ์
-  ========================================== -->
+  ========================== -->
 
   <div class="card">
 
@@ -889,37 +862,68 @@
       4. ค่าอุปกรณ์
     </div>
 
-    <label class="label">
-      รายละเอียด
-    </label>
+    <div class="item-header">
+      <div>รายละเอียด</div>
+      <div>จำนวนเงิน</div>
+      <div></div>
+    </div>
 
-    <input
-      type="text"
-      id="equipmentDetail"
-      placeholder="เช่น สายไฟ, เครื่องมือ"
+    <div id="equipmentContainer">
+
+      <div class="item-row">
+
+        <input
+          type="text"
+          class="equipment-detail"
+          placeholder="เช่น สายไฟ"
+        >
+
+        <input
+          type="number"
+          class="equipment-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+          inputmode="decimal"
+        >
+
+        <button
+          type="button"
+          class="remove-item-btn"
+          onclick="removeItem(this)"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="add-item-btn"
+      onclick="addEquipmentItem()"
     >
+      ＋ เพิ่มรายการ
+    </button>
 
-    <div style="height:10px"></div>
+    <div class="sub-total">
 
-    <label class="label">
-      จำนวนเงิน (บาท)
-    </label>
+      <span>รวมค่าอุปกรณ์</span>
 
-    <input
-      type="number"
-      id="equipmentAmount"
-      placeholder="0.00"
-      min="0"
-      step="0.01"
-      inputmode="decimal"
-    >
+      <span>
+        <span id="equipmentTotal">0.00</span>
+        บาท
+      </span>
+
+    </div>
 
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        5. อื่น
-  ========================================== -->
+  ========================== -->
 
   <div class="card">
 
@@ -927,57 +931,120 @@
       5. อื่น
     </div>
 
-    <label class="label">
-      รายละเอียด
-    </label>
+    <div class="item-header">
+      <div>รายละเอียด</div>
+      <div>จำนวนเงิน</div>
+      <div></div>
+    </div>
 
-    <input
-      type="text"
-      id="otherDetail"
-      placeholder="ระบุรายละเอียด"
+    <div id="otherContainer">
+
+      <div class="item-row">
+
+        <input
+          type="text"
+          class="other-detail"
+          placeholder="ระบุรายละเอียด"
+        >
+
+        <input
+          type="number"
+          class="other-amount"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+          inputmode="decimal"
+        >
+
+        <button
+          type="button"
+          class="remove-item-btn"
+          onclick="removeItem(this)"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="add-item-btn"
+      onclick="addOtherItem()"
     >
+      ＋ เพิ่มรายการ
+    </button>
 
-    <div style="height:10px"></div>
+    <div class="sub-total">
 
-    <label class="label">
-      จำนวนเงิน (บาท)
-    </label>
+      <span>รวมอื่น</span>
 
-    <input
-      type="number"
-      id="otherAmount"
-      placeholder="0.00"
-      min="0"
-      step="0.01"
-      inputmode="decimal"
-    >
+      <span>
+        <span id="otherTotal">0.00</span>
+        บาท
+      </span>
+
+    </div>
 
   </div>
 
 
-  <!-- =========================================
+  <!-- =========================
        TOTAL
-  ========================================== -->
+  ========================== -->
 
   <div class="total-box">
 
-    <span>
-      💵 รวมทั้งหมด
-    </span>
+    <div class="total-main">
 
-    <span>
-      <span id="grandTotal">
-        0.00
+      <span>💵 สรุปยอด</span>
+
+      <span>
+        <span id="grandTotal">0.00</span>
+        บาท
       </span>
-      บาท
-    </span>
+
+    </div>
+
+    <div class="total-detail">
+
+      <div>
+        <span>1. รายการ</span>
+        <span id="summaryMain">0.00</span>
+      </div>
+
+      <div>
+        <span>2. ค่าทีม</span>
+        <span id="summaryTeam">0.00</span>
+      </div>
+
+      <div>
+        <span>3. ค่าเดินทาง</span>
+        <span id="summaryTravel">0.00</span>
+      </div>
+
+      <div>
+        <span>4. ค่าอุปกรณ์</span>
+        <span id="summaryEquipment">0.00</span>
+      </div>
+
+      <div>
+        <span>5. อื่น</span>
+        <span id="summaryOther">0.00</span>
+      </div>
+
+      <div class="balance-row">
+        <span>คงเหลือ 1 − (2+3+4+5)</span>
+        <span id="balance">0.00</span>
+      </div>
+
+    </div>
 
   </div>
 
 
-  <!-- =========================================
-       SAVE
-  ========================================== -->
+  <!-- SAVE -->
 
   <button
     id="saveBtn"
@@ -988,9 +1055,7 @@
   </button>
 
 
-  <!-- =========================================
-       CLEAR
-  ========================================== -->
+  <!-- CLEAR -->
 
   <button
     id="clearBtn"
@@ -1048,7 +1113,6 @@ function showMessage(text, type) {
     top: 0,
     behavior: "smooth"
   });
-
 }
 
 
@@ -1067,7 +1131,6 @@ function formatMoney(value) {
       maximumFractionDigits: 2
     }
   );
-
 }
 
 
@@ -1113,7 +1176,6 @@ async function initLIFF() {
       liff.login();
 
       return;
-
     }
 
     const profile =
@@ -1130,11 +1192,6 @@ async function initLIFF() {
 
     status.textContent =
       "เชื่อมต่อ LINE สำเร็จ";
-
-    console.log(
-      "LINE USER:",
-      lineUser
-    );
 
   }
 
@@ -1153,7 +1210,6 @@ async function initLIFF() {
       String(error);
 
   }
-
 }
 
 
@@ -1195,7 +1251,7 @@ document
 
 
 /*************************************************
- * TEAM MEMBER
+ * TEAM
  *************************************************/
 
 document
@@ -1209,7 +1265,6 @@ document
         const member =
           button.dataset.member;
 
-
         if (
           selectedMembers.includes(member)
         ) {
@@ -1217,9 +1272,7 @@ document
           selectedMembers =
             selectedMembers.filter(
               function(name) {
-
                 return name !== member;
-
               }
             );
 
@@ -1239,21 +1292,15 @@ document
           updateTotals();
 
           return;
-
         }
 
-
-        selectedMembers.push(
-          member
-        );
+        selectedMembers.push(member);
 
         button.classList.add(
           "active"
         );
 
-        addTeamMember(
-          member
-        );
+        addTeamMember(member);
 
         updateTotals();
 
@@ -1309,7 +1356,6 @@ function addTeamMember(member) {
       "input",
       updateTotals
     );
-
 }
 
 
@@ -1340,7 +1386,6 @@ document
 
         if (!row) return;
 
-
         row
           .querySelectorAll(
             ".travel-type-btn"
@@ -1353,11 +1398,9 @@ document
 
           });
 
-
         button.classList.add(
           "active"
         );
-
 
         const amountInput =
           row.querySelector(
@@ -1374,15 +1417,7 @@ document
             ".travel-toll"
           );
 
-
         if (type === "car") {
-
-          /*
-           * รถยนต์
-           *
-           * สูตร:
-           * (ระยะทาง × 35 ÷ 15) + ทางด่วน
-           */
 
           amountInput.disabled =
             true;
@@ -1400,21 +1435,11 @@ document
           tollInput.disabled =
             false;
 
-
-          calculateTravelRow(
-            row
-          );
+          calculateTravelRow(row);
 
         }
 
-
         if (type === "public") {
-
-          /*
-           * รถสาธารณะ
-           *
-           * กรอกจำนวนเงินเอง
-           */
 
           amountInput.disabled =
             false;
@@ -1442,7 +1467,6 @@ document
             "";
 
         }
-
 
         updateTotals();
 
@@ -1473,32 +1497,27 @@ function calculateTravelRow(row) {
       ".travel-toll"
     );
 
-
   const distance =
     Number(
       distanceInput.value
     ) || 0;
-
 
   const toll =
     Number(
       tollInput.value
     ) || 0;
 
-
   const amount =
     (distance * 35 / 15) +
     toll;
 
-
   amountInput.value =
     amount.toFixed(2);
-
 }
 
 
 /*************************************************
- * TRAVEL INPUT EVENTS
+ * TRAVEL INPUT
  *************************************************/
 
 document
@@ -1518,12 +1537,10 @@ document
 
         if (!row) return;
 
-
         const carButton =
           row.querySelector(
             '.travel-type-btn[data-type="car"]'
           );
-
 
         if (
           carButton &&
@@ -1532,12 +1549,9 @@ document
           )
         ) {
 
-          calculateTravelRow(
-            row
-          );
+          calculateTravelRow(row);
 
         }
-
 
         updateTotals();
 
@@ -1562,24 +1576,174 @@ document
 
 
 /*************************************************
- * OTHER AMOUNTS
+ * ADD EQUIPMENT
  *************************************************/
 
-[
-  "amount",
-  "equipmentAmount",
-  "otherAmount"
-]
-.forEach(function(id) {
+function addEquipmentItem() {
 
-  document
-    .getElementById(id)
+  const container =
+    document.getElementById(
+      "equipmentContainer"
+    );
+
+  const div =
+    document.createElement("div");
+
+  div.className =
+    "item-row";
+
+  div.innerHTML = `
+
+    <input
+      type="text"
+      class="equipment-detail"
+      placeholder="รายละเอียด"
+    >
+
+    <input
+      type="number"
+      class="equipment-amount"
+      placeholder="0.00"
+      min="0"
+      step="0.01"
+      inputmode="decimal"
+    >
+
+    <button
+      type="button"
+      class="remove-item-btn"
+      onclick="removeItem(this)"
+    >
+      ×
+    </button>
+
+  `;
+
+  container.appendChild(div);
+
+  div
+    .querySelector(".equipment-amount")
     .addEventListener(
       "input",
       updateTotals
     );
 
-});
+}
+
+
+/*************************************************
+ * ADD OTHER
+ *************************************************/
+
+function addOtherItem() {
+
+  const container =
+    document.getElementById(
+      "otherContainer"
+    );
+
+  const div =
+    document.createElement("div");
+
+  div.className =
+    "item-row";
+
+  div.innerHTML = `
+
+    <input
+      type="text"
+      class="other-detail"
+      placeholder="รายละเอียด"
+    >
+
+    <input
+      type="number"
+      class="other-amount"
+      placeholder="0.00"
+      min="0"
+      step="0.01"
+      inputmode="decimal"
+    >
+
+    <button
+      type="button"
+      class="remove-item-btn"
+      onclick="removeItem(this)"
+    >
+      ×
+    </button>
+
+  `;
+
+  container.appendChild(div);
+
+  div
+    .querySelector(".other-amount")
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+}
+
+
+/*************************************************
+ * REMOVE ITEM
+ *************************************************/
+
+function removeItem(button) {
+
+  const row =
+    button.closest(
+      ".item-row"
+    );
+
+  if (!row) return;
+
+  const container =
+    row.parentElement;
+
+  /*
+   * ให้เหลืออย่างน้อย 1 แถว
+   */
+
+  if (
+    container.querySelectorAll(
+      ".item-row"
+    ).length <= 1
+  ) {
+
+    row
+      .querySelectorAll("input")
+      .forEach(function(input) {
+
+        input.value = "";
+
+      });
+
+    updateTotals();
+
+    return;
+
+  }
+
+  row.remove();
+
+  updateTotals();
+
+}
+
+
+/*************************************************
+ * OTHER AMOUNT EVENTS
+ *************************************************/
+
+document
+  .getElementById("amount")
+  .addEventListener(
+    "input",
+    updateTotals
+  );
 
 
 /*************************************************
@@ -1588,7 +1752,11 @@ document
 
 function updateTotals() {
 
-  let mainAmount =
+  /*
+   * 1. รายการ
+   */
+
+  const mainAmount =
     Number(
       document.getElementById(
         "amount"
@@ -1596,9 +1764,11 @@ function updateTotals() {
     ) || 0;
 
 
-  let teamTotal =
-    0;
+  /*
+   * 2. ทีม
+   */
 
+  let teamTotal = 0;
 
   document
     .querySelectorAll(
@@ -1614,9 +1784,11 @@ function updateTotals() {
     });
 
 
-  let travelTotal =
-    0;
+  /*
+   * 3. เดินทาง
+   */
 
+  let travelTotal = 0;
 
   document
     .querySelectorAll(
@@ -1632,33 +1804,76 @@ function updateTotals() {
     });
 
 
-  const equipment =
-    Number(
-      document.getElementById(
-        "equipmentAmount"
-      ).value
-    ) || 0;
+  /*
+   * 4. อุปกรณ์
+   */
+
+  let equipmentTotal = 0;
+
+  document
+    .querySelectorAll(
+      ".equipment-amount"
+    )
+    .forEach(function(input) {
+
+      equipmentTotal +=
+        Number(
+          input.value
+        ) || 0;
+
+    });
 
 
-  const other =
-    Number(
-      document.getElementById(
-        "otherAmount"
-      ).value
-    ) || 0;
+  /*
+   * 5. อื่น
+   */
+
+  let otherTotal = 0;
+
+  document
+    .querySelectorAll(
+      ".other-amount"
+    )
+    .forEach(function(input) {
+
+      otherTotal +=
+        Number(
+          input.value
+        ) || 0;
+
+    });
 
 
-  const total =
+  /*
+   * ค่าใช้จ่ายรวม
+   */
 
-    mainAmount +
+  const expenseTotal =
 
     teamTotal +
-
     travelTotal +
+    equipmentTotal +
+    otherTotal;
 
-    equipment +
 
-    other;
+  /*
+   * ยอดรวมทุกส่วน
+   */
+
+  const grandTotal =
+    mainAmount +
+    expenseTotal;
+
+
+  /*
+   * คงเหลือ
+   *
+   * 1 - (2+3+4+5)
+   */
+
+  const balance =
+    mainAmount -
+    expenseTotal;
 
 
   document.getElementById(
@@ -1674,16 +1889,63 @@ function updateTotals() {
 
 
   document.getElementById(
+    "equipmentTotal"
+  ).textContent =
+    formatMoney(equipmentTotal);
+
+
+  document.getElementById(
+    "otherTotal"
+  ).textContent =
+    formatMoney(otherTotal);
+
+
+  document.getElementById(
     "grandTotal"
   ).textContent =
-    formatMoney(total);
+    formatMoney(grandTotal);
+
+
+  document.getElementById(
+    "summaryMain"
+  ).textContent =
+    formatMoney(mainAmount);
+
+
+  document.getElementById(
+    "summaryTeam"
+  ).textContent =
+    formatMoney(teamTotal);
+
+
+  document.getElementById(
+    "summaryTravel"
+  ).textContent =
+    formatMoney(travelTotal);
+
+
+  document.getElementById(
+    "summaryEquipment"
+  ).textContent =
+    formatMoney(equipmentTotal);
+
+
+  document.getElementById(
+    "summaryOther"
+  ).textContent =
+    formatMoney(otherTotal);
+
+
+  document.getElementById(
+    "balance"
+  ).textContent =
+    formatMoney(balance);
 
 
   const teamBox =
     document.getElementById(
       "teamTotalBox"
     );
-
 
   if (
     selectedMembers.length > 0
@@ -1707,7 +1969,115 @@ function updateTotals() {
 
 
 /*************************************************
- * SAVE BUTTON
+ * COLLECT EQUIPMENT
+ *************************************************/
+
+function getEquipmentData() {
+
+  const equipment = [];
+
+  document
+    .querySelectorAll(
+      "#equipmentContainer .item-row"
+    )
+    .forEach(function(row) {
+
+      const detail =
+        row
+          .querySelector(
+            ".equipment-detail"
+          )
+          .value
+          .trim();
+
+      const amount =
+        Number(
+          row
+            .querySelector(
+              ".equipment-amount"
+            )
+            .value
+        ) || 0;
+
+      if (
+        detail ||
+        amount > 0
+      ) {
+
+        equipment.push({
+
+          item:
+            detail,
+
+          amount:
+            amount
+
+        });
+
+      }
+
+    });
+
+  return equipment;
+}
+
+
+/*************************************************
+ * COLLECT OTHER
+ *************************************************/
+
+function getOtherData() {
+
+  const other = [];
+
+  document
+    .querySelectorAll(
+      "#otherContainer .item-row"
+    )
+    .forEach(function(row) {
+
+      const detail =
+        row
+          .querySelector(
+            ".other-detail"
+          )
+          .value
+          .trim();
+
+      const amount =
+        Number(
+          row
+            .querySelector(
+              ".other-amount"
+            )
+            .value
+        ) || 0;
+
+      if (
+        detail ||
+        amount > 0
+      ) {
+
+        other.push({
+
+          item:
+            detail,
+
+          amount:
+            amount
+
+        });
+
+      }
+
+    });
+
+  return other;
+}
+
+
+/*************************************************
+ * SAVE
  *************************************************/
 
 document
@@ -1717,10 +2087,6 @@ document
     saveTransaction
   );
 
-
-/*************************************************
- * SAVE TRANSACTION
- *************************************************/
 
 async function saveTransaction() {
 
@@ -1744,38 +2110,6 @@ async function saveTransaction() {
     ) || 0;
 
 
-  const equipmentDetail =
-    document.getElementById(
-      "equipmentDetail"
-    ).value.trim();
-
-
-  const equipmentAmount =
-    Number(
-      document.getElementById(
-        "equipmentAmount"
-      ).value
-    ) || 0;
-
-
-  const otherDetail =
-    document.getElementById(
-      "otherDetail"
-    ).value.trim();
-
-
-  const otherAmount =
-    Number(
-      document.getElementById(
-        "otherAmount"
-      ).value
-    ) || 0;
-
-
-  /***********************************************
-   * VALIDATE LOGIN
-   ***********************************************/
-
   if (!lineUser.userId) {
 
     showMessage(
@@ -1787,10 +2121,6 @@ async function saveTransaction() {
 
   }
 
-
-  /***********************************************
-   * VALIDATE ITEM
-   ***********************************************/
 
   if (!item) {
 
@@ -1804,10 +2134,6 @@ async function saveTransaction() {
   }
 
 
-  /***********************************************
-   * VALIDATE ROUND
-   ***********************************************/
-
   if (!selectedRound) {
 
     showMessage(
@@ -1820,12 +2146,11 @@ async function saveTransaction() {
   }
 
 
-  /***********************************************
+  /*
    * TEAM
-   ***********************************************/
+   */
 
   const team = [];
-
 
   document
     .querySelectorAll(
@@ -1848,12 +2173,11 @@ async function saveTransaction() {
     });
 
 
-  /***********************************************
+  /*
    * TRAVEL
-   ***********************************************/
+   */
 
   const travel = [];
-
 
   document
     .querySelectorAll(
@@ -1864,21 +2188,17 @@ async function saveTransaction() {
       const member =
         row.dataset.travelMember;
 
-
       const carButton =
         row.querySelector(
           '.travel-type-btn[data-type="car"]'
         );
-
 
       const publicButton =
         row.querySelector(
           '.travel-type-btn[data-type="public"]'
         );
 
-
       let type = "";
-
 
       if (
         carButton &&
@@ -1891,7 +2211,6 @@ async function saveTransaction() {
 
       }
 
-
       if (
         publicButton &&
         publicButton.classList.contains(
@@ -1903,46 +2222,35 @@ async function saveTransaction() {
 
       }
 
-
       const amountInput =
         row.querySelector(
           ".travel-amount"
         );
-
 
       const distanceInput =
         row.querySelector(
           ".travel-distance"
         );
 
-
       const tollInput =
         row.querySelector(
           ".travel-toll"
         );
-
 
       const travelAmount =
         Number(
           amountInput.value
         ) || 0;
 
-
       const distance =
         Number(
           distanceInput.value
         ) || 0;
 
-
       const toll =
         Number(
           tollInput.value
         ) || 0;
-
-
-      /*
-       * ส่งเฉพาะคนที่เลือกประเภทเดินทาง
-       */
 
       if (type) {
 
@@ -1970,16 +2278,34 @@ async function saveTransaction() {
     });
 
 
-  /***********************************************
-   * GRAND TOTAL
-   ***********************************************/
+  /*
+   * EQUIPMENT
+   */
+
+  const equipment =
+    getEquipmentData();
+
+
+  /*
+   * OTHER
+   */
+
+  const other =
+    getOtherData();
+
+
+  /*
+   * TOTALS
+   */
 
   const teamTotal =
     team.reduce(
       function(sum, member) {
 
         return sum +
-          Number(member.amount || 0);
+          Number(
+            member.amount || 0
+          );
 
       },
       0
@@ -1991,29 +2317,64 @@ async function saveTransaction() {
       function(sum, member) {
 
         return sum +
-          Number(member.amount || 0);
+          Number(
+            member.amount || 0
+          );
 
       },
       0
     );
 
 
-  const total =
+  const equipmentTotal =
+    equipment.reduce(
+      function(sum, row) {
 
-    amount +
+        return sum +
+          Number(
+            row.amount || 0
+          );
+
+      },
+      0
+    );
+
+
+  const otherTotal =
+    other.reduce(
+      function(sum, row) {
+
+        return sum +
+          Number(
+            row.amount || 0
+          );
+
+      },
+      0
+    );
+
+
+  const expenseTotal =
 
     teamTotal +
-
     travelTotal +
-
-    equipmentAmount +
-
-    otherAmount;
+    equipmentTotal +
+    otherTotal;
 
 
-  /***********************************************
+  const grandTotal =
+    amount +
+    expenseTotal;
+
+
+  const balance =
+    amount -
+    expenseTotal;
+
+
+  /*
    * DATA
-   ***********************************************/
+   */
 
   const data = {
 
@@ -2044,30 +2405,15 @@ async function saveTransaction() {
     travel:
       travel,
 
-    equipment: {
+    equipment:
+      equipment,
 
-      item:
-        equipmentDetail,
-
-      amount:
-        equipmentAmount
-
-    },
-
-    other: {
-
-      item:
-        otherDetail,
-
-      amount:
-        otherAmount
-
-    },
+    other:
+      other,
 
     expenses: [
 
       {
-
         item:
           item,
 
@@ -2076,7 +2422,6 @@ async function saveTransaction() {
 
         amount:
           amount
-
       }
 
     ],
@@ -2084,8 +2429,39 @@ async function saveTransaction() {
     members:
       team,
 
+    totals: {
+
+      main:
+        amount,
+
+      team:
+        teamTotal,
+
+      travel:
+        travelTotal,
+
+      equipment:
+        equipmentTotal,
+
+      other:
+        otherTotal,
+
+      expense:
+        expenseTotal,
+
+      grand:
+        grandTotal,
+
+      balance:
+        balance
+
+    },
+
     total:
-      total,
+      grandTotal,
+
+    balance:
+      balance,
 
     note:
       "",
@@ -2102,10 +2478,6 @@ async function saveTransaction() {
   );
 
 
-  /***********************************************
-   * DISABLE BUTTON
-   ***********************************************/
-
   button.disabled =
     true;
 
@@ -2120,11 +2492,6 @@ async function saveTransaction() {
 
 
   try {
-
-
-    /*********************************************
-     * SEND TO WORKER
-     *********************************************/
 
     const response =
       await fetch(
@@ -2163,10 +2530,6 @@ async function saveTransaction() {
     );
 
 
-    /*********************************************
-     * SUCCESS
-     *********************************************/
-
     if (
       result &&
       result.success
@@ -2174,7 +2537,7 @@ async function saveTransaction() {
 
       showMessage(
 
-        "✅ บันทึกข้อมูลเรียบร้อย\n" +
+        "✅ บันทึกข้อมูลเรียบร้อย\n\n" +
 
         "รายการ: " +
         item +
@@ -2182,14 +2545,35 @@ async function saveTransaction() {
         "\nครั้งที่: " +
         selectedRound +
 
-        "\nยอดรวม: " +
-        formatMoney(total) +
+        "\n\n" +
+
+        "รายการหลัก: " +
+        formatMoney(amount) +
+        " บาท" +
+
+        "\nค่าทีม: " +
+        formatMoney(teamTotal) +
+        " บาท" +
+
+        "\nค่าเดินทาง: " +
+        formatMoney(travelTotal) +
+        " บาท" +
+
+        "\nค่าอุปกรณ์: " +
+        formatMoney(equipmentTotal) +
+        " บาท" +
+
+        "\nอื่น: " +
+        formatMoney(otherTotal) +
+        " บาท" +
+
+        "\n\nคงเหลือ: " +
+        formatMoney(balance) +
         " บาท",
 
         "success"
 
       );
-
 
       resetForm();
 
@@ -2200,7 +2584,6 @@ async function saveTransaction() {
       throw new Error(
 
         result?.message ||
-
         "Worker ไม่สามารถบันทึกข้อมูลได้"
 
       );
@@ -2216,11 +2599,9 @@ async function saveTransaction() {
       error
     );
 
-
     showMessage(
 
       "❌ บันทึกข้อมูลไม่สำเร็จ\n" +
-
       (
         error.message ||
         String(error)
@@ -2255,35 +2636,12 @@ function resetForm() {
     "item"
   ).value = "";
 
-
   document.getElementById(
     "amount"
   ).value = "";
 
-
-  document.getElementById(
-    "equipmentDetail"
-  ).value = "";
-
-
-  document.getElementById(
-    "equipmentAmount"
-  ).value = "";
-
-
-  document.getElementById(
-    "otherDetail"
-  ).value = "";
-
-
-  document.getElementById(
-    "otherAmount"
-  ).value = "";
-
-
   selectedRound =
     null;
-
 
   document
     .querySelectorAll(
@@ -2320,9 +2678,9 @@ function resetForm() {
   ).innerHTML = "";
 
 
-  /***********************************************
+  /*
    * RESET TRAVEL
-   ***********************************************/
+   */
 
   document
     .querySelectorAll(
@@ -2382,13 +2740,109 @@ function resetForm() {
     });
 
 
+  /*
+   * RESET EQUIPMENT
+   */
+
+  document.getElementById(
+    "equipmentContainer"
+  ).innerHTML = `
+
+    <div class="item-row">
+
+      <input
+        type="text"
+        class="equipment-detail"
+        placeholder="เช่น สายไฟ"
+      >
+
+      <input
+        type="number"
+        class="equipment-amount"
+        placeholder="0.00"
+        min="0"
+        step="0.01"
+        inputmode="decimal"
+      >
+
+      <button
+        type="button"
+        class="remove-item-btn"
+        onclick="removeItem(this)"
+      >
+        ×
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelector(
+      "#equipmentContainer .equipment-amount"
+    )
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+
+  /*
+   * RESET OTHER
+   */
+
+  document.getElementById(
+    "otherContainer"
+  ).innerHTML = `
+
+    <div class="item-row">
+
+      <input
+        type="text"
+        class="other-detail"
+        placeholder="ระบุรายละเอียด"
+      >
+
+      <input
+        type="number"
+        class="other-amount"
+        placeholder="0.00"
+        min="0"
+        step="0.01"
+        inputmode="decimal"
+      >
+
+      <button
+        type="button"
+        class="remove-item-btn"
+        onclick="removeItem(this)"
+      >
+        ×
+      </button>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelector(
+      "#otherContainer .other-amount"
+    )
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+
   updateTotals();
 
 }
 
 
 /*************************************************
- * CLEAR BUTTON
+ * CLEAR
  *************************************************/
 
 document
@@ -2427,6 +2881,5 @@ initLIFF();
 </script>
 
 </body>
-
 </html>
 ```

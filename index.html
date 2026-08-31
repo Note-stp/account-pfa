@@ -13,558 +13,369 @@
 
   <title>ACCOUNT PFA</title>
 
-  <!-- =========================================
-       LINE LIFF SDK
-  ========================================== -->
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
 
   <style>
 
     * {
       box-sizing: border-box;
-      font-family:
-        Arial,
-        "Noto Sans Thai",
-        sans-serif;
+      font-family: Arial, "Noto Sans Thai", sans-serif;
     }
-
 
     body {
-
       margin: 0;
-
       background: #f4f6f8;
-
       color: #222;
-
     }
-
 
     .container {
-
       width: 100%;
-
-      max-width: 520px;
-
+      max-width: 700px;
       margin: auto;
-
-      padding:
-        20px
-        15px
-        40px;
-
+      padding: 18px 12px 40px;
     }
-
-
-    /* =========================================
-       HEADER
-    ========================================== */
 
     .header {
-
       text-align: center;
-
-      margin-bottom: 18px;
-
+      margin-bottom: 15px;
     }
-
 
     .header h1 {
-
       margin: 0;
-
       font-size: 28px;
-
       font-weight: 800;
-
     }
-
 
     .header p {
-
-      margin:
-        5px
-        0
-        0;
-
+      margin: 5px 0 0;
       color: #777;
-
       font-size: 14px;
-
     }
-
-
-    /* =========================================
-       USER
-    ========================================== */
 
     .user-box {
-
       background: white;
-
       border-radius: 15px;
-
-      padding:
-        13px
-        15px;
-
+      padding: 13px 15px;
       margin-bottom: 15px;
-
-      box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.06);
-
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
     }
-
 
     .user-name {
-
       font-weight: bold;
-
       font-size: 17px;
-
     }
-
 
     .user-status {
-
       color: #777;
-
       font-size: 13px;
-
       margin-top: 5px;
-
       white-space: pre-line;
-
     }
-
-
-    /* =========================================
-       CARD
-    ========================================== */
 
     .card {
-
       background: white;
-
       border-radius: 18px;
-
-      padding: 20px;
-
+      padding: 18px;
       margin-bottom: 15px;
-
-      box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.07);
-
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+      overflow: hidden;
     }
-
 
     .section-title {
-
-      font-size: 18px;
-
+      font-size: 19px;
       font-weight: bold;
-
-      margin-bottom: 13px;
-
+      margin-bottom: 15px;
     }
 
-
-    .description {
-
-      color: #777;
-
-      font-size: 13px;
-
-      margin-bottom: 12px;
-
-    }
-
-
-    /* =========================================
-       INPUT
-    ========================================== */
-
-    label {
-
+    .label {
       display: block;
-
       font-weight: 600;
-
       margin-bottom: 7px;
-
+      font-size: 14px;
     }
-
 
     input[type="text"],
     input[type="number"] {
-
       width: 100%;
-
-      padding: 14px;
-
-      border:
-        1px solid #ddd;
-
-      border-radius: 12px;
-
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 11px;
       font-size: 16px;
-
       outline: none;
-
       background: white;
-
     }
-
 
     input:focus {
-
       border-color: #111;
-
     }
 
-
-    /* =========================================
-       ROUND
-    ========================================== */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
 
     .round-buttons {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(5, 1fr);
-
-      gap: 8px;
-
-      width: 100%;
-
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
     }
 
-
-    .round-btn {
-
-      border:
-        1px solid #ddd;
-
+    .round-btn,
+    .member-btn,
+    .travel-type-btn {
+      border: 1px solid #ddd;
       background: white;
-
       color: #222;
-
-      border-radius: 12px;
-
-      padding:
-        14px
-        5px;
-
-      font-size: 17px;
-
+      border-radius: 11px;
+      padding: 12px 5px;
+      font-size: 15px;
       font-weight: bold;
-
       cursor: pointer;
-
-      min-height: 50px;
-
     }
 
-
-    .round-btn:active {
-
-      transform: scale(.97);
-
-    }
-
-
-    .round-btn.active {
-
+    .round-btn.active,
+    .member-btn.active,
+    .travel-type-btn.active {
       background: #111;
-
       color: white;
-
       border-color: #111;
-
     }
-
-
-    /* =========================================
-       MEMBER
-    ========================================== */
 
     .member-buttons {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 10px;
-
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
 
-
-    .member-btn {
-
-      border:
-        1px solid #ddd;
-
-      background: white;
-
-      color: #222;
-
-      border-radius: 12px;
-
-      padding: 14px;
-
-      font-size: 16px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-    }
-
-
-    .member-btn.active {
-
-      background: #111;
-
-      color: white;
-
-      border-color: #111;
-
-    }
-
-
-    .team-member {
-
+    .member-box {
       background: #f7f7f7;
-
       border-radius: 12px;
-
       padding: 12px;
-
       margin-top: 10px;
-
     }
 
-
-    .team-member-name {
-
+    .member-name {
       font-weight: bold;
-
       margin-bottom: 8px;
-
     }
 
-
-    /* =========================================
-       TOTAL
-    ========================================== */
-
-    .team-total {
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      margin-top: 15px;
-
-      padding-top: 15px;
-
-      border-top:
-        1px solid #ddd;
-
-      font-weight: bold;
-
+    .member-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
+    /* TRAVEL */
 
-    .grand-total {
+    .travel-table {
+      width: 100%;
+    }
 
-      background: #111;
+    .travel-header,
+    .travel-row {
+      display: grid;
+      grid-template-columns:
+        70px
+        1fr
+        90px
+        85px
+        85px;
 
-      color: white;
-
-      border-radius: 15px;
-
-      padding: 18px;
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
+      gap: 6px;
       align-items: center;
+    }
 
-      font-size: 20px;
-
+    .travel-header {
+      font-size: 12px;
       font-weight: bold;
-
-      margin-bottom: 15px;
-
-    }
-
-
-    /* =========================================
-       BUTTON
-    ========================================== */
-
-    .save-btn {
-
-      width: 100%;
-
-      border: none;
-
-      background: #111;
-
-      color: white;
-
-      border-radius: 15px;
-
-      padding: 17px;
-
-      font-size: 18px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-    }
-
-
-    .save-btn:disabled {
-
-      background: #999;
-
-      cursor: wait;
-
-    }
-
-
-    .clear-btn {
-
-      width: 100%;
-
-      border:
-        1px solid #ddd;
-
-      background: white;
-
-      border-radius: 15px;
-
-      padding: 14px;
-
-      font-size: 16px;
-
-      margin-top: 10px;
-
-      cursor: pointer;
-
-    }
-
-
-    /* =========================================
-       MESSAGE
-    ========================================== */
-
-    .message {
-
-      display: none;
-
-      padding: 14px;
-
-      border-radius: 12px;
-
-      margin-bottom: 15px;
-
+      color: #555;
+      margin-bottom: 8px;
       text-align: center;
+    }
 
+    .travel-row {
+      background: #f7f7f7;
+      border-radius: 10px;
+      padding: 7px;
+      margin-bottom: 8px;
+    }
+
+    .travel-name {
       font-weight: bold;
-
-      white-space: pre-line;
-
+      font-size: 14px;
     }
 
-
-    .message.success {
-
-      display: block;
-
-      background: #e8f7e8;
-
-      color: #187a18;
-
+    .travel-row input {
+      width: 100%;
+      padding: 9px 6px;
+      font-size: 13px;
+      border-radius: 8px;
     }
 
-
-    .message.error {
-
-      display: block;
-
-      background: #fdeaea;
-
-      color: #c62828;
-
+    .travel-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
     }
 
-
-    .message.info {
-
-      display: block;
-
-      background: #eef4ff;
-
-      color: #2455a4;
-
+    .travel-type-btn {
+      padding: 8px 3px;
+      font-size: 11px;
     }
 
+    .travel-amount {
+      background: #eee !important;
+    }
+
+    .travel-amount.editable {
+      background: white !important;
+    }
 
     .hidden {
-
       display: none !important;
-
     }
 
+    .total-box {
+      background: #111;
+      color: white;
+      border-radius: 15px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-    /* =========================================
-       LOADING
-    ========================================== */
+    .save-btn {
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 15px;
+      padding: 17px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-    .loading {
+    .save-btn:disabled {
+      background: #999;
+      cursor: wait;
+    }
 
+    .clear-btn {
+      width: 100%;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 15px;
+      padding: 14px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .message {
+      display: none;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 15px;
       text-align: center;
-
-      color: #777;
-
-      padding: 10px;
-
+      font-weight: bold;
+      white-space: pre-line;
     }
 
+    .message.success {
+      display: block;
+      background: #e8f7e8;
+      color: #187a18;
+    }
 
-    /* =========================================
-       MOBILE
-    ========================================== */
+    .message.error {
+      display: block;
+      background: #fdeaea;
+      color: #c62828;
+    }
 
-    @media (max-width: 380px) {
+    .message.info {
+      display: block;
+      background: #eef4ff;
+      color: #2455a4;
+    }
 
-      .round-buttons {
+    .description {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
 
-        gap: 5px;
+    .sub-total {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #ddd;
+      margin-top: 12px;
+      padding-top: 12px;
+      font-weight: bold;
+    }
 
+    @media (max-width: 600px) {
+
+      .container {
+        padding-left: 8px;
+        padding-right: 8px;
       }
 
+      .card {
+        padding: 14px;
+      }
 
-      .round-btn {
+      .travel-header,
+      .travel-row {
+        grid-template-columns:
+          55px
+          1fr
+          75px
+          65px
+          65px;
+      }
 
-        font-size: 15px;
+      .travel-header {
+        font-size: 10px;
+      }
 
-        padding:
-          12px
-          3px;
+      .travel-name {
+        font-size: 12px;
+      }
 
+      .travel-type-btn {
+        font-size: 9px;
+        padding: 7px 2px;
+      }
+
+      .travel-row input {
+        font-size: 11px;
+        padding: 8px 3px;
+      }
+
+    }
+
+    @media (max-width: 400px) {
+
+      .travel-header,
+      .travel-row {
+        grid-template-columns:
+          48px
+          1fr
+          68px
+          58px
+          58px;
+      }
+
+      .travel-type-btn {
+        font-size: 8px;
       }
 
     }
@@ -576,30 +387,16 @@
 
 <body>
 
-
 <div class="container">
-
-
-  <!-- =========================================
-       HEADER
-  ========================================== -->
 
   <div class="header">
 
-    <h1>
-      ACCOUNT PFA
-    </h1>
+    <h1>ACCOUNT PFA</h1>
 
-    <p>
-      บันทึกรายการค่าใช้จ่าย
-    </p>
+    <p>บันทึกรายการค่าใช้จ่าย</p>
 
   </div>
 
-
-  <!-- =========================================
-       USER
-  ========================================== -->
 
   <div class="user-box">
 
@@ -620,10 +417,6 @@
   </div>
 
 
-  <!-- =========================================
-       MESSAGE
-  ========================================== -->
-
   <div
     id="message"
     class="message"
@@ -637,18 +430,12 @@
   <div class="card">
 
     <div class="section-title">
-
       1. รายการ
-
     </div>
 
-
-    <label for="item">
-
-      รายละเอียดรายการ
-
+    <label class="label">
+      รายการ
     </label>
-
 
     <input
       type="text"
@@ -657,116 +444,51 @@
       autocomplete="off"
     >
 
-  </div>
+    <div style="height:12px"></div>
 
+    <label class="label">
+      ครั้งที่
+    </label>
 
-  <!-- =========================================
-       2. ครั้งที่
-  ========================================== -->
-
-  <div class="card">
-
-    <div class="section-title">
-
-      2. ครั้งที่
-
-    </div>
-
-
-    <div class="description">
-
-      กรุณาเลือกครั้งที่ของรายการ
-
-    </div>
-
-
-    <div
-      id="roundButtons"
-      class="round-buttons"
-    >
+    <div class="round-buttons">
 
       <button
         type="button"
         class="round-btn"
         data-round="1"
-      >
-        1
-      </button>
-
+      >1</button>
 
       <button
         type="button"
         class="round-btn"
         data-round="2"
-      >
-        2
-      </button>
-
+      >2</button>
 
       <button
         type="button"
         class="round-btn"
         data-round="3"
-      >
-        3
-      </button>
-
+      >3</button>
 
       <button
         type="button"
         class="round-btn"
         data-round="4"
-      >
-        4
-      </button>
-
+      >4</button>
 
       <button
         type="button"
         class="round-btn"
         data-round="5"
-      >
-        5
-      </button>
+      >5</button>
 
     </div>
 
+    <div style="height:12px"></div>
 
-    <div
-      id="selectedRoundText"
-      class="description"
-      style="
-        margin-top:12px;
-        margin-bottom:0;
-        text-align:center;
-      "
-    >
-      ยังไม่ได้เลือกครั้งที่
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================================
-       3. จำนวนเงิน
-  ========================================== -->
-
-  <div class="card">
-
-    <div class="section-title">
-
-      3. จำนวนเงิน
-
-    </div>
-
-
-    <label for="amount">
-
-      จำนวนเงินหลัก (บาท)
-
+    <label class="label">
+      จำนวนเงิน (บาท)
     </label>
-
 
     <input
       type="number"
@@ -781,95 +503,59 @@
 
 
   <!-- =========================================
-       4. ค่าทีม
+       2. ค่าทีม
   ========================================== -->
 
   <div class="card">
 
     <div class="section-title">
-
-      4. ค่าทีม
-
+      2. ค่าทีม
     </div>
-
 
     <div class="description">
-
-      เลือกสมาชิกได้สูงสุด 4 คน
-
+      เลือกสมาชิกได้หลายคน
     </div>
 
-
-    <div
-      id="memberButtons"
-      class="member-buttons"
-    >
+    <div class="member-buttons">
 
       <button
         type="button"
         class="member-btn"
         data-member="Phet"
-      >
-        Phet
-      </button>
-
+      >Phet</button>
 
       <button
         type="button"
         class="member-btn"
         data-member="Fang"
-      >
-        Fang
-      </button>
-
+      >Fang</button>
 
       <button
         type="button"
         class="member-btn"
         data-member="Arlee"
-      >
-        Arlee
-      </button>
-
+      >Arlee</button>
 
       <button
         type="button"
         class="member-btn"
         data-member="Gee"
-      >
-        Gee
-      </button>
+      >Gee</button>
 
     </div>
 
+    <div id="teamContainer"></div>
 
     <div
-      id="teamContainer"
-    ></div>
-
-
-    <div
-      id="teamTotal"
-      class="team-total hidden"
+      id="teamTotalBox"
+      class="sub-total hidden"
     >
 
-      <span>
-
-        รวมค่าทีม
-
-      </span>
-
+      <span>รวมค่าทีม</span>
 
       <span>
-
-        <span
-          id="teamTotalValue"
-        >
-          0.00
-        </span>
-
+        <span id="teamTotal">0.00</span>
         บาท
-
       </span>
 
     </div>
@@ -878,28 +564,412 @@
 
 
   <!-- =========================================
+       3. ค่าเดินทาง
+  ========================================== -->
+
+  <div class="card">
+
+    <div class="section-title">
+      3. ค่าเดินทาง
+    </div>
+
+    <div class="description">
+      เลือกประเภทการเดินทางของแต่ละสมาชิก
+    </div>
+
+    <div class="travel-table">
+
+      <div class="travel-header">
+
+        <div>สมาชิก</div>
+
+        <div>ประเภทการเดินทาง</div>
+
+        <div>จำนวนบาท</div>
+
+        <div>ระยะทาง</div>
+
+        <div>ทางด่วน</div>
+
+      </div>
+
+
+      <!-- PHET -->
+
+      <div
+        class="travel-row"
+        data-travel-member="Phet"
+      >
+
+        <div class="travel-name">
+          Phet
+        </div>
+
+        <div class="travel-types">
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Phet"
+            data-type="car"
+          >
+            🚗 รถยนต์
+          </button>
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Phet"
+            data-type="public"
+          >
+            🚌 รถสาธารณะ
+          </button>
+
+        </div>
+
+        <input
+          type="number"
+          class="travel-amount"
+          data-member="Phet"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-distance"
+          data-member="Phet"
+          placeholder="กม."
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-toll"
+          data-member="Phet"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+      </div>
+
+
+      <!-- FANG -->
+
+      <div
+        class="travel-row"
+        data-travel-member="Fang"
+      >
+
+        <div class="travel-name">
+          Fang
+        </div>
+
+        <div class="travel-types">
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Fang"
+            data-type="car"
+          >
+            🚗 รถยนต์
+          </button>
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Fang"
+            data-type="public"
+          >
+            🚌 รถสาธารณะ
+          </button>
+
+        </div>
+
+        <input
+          type="number"
+          class="travel-amount"
+          data-member="Fang"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-distance"
+          data-member="Fang"
+          placeholder="กม."
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-toll"
+          data-member="Fang"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+      </div>
+
+
+      <!-- ARLEE -->
+
+      <div
+        class="travel-row"
+        data-travel-member="Arlee"
+      >
+
+        <div class="travel-name">
+          Arlee
+        </div>
+
+        <div class="travel-types">
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Arlee"
+            data-type="car"
+          >
+            🚗 รถยนต์
+          </button>
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Arlee"
+            data-type="public"
+          >
+            🚌 รถสาธารณะ
+          </button>
+
+        </div>
+
+        <input
+          type="number"
+          class="travel-amount"
+          data-member="Arlee"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-distance"
+          data-member="Arlee"
+          placeholder="กม."
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-toll"
+          data-member="Arlee"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+      </div>
+
+
+      <!-- GEE -->
+
+      <div
+        class="travel-row"
+        data-travel-member="Gee"
+      >
+
+        <div class="travel-name">
+          Gee
+        </div>
+
+        <div class="travel-types">
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Gee"
+            data-type="car"
+          >
+            🚗 รถยนต์
+          </button>
+
+          <button
+            type="button"
+            class="travel-type-btn"
+            data-member="Gee"
+            data-type="public"
+          >
+            🚌 รถสาธารณะ
+          </button>
+
+        </div>
+
+        <input
+          type="number"
+          class="travel-amount"
+          data-member="Gee"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          inputmode="decimal"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-distance"
+          data-member="Gee"
+          placeholder="กม."
+          min="0"
+          step="0.01"
+          disabled
+        >
+
+        <input
+          type="number"
+          class="travel-toll"
+          data-member="Gee"
+          placeholder="บาท"
+          min="0"
+          step="0.01"
+          inputmode="decimal"
+          disabled
+        >
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="travelTotalBox"
+      class="sub-total"
+    >
+
+      <span>รวมค่าเดินทาง</span>
+
+      <span>
+        <span id="travelTotal">0.00</span>
+        บาท
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       4. ค่าอุปกรณ์
+  ========================================== -->
+
+  <div class="card">
+
+    <div class="section-title">
+      4. ค่าอุปกรณ์
+    </div>
+
+    <label class="label">
+      รายละเอียด
+    </label>
+
+    <input
+      type="text"
+      id="equipmentDetail"
+      placeholder="เช่น สายไฟ, เครื่องมือ"
+    >
+
+    <div style="height:10px"></div>
+
+    <label class="label">
+      จำนวนเงิน (บาท)
+    </label>
+
+    <input
+      type="number"
+      id="equipmentAmount"
+      placeholder="0.00"
+      min="0"
+      step="0.01"
+      inputmode="decimal"
+    >
+
+  </div>
+
+
+  <!-- =========================================
+       5. อื่น
+  ========================================== -->
+
+  <div class="card">
+
+    <div class="section-title">
+      5. อื่น
+    </div>
+
+    <label class="label">
+      รายละเอียด
+    </label>
+
+    <input
+      type="text"
+      id="otherDetail"
+      placeholder="ระบุรายละเอียด"
+    >
+
+    <div style="height:10px"></div>
+
+    <label class="label">
+      จำนวนเงิน (บาท)
+    </label>
+
+    <input
+      type="number"
+      id="otherAmount"
+      placeholder="0.00"
+      min="0"
+      step="0.01"
+      inputmode="decimal"
+    >
+
+  </div>
+
+
+  <!-- =========================================
        TOTAL
   ========================================== -->
 
-  <div class="grand-total">
+  <div class="total-box">
 
     <span>
-
-      รวมทั้งหมด
-
+      💵 รวมทั้งหมด
     </span>
 
-
     <span>
-
-      <span
-        id="grandTotal"
-      >
+      <span id="grandTotal">
         0.00
       </span>
-
       บาท
-
     </span>
 
   </div>
@@ -914,9 +984,7 @@
     class="save-btn"
     type="button"
   >
-
     💾 บันทึกข้อมูล
-
   </button>
 
 
@@ -929,26 +997,20 @@
     class="clear-btn"
     type="button"
   >
-
     🗑️ ล้างข้อมูล
-
   </button>
-
 
 </div>
 
 
 <script>
 
-
 /*************************************************
  * CONFIG
  *************************************************/
 
-
 const LIFF_ID =
   "2011289699-I5WMsObs";
-
 
 const WORKER_URL =
   "https://line-accounting-bot.notza1982.workers.dev/";
@@ -958,121 +1020,79 @@ const WORKER_URL =
  * VARIABLES
  *************************************************/
 
-
 let lineUser = {
-
   userId: "",
-
   name: ""
-
 };
 
+let selectedRound = null;
 
-let selectedRound =
-  null;
-
-
-let selectedMembers =
-  [];
+let selectedMembers = [];
 
 
 /*************************************************
- * SHOW MESSAGE
+ * MESSAGE
  *************************************************/
 
-
-function showMessage(
-  text,
-  type
-) {
+function showMessage(text, type) {
 
   const box =
-    document.getElementById(
-      "message"
-    );
+    document.getElementById("message");
 
-
-  box.textContent =
-    text;
-
+  box.textContent = text;
 
   box.className =
     "message " + type;
 
-
   window.scrollTo({
-
     top: 0,
-
     behavior: "smooth"
-
   });
 
 }
 
 
 /*************************************************
- * FORMAT MONEY
+ * MONEY
  *************************************************/
 
-
-function formatMoney(
-  value
-) {
+function formatMoney(value) {
 
   return Number(
     value || 0
   ).toLocaleString(
-
     "th-TH",
-
     {
-
-      minimumFractionDigits:
-        2,
-
-      maximumFractionDigits:
-        2
-
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }
-
   );
 
 }
 
 
 /*************************************************
- * LIFF INIT
+ * LIFF
  *************************************************/
-
 
 async function initLIFF() {
 
   const name =
-    document.getElementById(
-      "userName"
-    );
-
+    document.getElementById("userName");
 
   const status =
-    document.getElementById(
-      "userStatus"
-    );
-
+    document.getElementById("userStatus");
 
   try {
 
     name.textContent =
       "กำลังเข้าสู่ระบบ LINE...";
 
-
     status.textContent =
       "กำลังตรวจสอบ LIFF";
 
-
     if (
-      typeof liff ===
-      "undefined"
+      typeof liff === "undefined"
     ) {
 
       throw new Error(
@@ -1081,27 +1101,14 @@ async function initLIFF() {
 
     }
 
-
     await liff.init({
-
-      liffId:
-        LIFF_ID
-
+      liffId: LIFF_ID
     });
 
-
-    /*
-     * ถ้าเปิดจากภายนอก LINE
-     * และยังไม่ได้ Login
-     */
-
-    if (
-      !liff.isLoggedIn()
-    ) {
+    if (!liff.isLoggedIn()) {
 
       status.textContent =
         "กำลังเข้าสู่ระบบ LINE...";
-
 
       liff.login();
 
@@ -1109,33 +1116,25 @@ async function initLIFF() {
 
     }
 
-
     const profile =
       await liff.getProfile();
-
 
     lineUser.userId =
       profile.userId || "";
 
-
     lineUser.name =
       profile.displayName || "";
 
-
     name.textContent =
-      "👤 " +
-      lineUser.name;
-
+      "👤 " + lineUser.name;
 
     status.textContent =
       "เชื่อมต่อ LINE สำเร็จ";
-
 
     console.log(
       "LINE USER:",
       lineUser
     );
-
 
   }
 
@@ -1146,15 +1145,12 @@ async function initLIFF() {
       error
     );
 
-
     name.textContent =
       "❌ เชื่อมต่อ LINE ไม่สำเร็จ";
-
 
     status.textContent =
       error.message ||
       String(error);
-
 
   }
 
@@ -1162,305 +1158,442 @@ async function initLIFF() {
 
 
 /*************************************************
- * ROUND BUTTON
+ * ROUND
  *************************************************/
 
-
 document
-  .querySelectorAll(
-    ".round-btn"
-  )
-  .forEach(
+  .querySelectorAll(".round-btn")
+  .forEach(function(button) {
 
-    function(button) {
+    button.addEventListener(
+      "click",
+      function() {
 
-      button.addEventListener(
+        document
+          .querySelectorAll(".round-btn")
+          .forEach(function(btn) {
 
-        "click",
-
-        function() {
-
-
-          /*
-           * ล้าง active ทุกปุ่ม
-           */
-
-          document
-            .querySelectorAll(
-              ".round-btn"
-            )
-            .forEach(
-
-              function(btn) {
-
-                btn.classList.remove(
-                  "active"
-                );
-
-              }
-
-            );
-
-
-          /*
-           * Active ปุ่มที่เลือก
-           */
-
-          button.classList.add(
-            "active"
-          );
-
-
-          /*
-           * เก็บครั้งที่
-           */
-
-          selectedRound =
-            Number(
-              button.dataset.round
-            );
-
-
-          /*
-           * แสดงข้อความ
-           */
-
-          document
-            .getElementById(
-              "selectedRoundText"
-            )
-            .textContent =
-            "เลือกครั้งที่ " +
-            selectedRound;
-
-
-          console.log(
-            "SELECTED ROUND:",
-            selectedRound
-          );
-
-
-        }
-
-      );
-
-    }
-
-  );
-
-
-/*************************************************
- * MEMBER BUTTON
- *************************************************/
-
-
-document
-  .querySelectorAll(
-    ".member-btn"
-  )
-  .forEach(
-
-    function(button) {
-
-      button.addEventListener(
-
-        "click",
-
-        function() {
-
-
-          const member =
-            button.dataset.member;
-
-
-          /*
-           * ถ้าเลือกอยู่แล้ว = ยกเลิก
-           */
-
-          if (
-            selectedMembers
-              .includes(member)
-          ) {
-
-
-            selectedMembers =
-              selectedMembers.filter(
-
-                function(name) {
-
-                  return name !== member;
-
-                }
-
-              );
-
-
-            button.classList.remove(
+            btn.classList.remove(
               "active"
             );
 
+          });
 
-            const element =
-              document.getElementById(
-                "team-" + member
-              );
+        button.classList.add(
+          "active"
+        );
 
-
-            if (element) {
-
-              element.remove();
-
-            }
-
-
-            updateTotals();
-
-
-            return;
-
-          }
-
-
-          /*
-           * จำกัดสูงสุด 4 คน
-           */
-
-          if (
-            selectedMembers.length >= 4
-          ) {
-
-            showMessage(
-
-              "เลือกสมาชิกได้สูงสุด 4 คน",
-
-              "error"
-
-            );
-
-
-            return;
-
-          }
-
-
-          /*
-           * เพิ่มสมาชิก
-           */
-
-          selectedMembers.push(
-            member
+        selectedRound =
+          Number(
+            button.dataset.round
           );
 
+      }
+    );
 
-          button.classList.add(
+  });
+
+
+/*************************************************
+ * TEAM MEMBER
+ *************************************************/
+
+document
+  .querySelectorAll(".member-btn")
+  .forEach(function(button) {
+
+    button.addEventListener(
+      "click",
+      function() {
+
+        const member =
+          button.dataset.member;
+
+
+        if (
+          selectedMembers.includes(member)
+        ) {
+
+          selectedMembers =
+            selectedMembers.filter(
+              function(name) {
+
+                return name !== member;
+
+              }
+            );
+
+          button.classList.remove(
             "active"
           );
 
+          const box =
+            document.getElementById(
+              "team-" + member
+            );
 
-          addTeamMember(
-            member
-          );
-
+          if (box) {
+            box.remove();
+          }
 
           updateTotals();
 
+          return;
+
         }
 
-      );
 
-    }
+        selectedMembers.push(
+          member
+        );
 
-  );
+        button.classList.add(
+          "active"
+        );
+
+        addTeamMember(
+          member
+        );
+
+        updateTotals();
+
+      }
+    );
+
+  });
 
 
 /*************************************************
  * ADD TEAM MEMBER
  *************************************************/
 
-
-function addTeamMember(
-  member
-) {
-
+function addTeamMember(member) {
 
   const container =
     document.getElementById(
       "teamContainer"
     );
 
-
   const div =
-    document.createElement(
-      "div"
-    );
-
+    document.createElement("div");
 
   div.className =
-    "team-member";
-
+    "member-box";
 
   div.id =
     "team-" + member;
 
-
   div.innerHTML = `
 
-    <div class="team-member-name">
-
+    <div class="member-name">
       👤 ${member}
-
     </div>
 
-
     <input
-
       type="number"
-
       class="team-amount"
-
       data-member="${member}"
-
       placeholder="จำนวนเงินของ ${member}"
-
       min="0"
-
       step="0.01"
-
       inputmode="decimal"
-
     >
 
   `;
 
+  container.appendChild(div);
 
-  container.appendChild(
-    div
-  );
-
-
-  const input =
-    div.querySelector(
-      ".team-amount"
+  div
+    .querySelector(".team-amount")
+    .addEventListener(
+      "input",
+      updateTotals
     );
-
-
-  input.addEventListener(
-
-    "input",
-
-    updateTotals
-
-  );
 
 }
 
 
 /*************************************************
- * UPDATE TOTAL
+ * TRAVEL BUTTON
  *************************************************/
 
+document
+  .querySelectorAll(".travel-type-btn")
+  .forEach(function(button) {
+
+    button.addEventListener(
+      "click",
+      function() {
+
+        const member =
+          button.dataset.member;
+
+        const type =
+          button.dataset.type;
+
+        const row =
+          document.querySelector(
+            '.travel-row[data-travel-member="' +
+            member +
+            '"]'
+          );
+
+        if (!row) return;
+
+
+        row
+          .querySelectorAll(
+            ".travel-type-btn"
+          )
+          .forEach(function(btn) {
+
+            btn.classList.remove(
+              "active"
+            );
+
+          });
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        const amountInput =
+          row.querySelector(
+            ".travel-amount"
+          );
+
+        const distanceInput =
+          row.querySelector(
+            ".travel-distance"
+          );
+
+        const tollInput =
+          row.querySelector(
+            ".travel-toll"
+          );
+
+
+        if (type === "car") {
+
+          /*
+           * รถยนต์
+           *
+           * สูตร:
+           * (ระยะทาง × 35 ÷ 15) + ทางด่วน
+           */
+
+          amountInput.disabled =
+            true;
+
+          amountInput.readOnly =
+            true;
+
+          amountInput.classList.remove(
+            "editable"
+          );
+
+          distanceInput.disabled =
+            false;
+
+          tollInput.disabled =
+            false;
+
+
+          calculateTravelRow(
+            row
+          );
+
+        }
+
+
+        if (type === "public") {
+
+          /*
+           * รถสาธารณะ
+           *
+           * กรอกจำนวนเงินเอง
+           */
+
+          amountInput.disabled =
+            false;
+
+          amountInput.readOnly =
+            false;
+
+          amountInput.classList.add(
+            "editable"
+          );
+
+          distanceInput.disabled =
+            true;
+
+          tollInput.disabled =
+            true;
+
+          distanceInput.value =
+            "";
+
+          tollInput.value =
+            "";
+
+          amountInput.value =
+            "";
+
+        }
+
+
+        updateTotals();
+
+      }
+    );
+
+  });
+
+
+/*************************************************
+ * TRAVEL CALCULATION
+ *************************************************/
+
+function calculateTravelRow(row) {
+
+  const amountInput =
+    row.querySelector(
+      ".travel-amount"
+    );
+
+  const distanceInput =
+    row.querySelector(
+      ".travel-distance"
+    );
+
+  const tollInput =
+    row.querySelector(
+      ".travel-toll"
+    );
+
+
+  const distance =
+    Number(
+      distanceInput.value
+    ) || 0;
+
+
+  const toll =
+    Number(
+      tollInput.value
+    ) || 0;
+
+
+  const amount =
+    (distance * 35 / 15) +
+    toll;
+
+
+  amountInput.value =
+    amount.toFixed(2);
+
+}
+
+
+/*************************************************
+ * TRAVEL INPUT EVENTS
+ *************************************************/
+
+document
+  .querySelectorAll(
+    ".travel-distance, .travel-toll"
+  )
+  .forEach(function(input) {
+
+    input.addEventListener(
+      "input",
+      function() {
+
+        const row =
+          input.closest(
+            ".travel-row"
+          );
+
+        if (!row) return;
+
+
+        const carButton =
+          row.querySelector(
+            '.travel-type-btn[data-type="car"]'
+          );
+
+
+        if (
+          carButton &&
+          carButton.classList.contains(
+            "active"
+          )
+        ) {
+
+          calculateTravelRow(
+            row
+          );
+
+        }
+
+
+        updateTotals();
+
+      }
+    );
+
+  });
+
+
+document
+  .querySelectorAll(
+    ".travel-amount"
+  )
+  .forEach(function(input) {
+
+    input.addEventListener(
+      "input",
+      updateTotals
+    );
+
+  });
+
+
+/*************************************************
+ * OTHER AMOUNTS
+ *************************************************/
+
+[
+  "amount",
+  "equipmentAmount",
+  "otherAmount"
+]
+.forEach(function(id) {
+
+  document
+    .getElementById(id)
+    .addEventListener(
+      "input",
+      updateTotals
+    );
+
+});
+
+
+/*************************************************
+ * UPDATE TOTALS
+ *************************************************/
 
 function updateTotals() {
+
+  let mainAmount =
+    Number(
+      document.getElementById(
+        "amount"
+      ).value
+    ) || 0;
 
 
   let teamTotal =
@@ -1471,60 +1604,84 @@ function updateTotals() {
     .querySelectorAll(
       ".team-amount"
     )
-    .forEach(
+    .forEach(function(input) {
 
-      function(input) {
+      teamTotal +=
+        Number(
+          input.value
+        ) || 0;
 
-        teamTotal +=
-          Number(
-            input.value
-          ) || 0;
-
-      }
-
-    );
+    });
 
 
-  const amount =
+  let travelTotal =
+    0;
+
+
+  document
+    .querySelectorAll(
+      ".travel-amount"
+    )
+    .forEach(function(input) {
+
+      travelTotal +=
+        Number(
+          input.value
+        ) || 0;
+
+    });
+
+
+  const equipment =
     Number(
+      document.getElementById(
+        "equipmentAmount"
+      ).value
+    ) || 0;
 
-      document
-        .getElementById(
-          "amount"
-        )
-        .value
 
+  const other =
+    Number(
+      document.getElementById(
+        "otherAmount"
+      ).value
     ) || 0;
 
 
   const total =
-    amount +
-    teamTotal;
+
+    mainAmount +
+
+    teamTotal +
+
+    travelTotal +
+
+    equipment +
+
+    other;
 
 
-  document
-    .getElementById(
-      "teamTotalValue"
-    )
-    .textContent =
-    formatMoney(
-      teamTotal
-    );
+  document.getElementById(
+    "teamTotal"
+  ).textContent =
+    formatMoney(teamTotal);
 
 
-  document
-    .getElementById(
-      "grandTotal"
-    )
-    .textContent =
-    formatMoney(
-      total
-    );
+  document.getElementById(
+    "travelTotal"
+  ).textContent =
+    formatMoney(travelTotal);
+
+
+  document.getElementById(
+    "grandTotal"
+  ).textContent =
+    formatMoney(total);
 
 
   const teamBox =
     document.getElementById(
-      "teamTotal"
+      "teamTotalBox"
     );
 
 
@@ -1550,38 +1707,14 @@ function updateTotals() {
 
 
 /*************************************************
- * AMOUNT INPUT
- *************************************************/
-
-
-document
-  .getElementById(
-    "amount"
-  )
-  .addEventListener(
-
-    "input",
-
-    updateTotals
-
-  );
-
-
-/*************************************************
  * SAVE BUTTON
  *************************************************/
 
-
 document
-  .getElementById(
-    "saveBtn"
-  )
+  .getElementById("saveBtn")
   .addEventListener(
-
     "click",
-
     saveTransaction
-
   );
 
 
@@ -1589,9 +1722,7 @@ document
  * SAVE TRANSACTION
  *************************************************/
 
-
 async function saveTransaction() {
-
 
   const button =
     document.getElementById(
@@ -1599,125 +1730,99 @@ async function saveTransaction() {
     );
 
 
-  /*
-   * ข้อมูลรายการ
-   */
-
   const item =
-    document
-      .getElementById(
-        "item"
-      )
-      .value
-      .trim();
+    document.getElementById(
+      "item"
+    ).value.trim();
 
-
-  /*
-   * จำนวนเงินหลัก
-   */
 
   const amount =
     Number(
-
-      document
-        .getElementById(
-          "amount"
-        )
-        .value
-
-    );
+      document.getElementById(
+        "amount"
+      ).value
+    ) || 0;
 
 
-  /*
-   * ตรวจ LINE Login
-   */
+  const equipmentDetail =
+    document.getElementById(
+      "equipmentDetail"
+    ).value.trim();
 
-  if (
-    !lineUser.userId
-  ) {
+
+  const equipmentAmount =
+    Number(
+      document.getElementById(
+        "equipmentAmount"
+      ).value
+    ) || 0;
+
+
+  const otherDetail =
+    document.getElementById(
+      "otherDetail"
+    ).value.trim();
+
+
+  const otherAmount =
+    Number(
+      document.getElementById(
+        "otherAmount"
+      ).value
+    ) || 0;
+
+
+  /***********************************************
+   * VALIDATE LOGIN
+   ***********************************************/
+
+  if (!lineUser.userId) {
 
     showMessage(
-
       "กรุณารอให้ LINE Login เสร็จก่อน",
-
       "error"
-
     );
-
 
     return;
 
   }
 
 
-  /*
-   * ตรวจรายการ
-   */
+  /***********************************************
+   * VALIDATE ITEM
+   ***********************************************/
 
   if (!item) {
 
     showMessage(
-
       "กรุณาระบุรายการ",
-
       "error"
-
     );
-
 
     return;
 
   }
 
 
-  /*
-   * ตรวจครั้งที่
-   */
+  /***********************************************
+   * VALIDATE ROUND
+   ***********************************************/
 
-  if (
-    !selectedRound
-  ) {
+  if (!selectedRound) {
 
     showMessage(
-
       "กรุณาเลือกครั้งที่ 1–5",
-
       "error"
-
     );
-
 
     return;
 
   }
 
 
-  /*
-   * ตรวจจำนวนเงิน
-   */
-
-  if (
-    isNaN(amount) ||
-    amount < 0
-  ) {
-
-    showMessage(
-
-      "กรุณาระบุจำนวนเงินให้ถูกต้อง",
-
-      "error"
-
-    );
-
-
-    return;
-
-  }
-
-
-  /*
-   * สมาชิกทีม
-   */
+  /***********************************************
+   * TEAM
+   ***********************************************/
 
   const team = [];
 
@@ -1726,96 +1831,238 @@ async function saveTransaction() {
     .querySelectorAll(
       ".team-amount"
     )
-    .forEach(
+    .forEach(function(input) {
 
-      function(input) {
+      team.push({
 
-        team.push({
+        name:
+          input.dataset.member,
+
+        amount:
+          Number(
+            input.value
+          ) || 0
+
+      });
+
+    });
+
+
+  /***********************************************
+   * TRAVEL
+   ***********************************************/
+
+  const travel = [];
+
+
+  document
+    .querySelectorAll(
+      ".travel-row"
+    )
+    .forEach(function(row) {
+
+      const member =
+        row.dataset.travelMember;
+
+
+      const carButton =
+        row.querySelector(
+          '.travel-type-btn[data-type="car"]'
+        );
+
+
+      const publicButton =
+        row.querySelector(
+          '.travel-type-btn[data-type="public"]'
+        );
+
+
+      let type = "";
+
+
+      if (
+        carButton &&
+        carButton.classList.contains(
+          "active"
+        )
+      ) {
+
+        type = "รถยนต์";
+
+      }
+
+
+      if (
+        publicButton &&
+        publicButton.classList.contains(
+          "active"
+        )
+      ) {
+
+        type = "รถสาธารณะ";
+
+      }
+
+
+      const amountInput =
+        row.querySelector(
+          ".travel-amount"
+        );
+
+
+      const distanceInput =
+        row.querySelector(
+          ".travel-distance"
+        );
+
+
+      const tollInput =
+        row.querySelector(
+          ".travel-toll"
+        );
+
+
+      const travelAmount =
+        Number(
+          amountInput.value
+        ) || 0;
+
+
+      const distance =
+        Number(
+          distanceInput.value
+        ) || 0;
+
+
+      const toll =
+        Number(
+          tollInput.value
+        ) || 0;
+
+
+      /*
+       * ส่งเฉพาะคนที่เลือกประเภทเดินทาง
+       */
+
+      if (type) {
+
+        travel.push({
 
           name:
-            input.dataset.member,
+            member,
+
+          type:
+            type,
 
           amount:
-            Number(
-              input.value
-            ) || 0
+            travelAmount,
+
+          distance:
+            distance,
+
+          toll:
+            toll
 
         });
 
       }
 
+    });
+
+
+  /***********************************************
+   * GRAND TOTAL
+   ***********************************************/
+
+  const teamTotal =
+    team.reduce(
+      function(sum, member) {
+
+        return sum +
+          Number(member.amount || 0);
+
+      },
+      0
     );
 
 
-  /*
-   * คำนวณยอดรวม
-   */
+  const travelTotal =
+    travel.reduce(
+      function(sum, member) {
 
-  let teamTotal =
-    0;
+        return sum +
+          Number(member.amount || 0);
 
-
-  team.forEach(
-
-    function(member) {
-
-      teamTotal +=
-        Number(
-          member.amount
-        ) || 0;
-
-    }
-
-  );
+      },
+      0
+    );
 
 
   const total =
+
     amount +
-    teamTotal;
+
+    teamTotal +
+
+    travelTotal +
+
+    equipmentAmount +
+
+    otherAmount;
 
 
-  /*
-   * ข้อมูลที่จะส่ง
-   */
+  /***********************************************
+   * DATA
+   ***********************************************/
 
   const data = {
 
     type:
       "LIFF_EXPENSE",
 
-
     userId:
       lineUser.userId,
-
 
     displayName:
       lineUser.name,
 
-
     name:
       lineUser.name,
-
 
     item:
       item,
 
-
     round:
       selectedRound,
-
 
     amount:
       amount,
 
-
     team:
       team,
 
+    travel:
+      travel,
 
-    /*
-     * ส่งเป็น expenses
-     * เพื่อรองรับ Backend
-     */
+    equipment: {
+
+      item:
+        equipmentDetail,
+
+      amount:
+        equipmentAmount
+
+    },
+
+    other: {
+
+      item:
+        otherDetail,
+
+      amount:
+        otherAmount
+
+    },
 
     expenses: [
 
@@ -1834,18 +2081,14 @@ async function saveTransaction() {
 
     ],
 
-
     members:
       team,
-
 
     total:
       total,
 
-
     note:
       "",
-
 
     timestamp:
       new Date().toISOString()
@@ -1859,33 +2102,29 @@ async function saveTransaction() {
   );
 
 
-  /*
-   * ปิดปุ่มระหว่างบันทึก
-   */
+  /***********************************************
+   * DISABLE BUTTON
+   ***********************************************/
 
   button.disabled =
     true;
-
 
   button.textContent =
     "กำลังบันทึก...";
 
 
   showMessage(
-
     "กำลังบันทึกข้อมูล...",
-
     "info"
-
   );
 
 
   try {
 
 
-    /*
-     * ส่งข้อมูลไป Cloudflare Worker
-     */
+    /*********************************************
+     * SEND TO WORKER
+     *********************************************/
 
     const response =
       await fetch(
@@ -1897,14 +2136,12 @@ async function saveTransaction() {
           method:
             "POST",
 
-
           headers: {
 
             "Content-Type":
               "application/json"
 
           },
-
 
           body:
             JSON.stringify(
@@ -1926,15 +2163,14 @@ async function saveTransaction() {
     );
 
 
-    /*
-     * ตรวจผล
-     */
+    /*********************************************
+     * SUCCESS
+     *********************************************/
 
     if (
       result &&
       result.success
     ) {
-
 
       showMessage(
 
@@ -1955,32 +2191,25 @@ async function saveTransaction() {
       );
 
 
-      /*
-       * ล้างฟอร์ม
-       */
-
       resetForm();
-
 
     }
 
     else {
 
-
       throw new Error(
 
         result?.message ||
+
         "Worker ไม่สามารถบันทึกข้อมูลได้"
 
       );
 
     }
 
-
   }
 
   catch (error) {
-
 
     console.error(
       "SAVE ERROR:",
@@ -1991,6 +2220,7 @@ async function saveTransaction() {
     showMessage(
 
       "❌ บันทึกข้อมูลไม่สำเร็จ\n" +
+
       (
         error.message ||
         String(error)
@@ -2002,13 +2232,10 @@ async function saveTransaction() {
 
   }
 
-
   finally {
-
 
     button.disabled =
       false;
-
 
     button.textContent =
       "💾 บันทึกข้อมูล";
@@ -2022,37 +2249,37 @@ async function saveTransaction() {
  * RESET FORM
  *************************************************/
 
-
 function resetForm() {
 
-
-  /*
-   * รายการ
-   */
-
-  document
-    .getElementById(
-      "item"
-    )
-    .value =
-    "";
+  document.getElementById(
+    "item"
+  ).value = "";
 
 
-  /*
-   * จำนวนเงิน
-   */
-
-  document
-    .getElementById(
-      "amount"
-    )
-    .value =
-    "";
+  document.getElementById(
+    "amount"
+  ).value = "";
 
 
-  /*
-   * ครั้งที่
-   */
+  document.getElementById(
+    "equipmentDetail"
+  ).value = "";
+
+
+  document.getElementById(
+    "equipmentAmount"
+  ).value = "";
+
+
+  document.getElementById(
+    "otherDetail"
+  ).value = "";
+
+
+  document.getElementById(
+    "otherAmount"
+  ).value = "";
+
 
   selectedRound =
     null;
@@ -2062,30 +2289,14 @@ function resetForm() {
     .querySelectorAll(
       ".round-btn"
     )
-    .forEach(
+    .forEach(function(button) {
 
-      function(button) {
+      button.classList.remove(
+        "active"
+      );
 
-        button.classList.remove(
-          "active"
-        );
+    });
 
-      }
-
-    );
-
-
-  document
-    .getElementById(
-      "selectedRoundText"
-    )
-    .textContent =
-    "ยังไม่ได้เลือกครั้งที่";
-
-
-  /*
-   * สมาชิก
-   */
 
   selectedMembers =
     [];
@@ -2095,30 +2306,81 @@ function resetForm() {
     .querySelectorAll(
       ".member-btn"
     )
-    .forEach(
+    .forEach(function(button) {
 
-      function(button) {
+      button.classList.remove(
+        "active"
+      );
 
-        button.classList.remove(
-          "active"
-        );
+    });
 
-      }
 
-    );
+  document.getElementById(
+    "teamContainer"
+  ).innerHTML = "";
+
+
+  /***********************************************
+   * RESET TRAVEL
+   ***********************************************/
+
+  document
+    .querySelectorAll(
+      ".travel-type-btn"
+    )
+    .forEach(function(button) {
+
+      button.classList.remove(
+        "active"
+      );
+
+    });
 
 
   document
-    .getElementById(
-      "teamContainer"
+    .querySelectorAll(
+      ".travel-amount"
     )
-    .innerHTML =
-    "";
+    .forEach(function(input) {
+
+      input.value = "";
+
+      input.disabled = true;
+
+      input.readOnly = false;
+
+      input.classList.remove(
+        "editable"
+      );
+
+    });
 
 
-  /*
-   * ยอดรวม
-   */
+  document
+    .querySelectorAll(
+      ".travel-distance"
+    )
+    .forEach(function(input) {
+
+      input.value = "";
+
+      input.disabled = true;
+
+    });
+
+
+  document
+    .querySelectorAll(
+      ".travel-toll"
+    )
+    .forEach(function(input) {
+
+      input.value = "";
+
+      input.disabled = true;
+
+    });
+
 
   updateTotals();
 
@@ -2129,17 +2391,11 @@ function resetForm() {
  * CLEAR BUTTON
  *************************************************/
 
-
 document
-  .getElementById(
-    "clearBtn"
-  )
+  .getElementById("clearBtn")
   .addEventListener(
-
     "click",
-
     function() {
-
 
       if (
         confirm(
@@ -2147,22 +2403,16 @@ document
         )
       ) {
 
-
         resetForm();
 
-
         showMessage(
-
           "ล้างข้อมูลแล้ว",
-
           "success"
-
         );
 
       }
 
     }
-
   );
 
 
@@ -2170,14 +2420,11 @@ document
  * START
  *************************************************/
 
-
 updateTotals();
 
 initLIFF();
 
-
 </script>
-
 
 </body>
 

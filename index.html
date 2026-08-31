@@ -1,354 +1,772 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>ACCOUNT PFA</title>
 
+  <!-- =========================================
+       LINE LIFF SDK
+  ========================================== -->
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
+
   <style>
+
     * {
       box-sizing: border-box;
-      font-family: Arial, "Noto Sans Thai", sans-serif;
+      font-family:
+        Arial,
+        "Noto Sans Thai",
+        sans-serif;
     }
+
 
     body {
+
       margin: 0;
+
       background: #f4f6f8;
+
       color: #222;
+
     }
+
 
     .container {
+
+      width: 100%;
+
       max-width: 520px;
+
       margin: auto;
-      padding: 20px 15px 40px;
+
+      padding:
+        20px
+        15px
+        40px;
+
     }
+
+
+    /* =========================================
+       HEADER
+    ========================================== */
 
     .header {
+
       text-align: center;
+
       margin-bottom: 18px;
+
     }
+
 
     .header h1 {
+
       margin: 0;
+
       font-size: 28px;
+
+      font-weight: 800;
+
     }
+
 
     .header p {
-      margin: 5px 0 0;
+
+      margin:
+        5px
+        0
+        0;
+
       color: #777;
+
       font-size: 14px;
+
     }
+
+
+    /* =========================================
+       USER
+    ========================================== */
 
     .user-box {
+
       background: white;
+
       border-radius: 15px;
-      padding: 13px 15px;
+
+      padding:
+        13px
+        15px;
+
       margin-bottom: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.06);
+
     }
+
 
     .user-name {
+
       font-weight: bold;
+
       font-size: 17px;
+
     }
+
 
     .user-status {
+
       color: #777;
+
       font-size: 13px;
-      margin-top: 4px;
+
+      margin-top: 5px;
+
       white-space: pre-line;
+
     }
+
+
+    /* =========================================
+       CARD
+    ========================================== */
 
     .card {
+
       background: white;
+
       border-radius: 18px;
+
       padding: 20px;
+
       margin-bottom: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.07);
+
     }
+
 
     .section-title {
+
       font-size: 18px;
+
       font-weight: bold;
+
       margin-bottom: 13px;
+
     }
 
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 7px;
+
+    .description {
+
+      color: #777;
+
+      font-size: 13px;
+
+      margin-bottom: 12px;
+
     }
+
+
+    /* =========================================
+       INPUT
+    ========================================== */
+
+    label {
+
+      display: block;
+
+      font-weight: 600;
+
+      margin-bottom: 7px;
+
+    }
+
 
     input[type="text"],
     input[type="number"] {
+
       width: 100%;
+
       padding: 14px;
-      border: 1px solid #ddd;
+
+      border:
+        1px solid #ddd;
+
       border-radius: 12px;
+
       font-size: 16px;
+
       outline: none;
+
+      background: white;
+
     }
+
 
     input:focus {
+
       border-color: #111;
+
     }
+
+
+    /* =========================================
+       ROUND
+    ========================================== */
 
     .round-buttons {
+
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
       gap: 8px;
+
+      width: 100%;
+
     }
+
 
     .round-btn {
-      border: 1px solid #ddd;
+
+      border:
+        1px solid #ddd;
+
       background: white;
+
+      color: #222;
+
       border-radius: 12px;
-      padding: 13px 5px;
-      font-size: 16px;
+
+      padding:
+        14px
+        5px;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
       cursor: pointer;
+
+      min-height: 50px;
+
     }
+
+
+    .round-btn:active {
+
+      transform: scale(.97);
+
+    }
+
 
     .round-btn.active {
+
       background: #111;
+
       color: white;
+
       border-color: #111;
+
     }
+
+
+    /* =========================================
+       MEMBER
+    ========================================== */
 
     .member-buttons {
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 10px;
+
     }
+
 
     .member-btn {
-      border: 1px solid #ddd;
+
+      border:
+        1px solid #ddd;
+
       background: white;
+
+      color: #222;
+
       border-radius: 12px;
-      padding: 13px;
+
+      padding: 14px;
+
       font-size: 16px;
+
+      font-weight: bold;
+
       cursor: pointer;
+
     }
+
 
     .member-btn.active {
+
       background: #111;
+
       color: white;
+
       border-color: #111;
+
     }
+
 
     .team-member {
+
       background: #f7f7f7;
+
       border-radius: 12px;
+
       padding: 12px;
+
       margin-top: 10px;
+
     }
+
 
     .team-member-name {
+
       font-weight: bold;
+
       margin-bottom: 8px;
+
     }
+
+
+    /* =========================================
+       TOTAL
+    ========================================== */
 
     .team-total {
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       margin-top: 15px;
+
       padding-top: 15px;
-      border-top: 1px solid #ddd;
+
+      border-top:
+        1px solid #ddd;
+
       font-weight: bold;
+
     }
+
 
     .grand-total {
+
       background: #111;
+
       color: white;
+
       border-radius: 15px;
+
       padding: 18px;
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
       font-size: 20px;
+
       font-weight: bold;
+
       margin-bottom: 15px;
+
     }
+
+
+    /* =========================================
+       BUTTON
+    ========================================== */
 
     .save-btn {
+
       width: 100%;
+
       border: none;
-      background: #06c755;
+
+      background: #111;
+
       color: white;
+
       border-radius: 15px;
+
       padding: 17px;
+
       font-size: 18px;
+
       font-weight: bold;
+
       cursor: pointer;
+
     }
+
 
     .save-btn:disabled {
+
       background: #999;
+
+      cursor: wait;
+
     }
+
 
     .clear-btn {
+
       width: 100%;
-      border: 1px solid #ddd;
+
+      border:
+        1px solid #ddd;
+
       background: white;
+
       border-radius: 15px;
+
       padding: 14px;
+
       font-size: 16px;
+
       margin-top: 10px;
+
       cursor: pointer;
+
     }
+
+
+    /* =========================================
+       MESSAGE
+    ========================================== */
 
     .message {
+
       display: none;
+
       padding: 14px;
+
       border-radius: 12px;
+
       margin-bottom: 15px;
+
       text-align: center;
+
       font-weight: bold;
+
       white-space: pre-line;
+
     }
+
 
     .message.success {
+
       display: block;
+
       background: #e8f7e8;
+
       color: #187a18;
+
     }
+
 
     .message.error {
+
       display: block;
+
       background: #fdeaea;
+
       color: #c62828;
+
     }
+
+
+    .message.info {
+
+      display: block;
+
+      background: #eef4ff;
+
+      color: #2455a4;
+
+    }
+
+
+    .hidden {
+
+      display: none !important;
+
+    }
+
+
+    /* =========================================
+       LOADING
+    ========================================== */
 
     .loading {
+
       text-align: center;
+
       color: #777;
+
       padding: 10px;
+
     }
 
-    .small-note {
-      color: #777;
-      font-size: 13px;
-      margin-top: 7px;
+
+    /* =========================================
+       MOBILE
+    ========================================== */
+
+    @media (max-width: 380px) {
+
+      .round-buttons {
+
+        gap: 5px;
+
+      }
+
+
+      .round-btn {
+
+        font-size: 15px;
+
+        padding:
+          12px
+          3px;
+
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
   <div class="header">
-    <h1>ACCOUNT PFA</h1>
-    <p>บันทึกรายการค่าใช้จ่าย</p>
+
+    <h1>
+      ACCOUNT PFA
+    </h1>
+
+    <p>
+      บันทึกรายการค่าใช้จ่าย
+    </p>
+
   </div>
 
+
+  <!-- =========================================
+       USER
+  ========================================== -->
+
   <div class="user-box">
-    <div id="userName" class="user-name">
+
+    <div
+      id="userName"
+      class="user-name"
+    >
       กำลังเข้าสู่ระบบ LINE...
     </div>
 
-    <div id="userStatus" class="user-status">
+    <div
+      id="userStatus"
+      class="user-status"
+    >
       กรุณารอสักครู่
     </div>
+
   </div>
 
-  <div id="message" class="message"></div>
+
+  <!-- =========================================
+       MESSAGE
+  ========================================== -->
+
+  <div
+    id="message"
+    class="message"
+  ></div>
 
 
-  <!-- ==============================
+  <!-- =========================================
        1. รายการ
-       ============================== -->
+  ========================================== -->
 
   <div class="card">
 
     <div class="section-title">
+
       1. รายการ
+
     </div>
 
-    <label>
+
+    <label for="item">
+
       รายละเอียดรายการ
+
     </label>
+
 
     <input
       type="text"
       id="item"
-      placeholder="เช่น ค่าน้ำมัน"
+      placeholder="เช่น เติมน้ำมันรถ"
       autocomplete="off"
     >
 
   </div>
 
 
-  <!-- ==============================
+  <!-- =========================================
        2. ครั้งที่
-       ============================== -->
+  ========================================== -->
 
   <div class="card">
 
     <div class="section-title">
+
       2. ครั้งที่
-    </div>
-
-    <div class="round-buttons">
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="1">
-        ครั้งที่ 1
-      </button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="2">
-        ครั้งที่ 2
-      </button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="3">
-        ครั้งที่ 3
-      </button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="4">
-        ครั้งที่ 4
-      </button>
-
-      <button
-        type="button"
-        class="round-btn"
-        data-round="5">
-        ครั้งที่ 5
-      </button>
 
     </div>
 
-    <div class="small-note">
-      กรุณาเลือกครั้งที่ก่อนบันทึก
+
+    <div class="description">
+
+      กรุณาเลือกครั้งที่ของรายการ
+
+    </div>
+
+
+    <div
+      id="roundButtons"
+      class="round-buttons"
+    >
+
+      <button
+        type="button"
+        class="round-btn"
+        data-round="1"
+      >
+        1
+      </button>
+
+
+      <button
+        type="button"
+        class="round-btn"
+        data-round="2"
+      >
+        2
+      </button>
+
+
+      <button
+        type="button"
+        class="round-btn"
+        data-round="3"
+      >
+        3
+      </button>
+
+
+      <button
+        type="button"
+        class="round-btn"
+        data-round="4"
+      >
+        4
+      </button>
+
+
+      <button
+        type="button"
+        class="round-btn"
+        data-round="5"
+      >
+        5
+      </button>
+
+    </div>
+
+
+    <div
+      id="selectedRoundText"
+      class="description"
+      style="
+        margin-top:12px;
+        margin-bottom:0;
+        text-align:center;
+      "
+    >
+      ยังไม่ได้เลือกครั้งที่
+
     </div>
 
   </div>
 
 
-  <!-- ==============================
+  <!-- =========================================
        3. จำนวนเงิน
-       ============================== -->
+  ========================================== -->
 
   <div class="card">
 
     <div class="section-title">
+
       3. จำนวนเงิน
+
     </div>
 
-    <label>
+
+    <label for="amount">
+
       จำนวนเงินหลัก (บาท)
+
     </label>
+
 
     <input
       type="number"
@@ -362,46 +780,96 @@
   </div>
 
 
-  <!-- ==============================
-       4. สมาชิกทีม
-       ============================== -->
+  <!-- =========================================
+       4. ค่าทีม
+  ========================================== -->
 
   <div class="card">
 
     <div class="section-title">
+
       4. ค่าทีม
+
     </div>
 
-    <div class="small-note">
+
+    <div class="description">
+
       เลือกสมาชิกได้สูงสุด 4 คน
+
     </div>
 
-    <br>
 
     <div
       id="memberButtons"
-      class="member-buttons">
+      class="member-buttons"
+    >
 
-      <div class="loading">
-        กำลังโหลดสมาชิก...
-      </div>
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Phet"
+      >
+        Phet
+      </button>
+
+
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Fang"
+      >
+        Fang
+      </button>
+
+
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Arlee"
+      >
+        Arlee
+      </button>
+
+
+      <button
+        type="button"
+        class="member-btn"
+        data-member="Gee"
+      >
+        Gee
+      </button>
 
     </div>
 
-    <div id="teamContainer"></div>
+
+    <div
+      id="teamContainer"
+    ></div>
+
 
     <div
       id="teamTotal"
-      class="team-total"
-      style="display:none;">
+      class="team-total hidden"
+    >
 
       <span>
+
         รวมค่าทีม
+
       </span>
 
+
       <span>
-        <span id="teamTotalValue">0.00</span>
+
+        <span
+          id="teamTotalValue"
+        >
+          0.00
+        </span>
+
         บาท
+
       </span>
 
     </div>
@@ -409,101 +877,137 @@
   </div>
 
 
-  <!-- ==============================
-       5. TOTAL
-       ============================== -->
+  <!-- =========================================
+       TOTAL
+  ========================================== -->
 
   <div class="grand-total">
 
     <span>
+
       รวมทั้งหมด
+
     </span>
 
+
     <span>
-      <span id="grandTotal">0.00</span>
+
+      <span
+        id="grandTotal"
+      >
+        0.00
+      </span>
+
       บาท
+
     </span>
 
   </div>
 
 
-  <!-- ==============================
+  <!-- =========================================
        SAVE
-       ============================== -->
+  ========================================== -->
 
   <button
     id="saveBtn"
     class="save-btn"
-    type="button">
+    type="button"
+  >
 
     💾 บันทึกข้อมูล
 
   </button>
 
 
-  <!-- ==============================
+  <!-- =========================================
        CLEAR
-       ============================== -->
+  ========================================== -->
 
   <button
     id="clearBtn"
     class="clear-btn"
-    type="button">
+    type="button"
+  >
 
     🗑️ ล้างข้อมูล
 
   </button>
+
 
 </div>
 
 
 <script>
 
+
 /*************************************************
  * CONFIG
  *************************************************/
 
+
 const LIFF_ID =
   "2011289699-I5WMsObs";
 
+
 const WORKER_URL =
-  "https://line-accounting-bot.notza1982.workers.dev";
+  "https://line-accounting-bot.notza1982.workers.dev/";
 
 
 /*************************************************
  * VARIABLES
  *************************************************/
 
+
 let lineUser = {
+
   userId: "",
+
   name: ""
+
 };
 
-let selectedRound = null;
 
-let selectedMembers = [];
+let selectedRound =
+  null;
 
-let memberList = [];
+
+let selectedMembers =
+  [];
 
 
 /*************************************************
- * MESSAGE
+ * SHOW MESSAGE
  *************************************************/
 
-function showMessage(text, type) {
+
+function showMessage(
+  text,
+  type
+) {
 
   const box =
-    document.getElementById("message");
+    document.getElementById(
+      "message"
+    );
 
-  box.textContent = text;
+
+  box.textContent =
+    text;
+
 
   box.className =
     "message " + type;
 
+
   window.scrollTo({
+
     top: 0,
+
     behavior: "smooth"
+
   });
+
 }
 
 
@@ -511,14 +1015,27 @@ function showMessage(text, type) {
  * FORMAT MONEY
  *************************************************/
 
-function formatMoney(value) {
 
-  return Number(value || 0).toLocaleString(
+function formatMoney(
+  value
+) {
+
+  return Number(
+    value || 0
+  ).toLocaleString(
+
     "th-TH",
+
     {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+
+      minimumFractionDigits:
+        2,
+
+      maximumFractionDigits:
+        2
+
     }
+
   );
 
 }
@@ -528,64 +1045,63 @@ function formatMoney(value) {
  * LIFF INIT
  *************************************************/
 
+
 async function initLIFF() {
 
-  const nameBox =
-    document.getElementById("userName");
+  const name =
+    document.getElementById(
+      "userName"
+    );
 
-  const statusBox =
-    document.getElementById("userStatus");
+
+  const status =
+    document.getElementById(
+      "userStatus"
+    );
+
 
   try {
 
-    statusBox.textContent =
-      "กำลังเริ่มต้น LINE...";
+    name.textContent =
+      "กำลังเข้าสู่ระบบ LINE...";
+
+
+    status.textContent =
+      "กำลังตรวจสอบ LIFF";
+
+
+    if (
+      typeof liff ===
+      "undefined"
+    ) {
+
+      throw new Error(
+        "ไม่พบ LINE LIFF SDK"
+      );
+
+    }
+
 
     await liff.init({
-      liffId: LIFF_ID
+
+      liffId:
+        LIFF_ID
+
     });
 
 
     /*
-     * ถ้าเปิดใน LINE
+     * ถ้าเปิดจากภายนอก LINE
+     * และยังไม่ได้ Login
      */
 
     if (
-      liff.isLoggedIn()
+      !liff.isLoggedIn()
     ) {
 
-      const profile =
-        await liff.getProfile();
+      status.textContent =
+        "กำลังเข้าสู่ระบบ LINE...";
 
-      lineUser.userId =
-        profile.userId || "";
-
-      lineUser.name =
-        profile.displayName || "";
-
-      nameBox.textContent =
-        "👤 " + lineUser.name;
-
-      statusBox.textContent =
-        "เชื่อมต่อ LINE สำเร็จ";
-
-    }
-
-    else {
-
-      /*
-       * กรณีเปิดนอก LINE
-       */
-
-      nameBox.textContent =
-        "ACCOUNT PFA";
-
-      statusBox.textContent =
-        "กรุณาเข้าสู่ระบบ LINE";
-
-      /*
-       * Login
-       */
 
       liff.login();
 
@@ -594,11 +1110,32 @@ async function initLIFF() {
     }
 
 
-    /*
-     * โหลดสมาชิก
-     */
+    const profile =
+      await liff.getProfile();
 
-    await loadMembers();
+
+    lineUser.userId =
+      profile.userId || "";
+
+
+    lineUser.name =
+      profile.displayName || "";
+
+
+    name.textContent =
+      "👤 " +
+      lineUser.name;
+
+
+    status.textContent =
+      "เชื่อมต่อ LINE สำเร็จ";
+
+
+    console.log(
+      "LINE USER:",
+      lineUser
+    );
+
 
   }
 
@@ -609,272 +1146,242 @@ async function initLIFF() {
       error
     );
 
-    nameBox.textContent =
-      "❌ ไม่สามารถเชื่อมต่อ LINE";
 
-    statusBox.textContent =
+    name.textContent =
+      "❌ เชื่อมต่อ LINE ไม่สำเร็จ";
+
+
+    status.textContent =
       error.message ||
       String(error);
 
+
   }
 
 }
 
 
 /*************************************************
- * LOAD MEMBERS
+ * ROUND BUTTON
  *************************************************/
 
-async function loadMembers() {
 
-  const container =
-    document.getElementById(
-      "memberButtons"
-    );
+document
+  .querySelectorAll(
+    ".round-btn"
+  )
+  .forEach(
 
-  container.innerHTML =
-    '<div class="loading">กำลังโหลดสมาชิก...</div>';
+    function(button) {
 
-  try {
+      button.addEventListener(
 
-    const response =
-      await fetch(
-        WORKER_URL +
-        "?action=getMembers",
-        {
-          method: "GET"
-        }
-      );
+        "click",
+
+        function() {
 
 
-    if (!response.ok) {
+          /*
+           * ล้าง active ทุกปุ่ม
+           */
 
-      throw new Error(
-        "Worker ตอบกลับ HTTP " +
-        response.status
-      );
+          document
+            .querySelectorAll(
+              ".round-btn"
+            )
+            .forEach(
 
-    }
+              function(btn) {
 
+                btn.classList.remove(
+                  "active"
+                );
 
-    const result =
-      await response.json();
+              }
 
-
-    console.log(
-      "MEMBERS:",
-      result
-    );
-
-
-    if (
-      !result.success
-    ) {
-
-      throw new Error(
-        result.message ||
-        "ไม่สามารถโหลดสมาชิก"
-      );
-
-    }
-
-
-    memberList =
-      Array.isArray(result.members)
-        ? result.members
-        : [];
-
-
-    container.innerHTML = "";
-
-
-    if (
-      memberList.length === 0
-    ) {
-
-      container.innerHTML =
-        '<div class="loading">ไม่พบสมาชิก</div>';
-
-      return;
-
-    }
-
-
-    memberList
-      .slice(0, 4)
-      .forEach(function(member) {
-
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.type =
-          "button";
-
-        button.className =
-          "member-btn";
-
-        button.dataset.memberId =
-          member.id;
-
-        button.dataset.memberName =
-          member.name;
-
-        button.textContent =
-          "👤 " + member.name;
-
-
-        button.addEventListener(
-          "click",
-          function() {
-
-            toggleMember(
-              member,
-              button
             );
 
-          }
-        );
+
+          /*
+           * Active ปุ่มที่เลือก
+           */
+
+          button.classList.add(
+            "active"
+          );
 
 
-        container.appendChild(
-          button
-        );
+          /*
+           * เก็บครั้งที่
+           */
 
-      });
+          selectedRound =
+            Number(
+              button.dataset.round
+            );
 
-  }
 
-  catch (error) {
+          /*
+           * แสดงข้อความ
+           */
 
-    console.error(
-      "LOAD MEMBERS ERROR:",
-      error
-    );
+          document
+            .getElementById(
+              "selectedRoundText"
+            )
+            .textContent =
+            "เลือกครั้งที่ " +
+            selectedRound;
 
-    container.innerHTML =
-      '<div class="loading">❌ โหลดสมาชิกไม่สำเร็จ</div>';
 
-    showMessage(
-      "ไม่สามารถโหลดรายชื่อสมาชิกได้\n" +
-      error.message,
-      "error"
-    );
+          console.log(
+            "SELECTED ROUND:",
+            selectedRound
+          );
 
-  }
 
-}
+        }
+
+      );
+
+    }
+
+  );
 
 
 /*************************************************
- * TOGGLE MEMBER
+ * MEMBER BUTTON
  *************************************************/
 
-function toggleMember(
-  member,
-  button
-) {
 
-  const existing =
-    selectedMembers.find(
-      function(item) {
-        return item.id === member.id;
-      }
-    );
+document
+  .querySelectorAll(
+    ".member-btn"
+  )
+  .forEach(
+
+    function(button) {
+
+      button.addEventListener(
+
+        "click",
+
+        function() {
 
 
-  /*
-   * เอาออก
-   */
+          const member =
+            button.dataset.member;
 
-  if (existing) {
 
-    selectedMembers =
-      selectedMembers.filter(
-        function(item) {
-          return item.id !== member.id;
+          /*
+           * ถ้าเลือกอยู่แล้ว = ยกเลิก
+           */
+
+          if (
+            selectedMembers
+              .includes(member)
+          ) {
+
+
+            selectedMembers =
+              selectedMembers.filter(
+
+                function(name) {
+
+                  return name !== member;
+
+                }
+
+              );
+
+
+            button.classList.remove(
+              "active"
+            );
+
+
+            const element =
+              document.getElementById(
+                "team-" + member
+              );
+
+
+            if (element) {
+
+              element.remove();
+
+            }
+
+
+            updateTotals();
+
+
+            return;
+
+          }
+
+
+          /*
+           * จำกัดสูงสุด 4 คน
+           */
+
+          if (
+            selectedMembers.length >= 4
+          ) {
+
+            showMessage(
+
+              "เลือกสมาชิกได้สูงสุด 4 คน",
+
+              "error"
+
+            );
+
+
+            return;
+
+          }
+
+
+          /*
+           * เพิ่มสมาชิก
+           */
+
+          selectedMembers.push(
+            member
+          );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          addTeamMember(
+            member
+          );
+
+
+          updateTotals();
+
         }
+
       );
 
-    button.classList.remove(
-      "active"
-    );
-
-    const element =
-      document.getElementById(
-        "team-" + member.id
-      );
-
-    if (element) {
-      element.remove();
     }
 
-    updateTotals();
-
-    return;
-
-  }
-
-
-  /*
-   * จำกัด 4 คน
-   */
-
-  if (
-    selectedMembers.length >= 4
-  ) {
-
-    showMessage(
-      "เลือกสมาชิกได้สูงสุด 4 คน",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  /*
-   * เพิ่มสมาชิก
-   */
-
-  selectedMembers.push({
-
-    id:
-      member.id,
-
-    name:
-      member.name,
-
-    amount:
-      0
-
-  });
-
-
-  button.classList.add(
-    "active"
   );
-
-
-  addTeamMember(
-    member
-  );
-
-
-  updateTotals();
-
-}
 
 
 /*************************************************
  * ADD TEAM MEMBER
  *************************************************/
 
+
 function addTeamMember(
   member
 ) {
+
 
   const container =
     document.getElementById(
@@ -893,24 +1400,34 @@ function addTeamMember(
 
 
   div.id =
-    "team-" + member.id;
+    "team-" + member;
 
 
   div.innerHTML = `
 
     <div class="team-member-name">
-      👤 ${escapeHtml(member.name)}
+
+      👤 ${member}
+
     </div>
 
+
     <input
+
       type="number"
+
       class="team-amount"
-      data-member-id="${escapeHtml(member.id)}"
-      data-member-name="${escapeHtml(member.name)}"
-      placeholder="จำนวนเงินของ ${escapeHtml(member.name)}"
+
+      data-member="${member}"
+
+      placeholder="จำนวนเงินของ ${member}"
+
       min="0"
+
       step="0.01"
+
       inputmode="decimal"
+
     >
 
   `;
@@ -928,127 +1445,81 @@ function addTeamMember(
 
 
   input.addEventListener(
+
     "input",
-    function() {
 
-      const found =
-        selectedMembers.find(
-          function(item) {
-            return item.id === member.id;
-          }
-        );
+    updateTotals
 
-      if (found) {
-        found.amount =
-          Number(input.value) || 0;
-      }
-
-      updateTotals();
-
-    }
   );
 
 }
 
 
 /*************************************************
- * ESCAPE HTML
+ * UPDATE TOTAL
  *************************************************/
 
-function escapeHtml(text) {
-
-  return String(text || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-
-}
-
-
-/*************************************************
- * ROUND
- *************************************************/
-
-document
-  .querySelectorAll(".round-btn")
-  .forEach(function(button) {
-
-    button.addEventListener(
-      "click",
-      function() {
-
-        document
-          .querySelectorAll(".round-btn")
-          .forEach(
-            function(btn) {
-
-              btn.classList.remove(
-                "active"
-              );
-
-            }
-          );
-
-
-        button.classList.add(
-          "active"
-        );
-
-
-        selectedRound =
-          Number(
-            button.dataset.round
-          );
-
-      }
-    );
-
-  });
-
-
-/*************************************************
- * TOTAL
- *************************************************/
 
 function updateTotals() {
 
-  let teamTotal = 0;
+
+  let teamTotal =
+    0;
 
 
-  selectedMembers.forEach(
-    function(member) {
+  document
+    .querySelectorAll(
+      ".team-amount"
+    )
+    .forEach(
 
-      teamTotal +=
-        Number(member.amount) || 0;
+      function(input) {
 
-    }
-  );
+        teamTotal +=
+          Number(
+            input.value
+          ) || 0;
+
+      }
+
+    );
 
 
   const amount =
     Number(
-      document.getElementById(
-        "amount"
-      ).value
+
+      document
+        .getElementById(
+          "amount"
+        )
+        .value
+
     ) || 0;
 
 
   const total =
-    amount + teamTotal;
+    amount +
+    teamTotal;
 
 
-  document.getElementById(
-    "teamTotalValue"
-  ).textContent =
-    formatMoney(teamTotal);
+  document
+    .getElementById(
+      "teamTotalValue"
+    )
+    .textContent =
+    formatMoney(
+      teamTotal
+    );
 
 
-  document.getElementById(
-    "grandTotal"
-  ).textContent =
-    formatMoney(total);
+  document
+    .getElementById(
+      "grandTotal"
+    )
+    .textContent =
+    formatMoney(
+      total
+    );
 
 
   const teamBox =
@@ -1061,15 +1532,17 @@ function updateTotals() {
     selectedMembers.length > 0
   ) {
 
-    teamBox.style.display =
-      "flex";
+    teamBox.classList.remove(
+      "hidden"
+    );
 
   }
 
   else {
 
-    teamBox.style.display =
-      "none";
+    teamBox.classList.add(
+      "hidden"
+    );
 
   }
 
@@ -1077,56 +1550,100 @@ function updateTotals() {
 
 
 /*************************************************
- * AMOUNT EVENT
+ * AMOUNT INPUT
  *************************************************/
 
+
 document
-  .getElementById("amount")
+  .getElementById(
+    "amount"
+  )
   .addEventListener(
+
     "input",
+
     updateTotals
+
   );
 
 
 /*************************************************
- * SAVE
+ * SAVE BUTTON
  *************************************************/
 
+
 document
-  .getElementById("saveBtn")
+  .getElementById(
+    "saveBtn"
+  )
   .addEventListener(
+
     "click",
+
     saveTransaction
+
   );
+
+
+/*************************************************
+ * SAVE TRANSACTION
+ *************************************************/
 
 
 async function saveTransaction() {
 
-  const item =
-    document
-      .getElementById("item")
-      .value
-      .trim();
 
-
-  const amount =
-    Number(
-      document.getElementById(
-        "amount"
-      ).value
+  const button =
+    document.getElementById(
+      "saveBtn"
     );
 
 
   /*
-   * ตรวจ LINE
+   * ข้อมูลรายการ
    */
 
-  if (!lineUser.userId) {
+  const item =
+    document
+      .getElementById(
+        "item"
+      )
+      .value
+      .trim();
+
+
+  /*
+   * จำนวนเงินหลัก
+   */
+
+  const amount =
+    Number(
+
+      document
+        .getElementById(
+          "amount"
+        )
+        .value
+
+    );
+
+
+  /*
+   * ตรวจ LINE Login
+   */
+
+  if (
+    !lineUser.userId
+  ) {
 
     showMessage(
+
       "กรุณารอให้ LINE Login เสร็จก่อน",
+
       "error"
+
     );
+
 
     return;
 
@@ -1140,9 +1657,13 @@ async function saveTransaction() {
   if (!item) {
 
     showMessage(
+
       "กรุณาระบุรายการ",
+
       "error"
+
     );
+
 
     return;
 
@@ -1153,12 +1674,18 @@ async function saveTransaction() {
    * ตรวจครั้งที่
    */
 
-  if (!selectedRound) {
+  if (
+    !selectedRound
+  ) {
 
     showMessage(
-      "กรุณาเลือกครั้งที่",
+
+      "กรุณาเลือกครั้งที่ 1–5",
+
       "error"
+
     );
+
 
     return;
 
@@ -1175,9 +1702,13 @@ async function saveTransaction() {
   ) {
 
     showMessage(
+
       "กรุณาระบุจำนวนเงินให้ถูกต้อง",
+
       "error"
+
     );
+
 
     return;
 
@@ -1185,29 +1716,34 @@ async function saveTransaction() {
 
 
   /*
-   * สร้าง Team
+   * สมาชิกทีม
    */
 
-  const team =
-    selectedMembers.map(
-      function(member) {
+  const team = [];
 
-        return {
 
-          id:
-            member.id,
+  document
+    .querySelectorAll(
+      ".team-amount"
+    )
+    .forEach(
+
+      function(input) {
+
+        team.push({
 
           name:
-            member.name,
+            input.dataset.member,
 
           amount:
             Number(
-              member.amount
+              input.value
             ) || 0
 
-        };
+        });
 
       }
+
     );
 
 
@@ -1215,24 +1751,31 @@ async function saveTransaction() {
    * คำนวณยอดรวม
    */
 
-  let teamTotal = 0;
+  let teamTotal =
+    0;
+
 
   team.forEach(
+
     function(member) {
 
       teamTotal +=
-        Number(member.amount) || 0;
+        Number(
+          member.amount
+        ) || 0;
 
     }
+
   );
 
 
   const total =
-    amount + teamTotal;
+    amount +
+    teamTotal;
 
 
   /*
-   * DATA
+   * ข้อมูลที่จะส่ง
    */
 
   const data = {
@@ -1240,20 +1783,39 @@ async function saveTransaction() {
     type:
       "LIFF_EXPENSE",
 
+
     userId:
       lineUser.userId,
+
 
     displayName:
       lineUser.name,
 
+
+    name:
+      lineUser.name,
+
+
     item:
       item,
+
 
     round:
       selectedRound,
 
+
     amount:
       amount,
+
+
+    team:
+      team,
+
+
+    /*
+     * ส่งเป็น expenses
+     * เพื่อรองรับ Backend
+     */
 
     expenses: [
 
@@ -1272,11 +1834,18 @@ async function saveTransaction() {
 
     ],
 
+
     members:
       team,
 
+
     total:
       total,
+
+
+    note:
+      "",
+
 
     timestamp:
       new Date().toISOString()
@@ -1285,33 +1854,49 @@ async function saveTransaction() {
 
 
   console.log(
-    "SEND DATA:",
+    "DATA TO WORKER:",
     data
   );
 
 
-  const button =
-    document.getElementById(
-      "saveBtn"
-    );
-
+  /*
+   * ปิดปุ่มระหว่างบันทึก
+   */
 
   button.disabled =
     true;
+
 
   button.textContent =
     "กำลังบันทึก...";
 
 
+  showMessage(
+
+    "กำลังบันทึกข้อมูล...",
+
+    "info"
+
+  );
+
+
   try {
+
+
+    /*
+     * ส่งข้อมูลไป Cloudflare Worker
+     */
 
     const response =
       await fetch(
+
         WORKER_URL,
+
         {
 
           method:
             "POST",
+
 
           headers: {
 
@@ -1320,10 +1905,14 @@ async function saveTransaction() {
 
           },
 
+
           body:
-            JSON.stringify(data)
+            JSON.stringify(
+              data
+            )
 
         }
+
       );
 
 
@@ -1332,80 +1921,94 @@ async function saveTransaction() {
 
 
     console.log(
-      "SAVE RESULT:",
+      "WORKER RESPONSE:",
       result
     );
 
+
+    /*
+     * ตรวจผล
+     */
 
     if (
       result &&
       result.success
     ) {
 
+
       showMessage(
+
         "✅ บันทึกข้อมูลเรียบร้อย\n" +
-        "ครั้งที่ " +
+
+        "รายการ: " +
+        item +
+
+        "\nครั้งที่: " +
         selectedRound +
-        "\n" +
-        "ยอดรวม " +
+
+        "\nยอดรวม: " +
         formatMoney(total) +
         " บาท",
+
         "success"
+
       );
 
 
       /*
-       * ส่งข้อมูลสำเร็จ
+       * ล้างฟอร์ม
        */
 
       resetForm();
 
 
-      /*
-       * ถ้าอยู่ใน LINE
-       * สามารถปิด LIFF ได้
-       */
-
-      /*
-      if (liff.isInClient()) {
-        setTimeout(function() {
-          liff.closeWindow();
-        }, 1500);
-      }
-      */
-
     }
 
     else {
 
+
       throw new Error(
-        result.message ||
-        "ไม่สามารถบันทึกข้อมูลได้"
+
+        result?.message ||
+        "Worker ไม่สามารถบันทึกข้อมูลได้"
+
       );
 
     }
 
+
   }
 
   catch (error) {
+
 
     console.error(
       "SAVE ERROR:",
       error
     );
 
+
     showMessage(
-      "❌ บันทึกไม่สำเร็จ\n" +
-      error.message,
+
+      "❌ บันทึกข้อมูลไม่สำเร็จ\n" +
+      (
+        error.message ||
+        String(error)
+      ),
+
       "error"
+
     );
 
   }
 
+
   finally {
+
 
     button.disabled =
       false;
+
 
     button.textContent =
       "💾 บันทึกข้อมูล";
@@ -1419,29 +2022,81 @@ async function saveTransaction() {
  * RESET FORM
  *************************************************/
 
+
 function resetForm() {
 
-  document.getElementById(
-    "item"
-  ).value = "";
+
+  /*
+   * รายการ
+   */
+
+  document
+    .getElementById(
+      "item"
+    )
+    .value =
+    "";
 
 
-  document.getElementById(
-    "amount"
-  ).value = "";
+  /*
+   * จำนวนเงิน
+   */
 
+  document
+    .getElementById(
+      "amount"
+    )
+    .value =
+    "";
+
+
+  /*
+   * ครั้งที่
+   */
 
   selectedRound =
     null;
 
+
+  document
+    .querySelectorAll(
+      ".round-btn"
+    )
+    .forEach(
+
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+      }
+
+    );
+
+
+  document
+    .getElementById(
+      "selectedRoundText"
+    )
+    .textContent =
+    "ยังไม่ได้เลือกครั้งที่";
+
+
+  /*
+   * สมาชิก
+   */
 
   selectedMembers =
     [];
 
 
   document
-    .querySelectorAll(".round-btn")
+    .querySelectorAll(
+      ".member-btn"
+    )
     .forEach(
+
       function(button) {
 
         button.classList.remove(
@@ -1449,26 +2104,21 @@ function resetForm() {
         );
 
       }
+
     );
 
 
   document
-    .querySelectorAll(".member-btn")
-    .forEach(
-      function(button) {
-
-        button.classList.remove(
-          "active"
-        );
-
-      }
-    );
+    .getElementById(
+      "teamContainer"
+    )
+    .innerHTML =
+    "";
 
 
-  document.getElementById(
-    "teamContainer"
-  ).innerHTML = "";
-
+  /*
+   * ยอดรวม
+   */
 
   updateTotals();
 
@@ -1476,14 +2126,20 @@ function resetForm() {
 
 
 /*************************************************
- * CLEAR
+ * CLEAR BUTTON
  *************************************************/
 
+
 document
-  .getElementById("clearBtn")
+  .getElementById(
+    "clearBtn"
+  )
   .addEventListener(
+
     "click",
+
     function() {
+
 
       if (
         confirm(
@@ -1491,16 +2147,22 @@ document
         )
       ) {
 
+
         resetForm();
 
+
         showMessage(
+
           "ล้างข้อมูลแล้ว",
+
           "success"
+
         );
 
       }
 
     }
+
   );
 
 
@@ -1508,11 +2170,16 @@ document
  * START
  *************************************************/
 
+
 updateTotals();
 
 initLIFF();
 
+
 </script>
 
+
 </body>
+
 </html>
+```
